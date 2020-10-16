@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smoke Test Suite" parallel="none" thread-count="1">
+	<parameter name="browserName" value="chrome" />
+	<test name="User Management Tests">
+		<classes>
+			<class name="tests.usermanagement.LoginPageTest" />
+			<class name="tests.usermanagement.SignUpPageTest" />
+			<class name="tests.usermanagement.ResetPasswordTest" />
+			<class name="tests.usermanagement.SelectOrganizationTest" />
+			<class name="tests.useraccount.AccountPageTest" />
+		</classes>
+	</test>
+</suite>

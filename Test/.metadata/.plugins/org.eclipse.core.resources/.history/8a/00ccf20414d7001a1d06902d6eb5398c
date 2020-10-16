@@ -1,0 +1,54 @@
+package testdata;
+
+public class UserAccountTestData {
+
+	// user redirect account page after click on "Account Settings" Link.
+	public String accountSettingsLink = "Account Settings";
+
+	// First name for edit profile section
+	public String firstName = "Aloha";
+
+	// Last name for edit profile section
+	public String lastName = "Admin";
+
+	// success message after edit profile section
+	public String successMessageEditProfile = "Profile data save successfully.";
+
+	// User redirect password section after click on password link.
+
+	public String passwordSection = "Password";
+
+	// Current password will used for update password
+	public String currentPassword = "Testuser@123";
+
+	// Incorrect confirm password will be used as a Current password after click
+	// password link.
+
+	public String incorrectCurrentPassword = "Testser@123";
+
+	// New password will be used for new password
+	public String newPassword = "UserTest@123";
+
+	// Confirm New Password will be used for new password
+	public String confirmNewPassword = "UserTest@123";
+
+	// validation message display when Current Password field invalid.
+
+	public String incorrectCurrentPasswordErrorTextMessage = "Incorrect username or password.";
+
+	// validation message display when user enter password incorrect format.
+
+	public String[] invalidPasswordValidationMessages = { "New Password must contain at least 1 uppercase character.",
+			"New password is too short. Must be at least 8 characters.", "New Password must contain at least 1 number.",
+			"New Password must contain at least 1 special character ^$*.[]{}()?!@#%&/><:;|_~`",
+			"New Password must contain at least 1 lowercase character." };
+
+	// invalid passwords for password section page
+
+	public String[] invalidPasswords = { "testuser@123", "Test@12", "Testuser123", "Testuser@", "TESTUSER@123" };
+
+	// validation message display when new password and confirm password not same.
+
+	public String confirmPasswordValidationMessage = "The new password and confirmation do not match!";
+
+}

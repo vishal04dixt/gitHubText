@@ -1,0 +1,376 @@
+package tests.wellnesscenter;
+
+import static io.restassured.RestAssured.given;
+
+import java.util.List;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import test.ProfileBase;
+import utilities.Constants.ResponseCode;
+import utilities.logger.LogsManager;
+
+public class IndividualAPITest extends ProfileBase {
+
+    public String questionId1;
+    public String questionId2;
+    public String questionId3;
+    public String questionId4;
+    public String yesAnswerId;
+    public String noAnswerId;
+
+    /**
+     * An instance of Log Manager which will be used to get logger and log details
+     * in the log file. Log file can be found in test-output/logs/test-execution.log
+     */
+    LogsManager logManager = new LogsManager(this.getClass().getName());
+
+    /**
+     * This method checks for the daily initial questions present. Response code
+     * returned after successful execution of the method is 200.
+     */
+    @Test(priority = 1, description = "To get the list of all questions details.")
+    public void getInitialDailyQuestions() {
+
+        logManager.logInformation("Fetching all Questions Details.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/event/record-wellness-metrics/questions");
+
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after API is executed: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+        laravelSession = parser.getLaravelSession(response);
+        
+        String xcrf = response.getHeader("X-CSRF-TOKEN");
+
+        JsonPath jsonResponse = response.jsonPath();
+
+        List<String> questionIds = jsonResponse.getList("id");
+        logManager.logInformation("Total Number of Questions found: " + questionIds.size(), true, true);
+
+        questionId1 = jsonResponse.getString("id[0]");
+        questionId2 = jsonResponse.getString("id[1]");
+        questionId3 = jsonResponse.getString("id[2]");
+        questionId4 = jsonResponse.getString("id[3]");
+        yesAnswerId = jsonResponse.getString("answers.id[0][0]");
+        noAnswerId = jsonResponse.getString("answers.id[0][1]");
+
+        logManager.logInformation("Question Id of First Question is: " + questionId1, true, true);
+
+        logManager.logInformation("Question Id of Second Question is: " + questionId2, true, true);
+
+        logManager.logInformation("Question Id of Third Question is: " + questionId3, true, true);
+
+        logManager.logInformation("Question Id of Fourth Question is: " + questionId4, true, true);
+
+        logManager.logInformation("Answer Id of Yes option is: " + yesAnswerId, true, true);
+
+        logManager.logInformation("Answer Id of No option is: " + noAnswerId, true, true);
+
+        logManager.logInformation("Fetching of all questions details is completed.", true, true);
+    }
+    
+
+    /**
+     * This method checks for daily initial questions present by invalid request
+     * method type. Response code returned after successful execution of the method
+     * is 405.
+     */
+    @Test(priority = 2, description = "To get the list of all questions details by using invalid method type.")
+    public void getInitialDailyQuestionsMethodNotAllowed() {
+
+        logManager.logInformation("Fetching all Questions Details.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).post("/event/record-wellness-metrics/questions");
+
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        laravelSession = parser.getLaravelSession(response);
+        logManager.logInformation("Get all questions details with Method Not Allowed is completed.", true, true);
+
+    }
+    
+
+    /**
+     * This method checks for daily initial questions by passing an invalid end
+     * point. Response code returned after successful execution of the method is
+     * 404.
+     */
+    @Test(priority = 3, description = "To check response of questions details by passing an invalid end point.")
+    public void getInitialDailyQuestionsNotFound() {
+
+        logManager.logInformation("Fetching all Questions Details.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/record-wellness-metrics/questions");
+
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.NOT_FOUND_404);
+
+        laravelSession = parser.getLaravelSession(response);
+        logManager.logInformation("Get all questions details with inavlid end point is completed.", true, true);
+
+    }
+    
+    
+    /**
+     * This method fetches first follow-up question by providing Yes answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 4, description = "To fetch first followup question with Yes answer.")
+    public void getFirstFollowUpQuestionWithYesAnswer() {
+
+        logManager.logInformation("Fetching First Followup Question with Yes answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId1 + "/followup?answerId=" + yesAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    
+    /**
+     * This method fetches first follow-up question by providing No answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 5, description = "To fetch first followup question with No answer.")
+    public void getFirstFollowUpQuestionWithNoAnswer() {
+
+        logManager.logInformation("Fetching First Followup Question with No answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId1 + "/followup?answerId=" + noAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+
+    
+    /**
+     * This method fetches second follow-up question by providing Yes answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 6, description = "To fetch second followup question with Yes answer.")
+    public void getSecondFollowUpQuestionWithYesAnswer() {
+
+        logManager.logInformation("Fetching Second Followup Question with Yes answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId2 + "/followup?answerId=" + yesAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    
+    /**
+     * This method fetches second follow-up question by providing No answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 7, description = "To fetch second followup question with No answer.")
+    public void getSecondFollowUpQuestionWithNoAnswer() {
+
+        logManager.logInformation("Fetching Second Followup Question with No answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId2 + "/followup?answerId=" + noAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    
+    /**
+     * This method fetches third follow-up question by providing Yes answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 8, description = "To fetch third followup question with Yes answer.")
+    public void getThirdFollowUpQuestionWithYesAnswer() {
+
+        logManager.logInformation("Fetching Third Followup Question with Yes answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId3 + "/followup?answerId=" + yesAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    
+    /**
+     * This method fetches third follow-up question by providing No answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 9, description = "To fetch third followup question with No answer.")
+    public void getThirdFollowUpQuestionWithNoAnswer() {
+
+        logManager.logInformation("Fetching Third Followup Question with No answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId3 + "/followup?answerId=" + noAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    
+    /**
+     * This method fetches fourth follow-up question by providing Yes answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 10, description = "To fetch fourth followup question with Yes answer.")
+    public void getFourthFollowUpQuestionWithYesAnswer() {
+
+        logManager.logInformation("Fetching Fourth Followup question with Yes answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId4 + "/followup?answerId=" + yesAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    
+    /**
+     * This method fetches fourth follow-up question by providing Yes answer.
+     * Response code returned after successful execution of the method is
+     * 200.
+     */
+    @Test(priority = 11, description = "To fetch fourth followup question with No answer.")
+    public void getFourthFollowUpQuestionWithNoAnswer() {
+
+        logManager.logInformation("Fetching Fourth Followup question with No answer.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/questions/" + questionId4 + "/followup?answerId=" + noAnswerId);
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+    
+    @Test(priority = 12, description = "To fetch Get User's Non-compliant Groups.")
+    public void getGetUsersNoncompliantGroups() {
+
+        logManager.logInformation("Fetching Get User's Non-compliant Groups.", true, true);
+
+        request.setBaseURI(testData.baseURIWellness);
+
+        addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build())
+                .get("/api/v1/wellness/auth/user/non-compliant/experiences");
+
+        laravelSession = parser.getLaravelSession(response);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+    }
+}

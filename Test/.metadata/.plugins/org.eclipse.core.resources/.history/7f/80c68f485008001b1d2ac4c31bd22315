@@ -1,0 +1,16 @@
+
+public class CubeTest {
+	
+	public static int  cube(int x) {
+		int z = x*x*x;
+		return z;
+		
+	}
+	
+	public static void main(String[]args) {
+		
+		int result = cube(5);
+		System.out.println(result);
+	}
+
+}

@@ -1,0 +1,116 @@
+package tests.usermanagement;
+
+import org.testng.annotations.Test;
+
+import pages.actions.usermanagement.Login;
+import pages.actions.usermanagement.SignUp;
+import testdata.AuthTestData;
+import tests.TestBase;
+
+public class SignUpPageTest extends TestBase {
+	AuthTestData authData = new AuthTestData();
+
+	@Test(priority = 1,description = "To verify that 'Red Brick' signup page URL gets redirected to the Red Brick SignUp page",groups = {"Functional"})
+	public void SignUp_01_check_User_Redirects_To_Signup_Page() {
+		Login login = new Login(driverManager);
+		SignUp signUp = login.loadSignUpPage();
+		signUp.toVerifySignUpPageLoaded();
+	}
+
+	@Test(priority = 2,description = "To verify that 'Red Brick' sign page shows all UI elements.",groups = {"Functional"})
+	public void SignUp_02_check_SignUp_Page_All_Elements_Display() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.toVerifySignUpPageLoadedWithAllElements();
+	}
+
+	@Test(priority = 3,description = "To verify user is not able to Sign up when user enter invalid email address.",groups = {"Functional"})
+	public void SignUp_03_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Invalid_Email_Address() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.doSignUpStep(authData.firstname, authData.lastname, authData.invalid_email, authData.password,
+				authData.confirmPassword);
+		signUp.toVerifyValidationMessageDispalyForInvalidEmail(authData.validationMessageForInvalidEmail);
+	}
+
+	@Test(priority = 4,description = "To verify user is not able to Sign up when user enter already exists email address.",groups = {"Functional"})
+	public void SignUp_04_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Already_Exists_Email_Address() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.doSignUpStep(authData.firstname, authData.lastname, authData.email, authData.password,
+				authData.confirmPassword);
+		signUp.toVerifyValidationMessageDispalyAlreadyExists(authData.validationMessageForAlreadyExistsEmail);
+	}
+
+	@Test(priority = 5,description = "To verify 'First Name', 'Last Name' 'Email field' 'Password field' and 'Confirm Password' have a valid placeholder.",groups = {"UI"})
+	public void SignUp_05_check_SignUp_Page_Have_Valid_Placeholder() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.toVerifyPlaceholderShowing(authData.placeholderFirstNameTextField, authData.placeholderLastNameTextField,
+				authData.placeholderEmailTextField, authData.placeholderPasswordTextField,
+				authData.placeholderConfirmPasswordTextField);
+
+	}
+
+	@Test(priority = 6,description = "To verify user not able to sign up when enterd password is in incorrect format",groups = {"Functional"})
+	public void SignUp_06_to_Verify_User_Not_Able_To_Sign_Up_When_Enterd_Password_Is_In_Incorrect_Format() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.toVerifyValidationMessageDispalyForInvalidPassword(authData.firstname, authData.lastname, authData.newEmailAddress, authData.invalidPasswords, authData.invalidPasswordValidationMessages);
+		
+	}
+	
+	@Test(priority = 7,description = "To verify validation message is displayed when Password and Confirm password both are not same.", groups = {"Functional"})
+	public void SignUp_07_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.doSignUpStep(authData.firstname, authData.lastname, authData.email, authData.password,
+				authData.incorrectConfirmPassword);
+		signUp.toVerifyValidationMessageDispalyConfirmPasswordField(authData.confirmPasswordValidationMessage);
+		
+	}
+	
+	@Test(priority = 8,description = "To verify that  validation  password pop up contains password  validation requirements.", groups = {"Functional"})
+	public void SignUp_08_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.isPaswordRequirementsPopUpDisplay(authData.invalidPasswordRequirementPopUpMessages);
+	}
+	
+	@Test(priority = 9,description = "To verify user is not able to sign up when email field is kept blank.", groups = {"Functional"})
+	public void SignUp_09_to_Verify_User_Is_Not_Able_To_Sign_Up_When_Email_Field_Is_Kept_Blank() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.doSignUpStep(authData.firstname, authData.lastname, "", authData.password,
+				authData.confirmPassword);
+		signUp.toVerifyValidationMessageDisplayForBalnkEmailField(authData.validationMessageForBalnkEmailFieldSignUpPage);
+	}
+
+	@Test(priority = 10,description = "To verify user is able to Sign up when all the fields (First Name, Last Name, Email, Password and Confirm Password) are provided with valid data. ", groups = {"Functional"})
+	public void SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.loadSignUpPage();
+		signUp.verifyUserIsAbleToSignWithValidData(authData.firstname, authData.lastname, authData.newEmailAddress,
+				authData.password, authData.confirmPassword, authData.firstNameValidationMessage,
+				authData.lastNameValidationMessage, authData.passwordValidationMessages,
+				authData.confirmPasswordValidationMessage);
+	}
+	
+	@Test(priority = 11,description = "To verify that the all UI element display on 'Confirmation Section'.",dependsOnMethods = "SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data",groups = {"Functional"})
+	public void SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.toVerifyConfirmationCodeSectionLoaded();
+	}
+	
+	@Test(priority = 12,description = "To verify user not able to sign up with invalid conformation code",dependsOnMethods = "SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section",groups = {"Functional"})
+	public void SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.toVerifyValidationMessageDispalyWhenEnterInvalidCode(authData.incorrectConfirmationCode,authData.validationMessageIncorrectConformationCode );
+	}
+	
+	@Test(priority = 13,description = "To verify user not able to sign up with blank conformation code",dependsOnMethods = "SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code",groups = {"Functional"})
+	public void SignUp_13_to_Verify_User_Not_Able_To_Sign_Up_With_Blank_Confirmation_Code() {
+		SignUp signUp = new SignUp(driverManager);
+		signUp.toVerifyValidationMessageDispalyWhenEnterBlankConfirmationCode("",authData.validationMessageForBalnkConfirmationCodeFieldSignUpPage );
+	}
+	
+
+}

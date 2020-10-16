@@ -1,0 +1,54 @@
+package pages.pageobjects.useraccount;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import utils.webDrivers.DriverManager;
+
+public class AccountPageUI {
+
+	@FindBy(xpath = "//div[@class='account-subsection-header']")
+	public static WebElement profileHeader;
+
+	@FindBy(xpath = "//div[@class='account-s-h-desc']")
+	public static WebElement profileDescription;
+
+	@FindBy(xpath = "//input[@placeholder='First Name']")
+	public static WebElement firstNameTextField;
+
+	@FindBy(xpath = "//input[@placeholder='Last Name']")
+	public static WebElement lastNameTextField;
+
+	@FindBy(xpath = "//div[@class='account-savechanges-container']")
+	public static WebElement saveChangeButton;
+
+	@FindBy(xpath = "//div[@class='breadcrumb2-item-last breadcrumb2-item']")
+	public static WebElement accountSettingsText;
+
+	@FindBy(xpath = " //div[@class='card-setting']/ul/div")
+	public static List<WebElement> accountSettingsSections;
+
+	@FindBy(xpath = "//div[@class='success-display']")
+	public static WebElement successMessage;
+	
+	@FindBy(xpath = "//input[contains(@placeholder,'Current Password*')]")
+	public static WebElement currentPasswordTextField;
+	
+	@FindBy(xpath = "//input[@placeholder='New Password*']")
+	public static WebElement newPasswordTextField;
+	
+	@FindBy(xpath = "//input[contains(@placeholder,'Confirm New Password*')]")
+	public static WebElement confirmNewPasswordTextField;
+	
+	@FindBy(xpath = "//div[@class = 'error-display']/ul/li")
+	public static WebElement invalidErrorTextMessage;
+
+	public static void initElements(DriverManager driverManager) {
+		PageFactory.initElements(driverManager.getDriver(), AccountPageUI.class);
+
+	}
+
+}

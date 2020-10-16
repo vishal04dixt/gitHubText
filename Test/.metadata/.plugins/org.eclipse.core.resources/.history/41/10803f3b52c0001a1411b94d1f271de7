@@ -1,0 +1,23 @@
+package testdata;
+
+public class BaseData {
+
+    public String username = "clinical-coordinator.juliet";
+    public String password = "test";
+
+    public String baseURIWellness = "https://cbbridges-test2.ot1.castlebranch.net";
+
+    public String loadProfileBasePath = "/api/v2";
+    public String editDeleteProfileBasePath = "/api/cbprofile";
+
+    public String userAuthenticationBasePath = "/api/auth";
+
+    public String userAuthenticationToken = "/api/sso";
+
+    public String cbProfileBasePath = "/cbprofile";
+    
+    public String loadWellnessBasePath = "/api/v1/wellness";
+    
+    public String baseURI = "https://gatekeep-cbbridges-test2.ot1.castlebranch.net";
+
+}

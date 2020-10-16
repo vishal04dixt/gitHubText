@@ -1,0 +1,37 @@
+package testdata;
+
+public class UserAccountTestData {
+
+	// user redirect account page after click on "Account Settings" Link.
+	public String accountSettingsLink = "Account Settings";
+
+	// First name for edit profile section
+	public String firstName = "Aloha";
+
+	// Last name for edit profile section
+	public String lastName = "Admin";
+
+	// success message after edit profile section
+	public String successMessageEditProfile = "Profile data save successfully.";
+
+	// User redirect password section after click on password link.
+
+	public String passwordSection = "Password";
+
+	// Incorrect confirm password will be used as a Current password after click
+	// password link.
+
+	public String incorrectCurrentPassword = "Testser@123";
+
+	// New password will be used for new password
+	public String newPassword = "UserTest@123";
+
+    //Confirm New Password will be used for new password
+	public String confirmNewPassword = "UserTest@123";
+	
+	
+	 // validation message display when Current Password field invalid.
+	 
+	public String incorrectCurrentPasswordErrorTextMessage = "Incorrect username or password.";
+
+}

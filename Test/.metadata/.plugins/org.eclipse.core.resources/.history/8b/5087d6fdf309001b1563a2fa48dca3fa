@@ -1,0 +1,22 @@
+import java.io.File;
+
+public class NewFile {{
+	
+	try {
+	File file = new File("D:\\Maven"+File.separator+"check.txt");
+
+	
+	if (!file.exists()) {
+		file.mkdir();
+	}else {
+		System.out.println("File not created");
+	}
+	
+			
+}catch(Exception e) {
+	 e.printStackTrace();
+	
+}
+
+}
+}

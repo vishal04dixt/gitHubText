@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Api Test Suite">
+	<test name="API Tests">
+		<classes>
+			<class name="tests.profile.ContactInformationAPITest" />
+			<class name="tests.profile.EducationExperienceAPITest" />
+			<class name="tests.profile.PersonalInformationAPITest" />
+			<class name="tests.profile.SecuritySectionAPITest" />
+			<class name="tests.profile.WorkExperienceAPITest" />
+			<class name="tests.profile.UserAuthenticationAPITest" />
+			<class name="tests.profile.ProfileStepperAPITest" />
+			<class name="tests.monitoring.MonitoringAPITest" />
+			<class name="tests.admin.AdminAPITest" />
+		</classes>
+	</test>
+</suite>

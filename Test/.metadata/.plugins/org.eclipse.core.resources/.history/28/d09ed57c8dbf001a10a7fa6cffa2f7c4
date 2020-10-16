@@ -1,0 +1,267 @@
+package test;
+
+import static io.restassured.RestAssured.given;
+
+import java.lang.reflect.Method;
+
+import org.testng.Assert;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import testdata.ProfileTestData;
+
+import utilities.APIRequest;
+import utilities.ExtentReport;
+import utilities.ResponseParser;
+import utilities.Constants.ResponseCode;
+import utilities.logger.LogsManager;
+
+public class ProfileBase {
+
+    protected static String token;
+    static String csrfToken;
+    protected static String laravelSession;
+
+    static String userID;
+    static String responseUsername;
+
+    protected APIRequest request = null;
+
+    /**
+     * LogginManager instance which sets logger class as current class i.e. TestBase
+     * class and all logs logged in this class will be saved in the Log4j
+     * execution-log.txt file with this class reference. Log file can be found in
+     * test-output/logs directory in the project root directory.
+     */
+    static LogsManager logManager = new LogsManager(ProfileBase.class.getName());
+
+    // Purposefully initialized as class field so data set by some methods at
+    // runtime will be available for other API methods
+    protected ProfileTestData testData = new ProfileTestData();
+
+    // Response parser is used to parse the response to get token and csrftoken
+    // values
+    protected ResponseParser parser = new ResponseParser();
+
+    @BeforeSuite
+    public void initializeExtentReport(ITestContext context) {
+
+        logManager.logInformation("Executing Before Suite Method.", false, false);
+
+        String suiteName = context.getCurrentXmlTest().getSuite().getName();
+
+        try {
+            ExtentReport.InitializeReport(suiteName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /*
+     * This method will be executed before every class execution. This method
+     * creates new instance of object .
+     */
+    @BeforeClass
+    public void getTokenAndLoadProfile() {
+        request = new APIRequest();
+        doLogin();
+        loadHome();
+        loadProfile();
+        loadCbridgesWellnessCenter();
+        logManager.logClassProcessingStartedMessage(this.getClass().getName());
+    }
+
+    /*
+     * This method will be executed before every method execution. This method
+     * creates new instance of request object and set Base URI.
+     */
+    @BeforeMethod
+    public void getNewInstanceOfRequest(Method method) {
+        request = new APIRequest();
+        request.setBaseURI(testData.baseURI);
+        ExtentReport.initializeExtentReportTests(method);
+        logManager.logMethodStartedMessage(method.getName());
+    }
+
+    @AfterMethod
+    public void afterMethodUpdateExtentReportWithTestDetails(ITestResult result) {
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+
+            logManager.logError("TEST CASE FAILED IS: " + result.getName());
+
+            logManager.logError("TEST CASE FAILED REASON: " + result.getThrowable());
+
+        } else if (result.getStatus() == ITestResult.SUCCESS) {
+
+            logManager.logSuccess("TEST CASE PASSED IS: " + result.getName() + "\n\n");
+
+        } else if (result.getStatus() == ITestResult.SKIP) {
+
+            logManager.logSkipped("TEST CASE SKIPPED IS: " + result.getName(), true, true);
+        }
+
+        ExtentReport.flushReport();
+
+        logManager.logMethodCompletedMessage(result.getName());
+    }
+
+    @AfterClass
+    public void classExecutionCompleted() {
+        logManager.logClassProcessingCompletedMessage(this.getClass().getName());
+
+    }
+
+    /**
+     * This method adds common headers and authentication needed for all requests.
+     */
+    public void addHeadersInRequest() {
+        request.setCookie("gatekeeper_laravel_session", laravelSession);
+        request.setCookie("XSRF-TOKEN", csrfToken);
+        request.setContentType(ContentType.JSON);
+        request.setBearerToken(token);
+    }
+    
+    public void addHeadersInCookie() {
+    	 request.setHeader("X-XSRF-TOKEN", "eyJpdiI6Im1tOXdBSzdWbWJnc3pUbVNJMG1OclE9PSIsInZhbHVlIjoiZGZcL2VvcXdCaDhiZTRHYnBDSHB5Z2NURXdvYmV5bEZ3T3hoOWR6Q3ozZ2hFUjJ2am1Ua1dGUTlzbmtnS3A5cktGU3o0MlN3WTdhcnNTdXg2UzhQZG5RPT0iLCJtYWMiOiIyZmY1ZmM2YzBlMzU0ODFmODk5Y2Y4YWVjZWJlZGJlNmUxOWRkMjhlODU4MTE0ZmUxMjdiNDIwNTE2ZjdhZTQzIn0");
+         request.setHeader("X-CSRF-TOKEN", "ihR6U6x51b59JYy1dVpRcBDDI7OQYN9kedIcnl3V");
+         request.setHeader("Cookie", "3f8d9e4a5ca6dfa27d79b7c31968ae52=09599dcb5de16bb747c1cb182ae18edd; _gid=GA1.4.246966584.1594031641; bridges_laravel_session=7Kbm8eoQxXTj3W82Vr5dkKD7DZSqz2Nozne1KIPH; _gat=1; laravel_token=eyJpdiI6InN3UFdlYThqd3BmNzU4YzlZSWp0S2c9PSIsInZhbHVlIjoiZ2VtSk9Cd3Y2NXRkZ3RtOW1pcHRlRWY0RVBxZWZIRTZPNzFMY2c2RWhhQmhCZGptWEF6ZTN2dmxRU2Jyc2tEblowb3JQenpLSlh6NmtmREpZY285M2pJVXhRY0R6RzRIS2dIcm9kazh1dHZkUThqYktuWWhQVXBTc3g4K3ZlRGNZcDkxVitLUld2QjQ5ZVBmeVwvTnZaaXVIWFpNcTcxdElHeFwvbStGOVF5SVUyR21Bek9NZnkxTXBHOXZLS3lDVHJVdmgxWnhQNGJZSDdFYURnc2J0cElDckRRMzJvS1wvQjJZXC8rekNZZ0hDUVpvblZxOThBUm5ONEUxMzl2RkVXSkN4WjVXR1VhTXJkZWNjNldSN3ZGa0RXamYwaTJ4TFhERFJLMnF6UmpZZ1BrPSIsIm1hYyI6IjE2YzJjOGEwN2Q1YzFiYWJkYzkzY2IzNjMxNWYwZDUwZDBlNDM4YWEyYTk2NjA2ZjY1MWRmNWM0MmU3NDRjNTQifQ%3D%3D");
+         request.setHeader("Referer", "https://cbbridges-test3.ot1.castlebranch.net/");
+         //request.setHeader("Accept-Language", "en-US,en;q=0.9");
+         request.setHeader("Pragma", "no-cache");
+         request.setHeader("X-Requested-With", "XMLHttpRequest");
+         request.setHeader("Sec-Fetch-Site", "same-origin");
+         request.setHeader("Sec-Fetch-Mode", "cors");
+         request.setHeader("Sec-Fetch-Dest", "empty");
+    }
+
+    public void addCrudBasePathInRequest(String basePathUrl) {
+        request.setBasePath(basePathUrl);
+    }
+
+    /**
+     * This method logins the user in the application. Response code returned after
+     * successful login is 302.
+     */
+    public void doLogin() {
+
+        logManager.logInformation("Checking do Login.", true, true);
+        request.setBaseURI(testData.baseURI);
+
+        request.setFormData("username", testData.username);
+        request.setFormData("password", testData.password);
+
+        // Request.build will give the RequestSpecification object
+        Response response = given().spec(request.build()).post("/login");
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Purposefully keeping this check as Login returns 302 - Redirected status
+        // instead of 200
+
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Login Completed.\n\n", true, true);
+    }
+
+    /**
+     * This method loads the home page of the application. Response code returned
+     * after successful home page load is 200.
+     */
+    public void loadHome() {
+        logManager.logInformation("Loading home API to get token and Laravel Session.", true, true);
+
+        request.setBaseURI(testData.baseURI);
+
+        request.setCookie("gatekeeper_laravel_session", laravelSession);
+
+        Response response = given().spec(request.build()).get("/home");
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+        token = parser.getTokenFromResponse(response.asString());
+        csrfToken = parser.getCSRFTokenFromResponse(response.asString());
+
+        logManager.logInformation("Found Token and CSRF Token. Load Home completed.\n\n", true, true);
+    }
+
+
+
+    public void loadProfile() {
+        logManager.logInformation("Checking profile load.", true, true);
+
+        request.setBaseURI(testData.baseURI);
+
+        addCrudBasePathInRequest(testData.loadProfileBasePath);
+
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/cbprofile");
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+        laravelSession = parser.getLaravelSession(response);
+
+        JsonPath jsonResponse = response.jsonPath();
+
+        String profileId = jsonResponse.get("data.id");
+
+        /*
+         * setProfileId method sets data in input object MAPs and used in edit and
+         * delete API requests
+         */
+        testData.setProfileId(profileId);
+        userID = jsonResponse.get("data.userId");
+        testData.setUserId(userID);
+        responseUsername = jsonResponse.getString("data.username");
+
+        logManager.logInformation(
+                "id: " + testData.profileId + "\nuserID: " + userID + "\nusername: " + responseUsername, true, true);
+
+        logManager.logInformation("Checking profile load Completed.\n\n", true, true);
+
+    }
+
+    public void loadCbridgesWellnessCenter() {
+        logManager.logInformation("Checking profile load.", true, true);
+
+        request.setBaseURI(testData.baseURI);
+
+        //addCrudBasePathInRequest(testData.loadProfileBasePath);
+
+        addHeadersInCookie();
+
+        Response response = given().spec(request.build()).get("/wellness-center");
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+        laravelSession = parser.getLaravelSession(response);
+
+        JsonPath jsonResponse = response.jsonPath();
+
+        String profileId = jsonResponse.get("data.id");
+
+        /*
+         * setProfileId method sets data in input object MAPs and used in edit and
+         * delete API requests
+         */
+        testData.setProfileId(profileId);
+        userID = jsonResponse.get("data.userId");
+        testData.setUserId(userID);
+        responseUsername = jsonResponse.getString("data.username");
+
+        logManager.logInformation(
+                "id: " + testData.profileId + "\nuserID: " + userID + "\nusername: " + responseUsername, true, true);
+
+        logManager.logInformation("Checking profile load Completed.\n\n", true, true);
+
+    }
+}

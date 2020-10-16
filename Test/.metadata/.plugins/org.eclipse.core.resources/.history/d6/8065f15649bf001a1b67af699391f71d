@@ -1,0 +1,107 @@
+package tests.wellnesscenter;
+
+import static io.restassured.RestAssured.given;
+
+import java.util.List;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import test.ProfileBase;
+import utilities.Constants.ResponseCode;
+import utilities.logger.LogsManager;
+
+public class IndividualAPITest extends ProfileBase {
+
+	public static  String questionId1;
+	public String questionId2;
+	public String questionId3;
+	public String questionId4;
+	public String yesAnswerId;
+	public String noAnswerId;
+	
+	/**
+	 * An instance of Log Manager which will be used to get logger and log details
+	 * in the log file. Log file can be found in test-output/logs/test-execution.log
+	 */
+	LogsManager logManager = new LogsManager(this.getClass().getName());
+
+	@Test(priority = 1, description = "To get the all questions.")
+	public void getAllQuestions() {
+
+		logManager.logInformation("Getting All questions.", true, true);
+
+		request.setBaseURI(testData.baseURIWellness);
+
+		addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+		addHeadersInRequest();
+
+		Response response = given().spec(request.build()).get("/event/record-wellness-metrics/questions");
+
+		laravelSession = parser.getLaravelSession(response);
+		 // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+		JsonPath jsonResponse = response.jsonPath();
+		questionId1 = jsonResponse.getString("id[0]");
+		questionId2 = jsonResponse.getString("id[1]");
+		questionId3 = jsonResponse.getString("id[2]");
+		questionId4 = jsonResponse.getString("id[3]");
+	    yesAnswerId = jsonResponse.getString("answers.id[0][0]");
+		noAnswerId = jsonResponse.getString("answers.id[0][1]");
+
+		logManager.logInformation("Answer id for yes redio button : " + yesAnswerId, false, true);
+		logManager.logInformation("Answer id for no redio button: " + noAnswerId, false, true);
+
+		List<String> questionsid = jsonResponse.getList("id");
+		logManager.logInformation("Questions size : " + questionsid.size(), false, true);
+
+	}
+	
+	@Test(priority = 2, description = "To get symptoms question by answer id.")
+	public void getSymptomsQuestionByAnswerId() {
+		
+		logManager.logInformation("Getting first question by answer.", true, true);
+
+		request.setBaseURI(testData.baseURIWellness);
+
+		addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+		addHeadersInRequest();
+
+		Response response = given().spec(request.build()).get("/questions/"+questionId1+"/followup?answerId="+yesAnswerId);
+
+		laravelSession = parser.getLaravelSession(response);
+		 // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+		
+		
+	}
+	
+	@Test(priority = 3, description = "To get second question by answer id.")
+	public void getTravelQuestionByAnswerId() {
+		
+		logManager.logInformation("Getting second question by answer.", true, true);
+
+		request.setBaseURI(testData.baseURIWellness);
+
+		addCrudBasePathInRequest(testData.loadWellnessBasePath);
+
+		addHeadersInRequest();
+
+		Response response = given().spec(request.build()).get("/questions/"+questionId4+"/followup?answerId="+yesAnswerId);
+
+		laravelSession = parser.getLaravelSession(response);
+		 // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+		
+		
+	}
+
+}

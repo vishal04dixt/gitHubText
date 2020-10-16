@@ -1,0 +1,51 @@
+package pages.actions.useraccount;
+
+import org.testng.Assert;
+
+import pages.PageBase;
+import pages.pageobjects.useraccount.AccountPageUI;
+import utils.webDrivers.DriverManager;
+
+public class AccountPage extends PageBase {
+
+	public AccountPage(DriverManager driverManager) {
+		super(driverManager);
+		AccountPageUI.initElements(driverManager);
+	}
+	
+	private boolean isAccountPageLoaded() {
+		boolean result = false;
+		if(browserActions.getPageURL().contains("account")) {
+			logManager.logInformation("Account page is loaded", false, false);
+			result = true;
+			
+		}
+		return result;
+	}
+	
+	public void toVerifyIsAccountPageLoaded() {
+		Assert.assertTrue(isAccountPageLoaded(), "Account page is not loaded");
+	}
+	
+	private boolean isAccountPageLoadedWithAllElements() {
+
+		boolean result = false;
+		logManager.logInformation("Waiting for page loading", true, true);
+		browserActions.waitForElementVisible(AccountPageUI.accountSettingsText, mediumPageTimeout);
+		if (browserActions.isElementDisplayed(AccountPageUI.profileHeader)
+				&& browserActions.isElementDisplayed(AccountPageUI.profileDescription)
+				&& browserActions.isElementDisplayed(AccountPageUI.firstNameTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.lastNameTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.saveChangeButton)) {
+			logManager.logInformation("Account page is loaded", true, true);
+			result = true;
+		}
+
+		return result;
+	}
+
+	public void toVerifyProjectPageLoadedWithAllElements() {
+		Assert.assertTrue(isAccountPageLoadedWithAllElements(), "Account page is not loaded");
+	}
+
+}

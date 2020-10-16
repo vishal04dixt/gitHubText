@@ -1,0 +1,26 @@
+package testdata;
+
+public class UserAccountTestData {
+
+	// user redirect account page after click on "Account Settings" Link.
+	public String accountSettingsLink = "Account Settings";
+
+	// First name for edit profile section
+	public String firstName = "Aloha";
+
+	// Last name for edit profile section
+	public String lastName = "Admin";
+
+	// success message after edit profile section
+	public String successMessageEditProfile = "Profile data save successfully.";
+
+	// User redirect password section after click on password link.
+
+	public String passwordSection = "Password";
+
+	// Incorrect confirm password will be used as a Confirm password after click
+	// password link.
+
+	public String incorrectConfirmPassword = "Testser@123";
+
+}

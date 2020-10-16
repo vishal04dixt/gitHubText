@@ -1,0 +1,330 @@
+package pages.actions.usermanagement;
+
+import org.testng.Assert;
+import pages.PageBase;
+import pages.pageobjects.usermanagement.SelectOrganizationUI;
+import utils.webDrivers.DriverManager;
+
+public class SelectOrganization extends PageBase {
+
+	public SelectOrganization(DriverManager driverManager) {
+		super(driverManager);
+		SelectOrganizationUI.initElements(driverManager);
+
+	}
+
+	/**
+	 * This method checks Select Organization page loaded
+	 */
+	private boolean isSelectOrganizationPageLoaded() {
+		boolean result = false;
+		if (browserActions.getPageURL().contains("orgselect")) {
+			browserActions.waitForSeconds(smallPageTimeout);
+			logManager.logInformation("Select Organization page is loaded", true,true);
+			result = true;
+		}
+		return result;
+	}
+
+	/**
+	 * This method asserts if Select Organization page is loaded. If Select
+	 * Organization page is not loaded then assertion will be failed.
+	 */
+	public void toVerifyIsSelectOrganizationPageLoaded() {
+		Assert.assertTrue(isSelectOrganizationPageLoaded(), "Select Organization page is not loaded.");
+	}
+
+	/**
+	 * This method checks if all the elements on the Select Organization page are
+	 * loaded
+	 */
+	public boolean isSelectOrganizationPageLoadedWithAllElements() {
+
+		boolean isPageLoaded = true;
+
+		browserActions.waitForElementVisible(SelectOrganizationUI.pageLogo, mediumPageTimeout);
+
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.pageLogo)) {
+			isPageLoaded = false;
+			logManager.logInformation("Red Brick Logo is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.logoutLink)) {
+			isPageLoaded = false;
+			logManager.logInformation("LogOut Link is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationLink)) {
+			isPageLoaded = false;
+			logManager.logInformation("Create Organization Link is not displayed.", true,true);
+
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.selectOrganizationName)) {
+			isPageLoaded = false;
+			logManager.logInformation("Select Organization is not displayed.", true,true);
+
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.redBrickDescription)) {
+			isPageLoaded = false;
+			logManager.logInformation("Red Brick Description is not displayed.", true,true);
+
+		}
+
+		return isPageLoaded;
+	}
+
+	public void toVerifySelectOrganizationPageLoadedWithAllElements() {
+		Assert.assertTrue(isSelectOrganizationPageLoadedWithAllElements(), "Select Organization page is not loaded");
+	}
+
+	/**
+	 * This method checks Default Organization loaded with all UI elements
+	 */
+	private boolean isOrganizationLoadedWithAllElements() {
+
+		boolean result = true;
+
+		browserActions.waitForElementVisible(SelectOrganizationUI.pageLogo, mediumPageTimeout);
+
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.organizationAvatar)) {
+			result = false;
+			logManager.logInformation("Organization avatar Logo is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.organizationPerson)) {
+			result = false;
+			logManager.logInformation("Person icon is not displayed.", true,true);
+
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.organizationPermision)) {
+			result = false;
+			logManager.logInformation("Organization Permision is not displayed.", true,true);
+
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.selectOrganizationName)) {
+			result = false;
+			logManager.logInformation("Select Organization is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.redBrickDescription)) {
+			result = false;
+			logManager.logInformation("Red Brick Description is not displayed.", true,true);
+		}
+		return result;
+
+	}
+
+	/**
+	 * This method checks default organization loaded with all elements. is method
+	 * internally uses the method: isOrganizationLoadedWithAllElements
+	 */
+	public void toVerifyIsOrganizationLoadedWithAllElements() {
+		Assert.assertTrue(isOrganizationLoadedWithAllElements(), "Organization is not loaded with all ui elements");
+	}
+
+	/**
+	 * This method checks Create Organization pop up display after click on create
+	 * organization link
+	 */
+	public void clickOnCreateOrganizationLink() {
+		browserActions.waitForElementVisible(SelectOrganizationUI.createOrganizationLink, smallestPageTimeout);
+
+		browserActions.clickOnLink(SelectOrganizationUI.createOrganizationLink);
+
+		browserActions.waitForSeconds(smallestPageTimeout);
+
+	}
+	
+	
+	/**
+	 * This method checks create organization pop up loaded with all elements.
+	 */
+	private boolean isCreateOrganizationPopUpDispalyAllElement() {
+		boolean result = true;
+
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationPopUpTitle)) {
+			result = false;
+			logManager.logInformation("Create Organization PopUp Title is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationPopUpDescription)) {
+			result = false;
+			logManager.logInformation("Create Organization PopUp Description is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationNameTextField)) {
+			result = false;
+			logManager.logInformation("Create Organization Name Text Field is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationDescriptionTextField)) {
+			result = false;
+			logManager.logInformation("Create Organization Description Text Field is not displayed.", true,true);
+		}
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationPopUpButton)) {
+			result = false;
+			logManager.logInformation("Create Organization button is not displayed.", true,true);
+		}
+		return result;
+
+	}
+
+	/**
+	 *This method checks create organization pop up loaded with all elements.. is method
+	 * internally uses the method: isCreateOrganizationPopUpDispalyAllElement
+	 */
+	public void toVerifyIsCreateOrganizationPopUpDispalyAllElement() {
+		Assert.assertTrue(isCreateOrganizationPopUpDispalyAllElement(),
+				"Create Organization popUp is not dispaly with all element");
+	}
+
+	/**
+	 * This method get placeholder from Organization Name text field on the create organization pop up.
+	 * 
+	 */
+	public boolean getPlaceholderOrganizationNameTextField(String organizationNamePlaceholderName) {
+
+		boolean result = false;
+		String organizationNamePlaceholder = browserActions
+				.getPlaceholderFromTextField(SelectOrganizationUI.createOrganizationNameTextField);
+		if (organizationNamePlaceholder.equalsIgnoreCase(organizationNamePlaceholderName)) {
+			result = true;
+
+		}
+		return result;
+	}
+
+	/**
+	 * This method get placeholder from Organization Description text field on the create organization pop up.
+	 * 
+	 */
+	public boolean getPlaceholderOrganizationDescriptionTextField(String organizationDescriptionPlaceholderName) {
+
+		boolean result = false;
+		String organizationDescriptionPlaceholder = browserActions
+				.getPlaceholderFromTextField(SelectOrganizationUI.createOrganizationDescriptionTextField);
+		if (organizationDescriptionPlaceholder.equalsIgnoreCase(organizationDescriptionPlaceholderName)) {
+			result = true;
+
+		}
+		return result;
+	}
+	
+	/**
+	 * This method verify placeholder showing on the create organization pop up
+	 * 
+	 */
+    public void toVerifyPlaceholderShowingOnCreateOrganization(String organizationNamePlaceholderName,
+			String organizationDescriptionPlaceholderName) {
+
+		boolean isPlaceholderShowing = false;
+
+		if (getPlaceholderOrganizationNameTextField(organizationNamePlaceholderName)
+				&& getPlaceholderOrganizationDescriptionTextField(organizationDescriptionPlaceholderName)) {
+			isPlaceholderShowing = true;
+			logManager.logInformation("Placeholders are showing for all fields", true,true);
+		}
+
+		Assert.assertTrue(isPlaceholderShowing, "Placeholders are not showing for all fields");
+	}
+
+	private void setCreateOrganizationName(String createOrganizationName) {
+		browserActions.addDataInTheTextField(SelectOrganizationUI.createOrganizationNameTextField,
+				createOrganizationName);
+	}
+
+	private void setCreateOrganizationDescription(String createOrganizationDescription) {
+		browserActions.addDataInTheTextField(SelectOrganizationUI.createOrganizationDescriptionTextField,
+				createOrganizationDescription);
+	}
+	
+	
+
+	/**
+	 * This method click on create organization button on create organization pop up.
+	 * 
+	 */
+	public void clickCreateOrganizationButton() {
+		browserActions.waitForSeconds(smallestPageTimeout);
+		browserActions.clickButton(SelectOrganizationUI.createOrganizationPopUpButton);
+		browserActions.waitForPageLoadCompletes(smallestPageTimeout);
+	}
+	
+	
+
+	/**
+	 * This method is used to follow create organization steps of adding credentials and clicking
+	 * on the Create Organization button. Apart from these, it won't do any other checks or
+	 * validations.
+	 * 
+	 * @param createOrganizationName
+	 * @param createOrganizationDescription
+	 */
+	public void doCreateOrganizationSteps(String createOrganizationName, String createOrganizationDescription) {
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationNameTextField)) {
+			Assert.fail("Create Organization Name Text Field is not displayed.");
+		}
+		
+			
+			setCreateOrganizationName(createOrganizationName);
+			setCreateOrganizationDescription(createOrganizationDescription);
+			clickCreateOrganizationButton();
+		
+
+		
+	}
+	
+	public void doCreateOneOrganizationSteps(String createOrganizationName, String createOrganizationDescription) {
+		if (!browserActions.isElementDisplayed(SelectOrganizationUI.createOrganizationNameTextField)) {
+			Assert.fail("Create Organization Name Text Field is not displayed.");
+		}
+		
+		int maximumCount = 0;
+		
+		if(maximumCount<1) {
+			
+			setCreateOrganizationName(createOrganizationName);
+			setCreateOrganizationDescription(createOrganizationDescription);
+			clickCreateOrganizationButton();
+			maximumCount++;
+			
+		}else {
+			isValidationMessageDisplayed();
+		}
+
+		
+	}
+
+	public String isValidationMessageDisplayed() {
+		browserActions.waitForSeconds(smallestPageTimeout);
+		String validationMessage = browserActions.getTextWithinElement(SelectOrganizationUI.invalidErrorTextMessage);
+		return validationMessage.trim();
+
+	}
+
+	public void toVerifyValidationMessageDisplay(String validationMessage) {
+		boolean result = false;
+		if (isValidationMessageDisplayed().equals(validationMessage.trim())) {
+			result = true;
+			logManager.logInformation("Validation message is showing", true,true);
+		}
+
+		Assert.assertTrue(result, "Validation message is not display");
+	}
+
+	public void clickCloseCreateOrganizationPopUpButton() {
+
+		browserActions.clickButton(SelectOrganizationUI.closeCreateOrganizationPopup);
+		browserActions.waitForElementVisible(SelectOrganizationUI.createOrganizationLink, smallestPageTimeout);
+	}
+
+	public Login clickLogOutLink() {
+		browserActions.waitForElementVisible(SelectOrganizationUI.logoutLink, smallestPageTimeout);
+
+		browserActions.clickOnLink(SelectOrganizationUI.logoutLink);
+		browserActions.waitForPageLoadCompletes(mediumPageTimeout);
+
+		return new Login(driverManager);
+	}
+
+	public ProjectPage clickOnOrganizationName() {
+		browserActions.waitForElementVisible(SelectOrganizationUI.selectOrganizationName, smallPageTimeout);
+		browserActions.clickButton(SelectOrganizationUI.selectOrganizationName);
+		browserActions.waitForPageLoadCompletes(mediumPageTimeout);
+		browserActions.waitForSeconds(mediumPageTimeout);
+		return new ProjectPage(driverManager);
+	}
+}

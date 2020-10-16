@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+<stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="redbrickAI"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+<mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS">
+<mapEntry key="tests.usermanagement.SignUpPageTest" value="SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section;SignUp_07_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same;SignUp_02_check_SignUp_Page_All_Elements_Display;SignUp_04_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Already_Exists_Email_Address;SignUp_13_to_Verify_User_Not_Able_To_Sign_Up_With_Blank_Confirmation_Code;SignUp_03_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Invalid_Email_Address;SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data;SignUp_01_check_User_Redirects_To_Signup_Page;SignUp_08_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements;SignUp_06_to_Verify_User_Not_Able_To_Sign_Up_When_Enterd_Password_Is_In_Incorrect_Format;SignUp_09_to_Verify_User_Is_Not_Able_To_Sign_Up_When_Email_Field_Is_Kept_Blank;SignUp_05_check_SignUp_Page_Have_Valid_Placeholder;SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code"/>
+</mapAttribute>
+<listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+<listEntry value="tests.usermanagement.SignUpPageTest"/>
+</listAttribute>
+<listAttribute key="org.testng.eclipse.METHOD_TEST_LIST"/>
+<listAttribute key="org.testng.eclipse.PACKAGE_TEST_LIST"/>
+<stringAttribute key="org.testng.eclipse.PRE_DEFINED_LISTENERS" value=""/>
+<intAttribute key="org.testng.eclipse.TYPE" value="1"/>
+</launchConfiguration>

@@ -1,0 +1,146 @@
+package tests.usermanagement;
+
+import org.testng.annotations.Test;
+
+import pages.actions.usermanagement.Login;
+import pages.actions.usermanagement.ResetPassword;
+import pages.actions.usermanagement.SelectOrganization;
+import pages.actions.usermanagement.SignUp;
+import testdata.AuthTestData;
+import tests.TestBase;
+
+public class LoginPageTest extends TestBase {
+
+	AuthTestData authData = new AuthTestData();
+
+	@Test(priority = 1, description = "To verify that 'Red Brick' login page URL gets redirected to the Red Brick Login page", groups = {
+			"Functional" })
+	public void Login_01_check_Red_Brick_LoginURL_Redirects_To__Login_Page() {
+		Login login = new Login(driverManager);
+		login.verifyLoginPageLoaded();
+	}
+
+	@Test(priority = 2, description = "To verify that 'Red Brick' login page shows all UI elements", groups = { "UI" })
+	public void Login_02_check_Login_Page_All_Elements_Display() {
+		Login login = new Login(driverManager);
+		login.verifyLoginPageLoadedWithAllElements();
+	}
+
+//	@Test(priority = 3, description = "To verify that user is not able to Login with invalid Email and Password.", groups = {
+//			"Functional" })
+//	public void Login_03_check_Login_With_invalid_credentials() {
+//		Login login = new Login(driverManager);
+//
+//		// Check login Functionality with invalid Email and valid password
+//		login.doLoginSteps(authData.invalid_email, authData.password);
+//		login.toVerifyErrorMessageShowingForInvalidUser(authData.invalidUsernameErrorTextMessage);
+//
+//		login.refresh();
+//
+//		// Check login Functionality with invalid Password
+//		login.doLoginSteps(authData.email, authData.invalid_password);
+//		login.toVerifyErrorMessageShowingForInvalidPassword(authData.invalidPasswordErrorTextMessage);
+//
+//		login.refresh();
+//
+//		// Check login Functionality with invalid email or Password
+//		login.doLoginSteps(authData.invalid_email, authData.invalid_password);
+//		login.toVerifyErrorMessageShowingForInvalidUser(authData.invalidUsernameErrorTextMessage);
+//
+//		login.refresh();
+//	}
+//
+//	@Test(priority = 4, description = "To verify that user is not able to Login with blank Email and Password.", groups = {
+//			"Functional" })
+//	public void Login_04_check_Login_With_Blank_credentials() {
+//		Login login = new Login(driverManager);
+//
+//		// Check login Functionality with blank Email and valid password
+//		login.doLoginSteps("", authData.password);
+//		login.toVerifyErrorMessageShowingForBlankEmailTextField(authData.requiredBlankTextFieldErrorMessage);
+//
+//		login.refresh();
+//
+//		// Check login Functionality with Email and blank password
+//		login.doLoginSteps(authData.email, "");
+//		login.toVerifyErrorMessageShowingForBlankPasswordTextField(authData.requiredBlankTextFieldErrorMessage);
+//
+//		login.refresh();
+//		// Check login Functionality with Email and blank password
+//		login.doLoginSteps("", "");
+//		login.toVerifyErrorMessageShowingForBlankEmailTextField(authData.requiredBlankTextFieldErrorMessage);
+//
+//		login.refresh();
+//	}
+//
+//	@Test(priority = 5, description = "To verify that user redirects to 'Reset Password' page after clicking on 'Forgot Password?' link.", groups = {
+//			"Functional" })
+//	public void Login_05_check_LoginURL_Redirects_To_Reset_Password_Page() {
+//		Login login = new Login(driverManager);
+//		ResetPassword resetPassword = login.loadResetPasswordPage();
+//		resetPassword.toVerifyResetPasswordLoaded();
+//
+//	}
+//
+//	@Test(priority = 6, description = "To verify user redirects to 'Sign-up' page after clicking on 'Sign-up' link.", groups = {
+//			"Functional" })
+//	public void Login_06_check_LoginURL_Redirects_To_Signup_Page() {
+//		Login login = new Login(driverManager);
+//		SignUp signUp = login.loadSignUpPage();
+//		signUp.toVerifySignUpPageLoaded();
+//
+//	}
+//
+//	@Test(priority = 7, description = "To verify 'Email field' and 'Password field' have a valid placeholder.", groups = {
+//			"UI" })
+//	public void Login_07_check_Login_Page_Have_Valid_Placeholder() {
+//		Login login = new Login(driverManager);
+//		login.toVerifyPlaceholderShowing(authData.placeholderEmailTextField, authData.placeholderPasswordTextField);
+//		login.refresh();
+//
+//	}
+//
+//	@Test(priority = 8, description = "To verify 'Confirmation Code' field displays on Login page when user tries to login with unverified user.", groups = {
+//			"Functional" })
+//	public void Login_08_to_Verif_Confirmation_Code_Field_Displays_On_Login_Page_When_User_Tries_To_Login_With_Unverified_User() {
+//		Login login = new Login(driverManager);
+//		login.toVerifyConfirmationCodeFieldDispaly(authData.unverifiedEmail, authData.password);
+//
+//	}
+//
+//	@Test(priority = 9, description = "To verify user not able to login with invalid conformation code", groups = {
+//			"Functional" })
+//	public void Login_09_to_Verify_User_Not_Able_To_Login_With_Invalid_Confirmation_Code() {
+//		Login login = new Login(driverManager);
+//		login.toVerifyValidationMessageDispalyWhenEnterInvalidCode(authData.unverifiedEmail, authData.password,
+//				authData.incorrectConfirmationCode, authData.validationMessageIncorrectConformationCode);
+//
+//	}
+//
+//	@Test(priority = 10, description = "To verify user not able to login with blank conformation code", groups = {
+//			"Functional" })
+//	public void Login_10_to_Verify_User_Not_Able_To_Login_With_Blank_Confirmation_Code() {
+//		Login login = new Login(driverManager);
+//		login.toVerifyValidationMessageDispalyWhenConfirmaionCodeBlank(authData.unverifiedEmail, authData.password, "",
+//				authData.validationMessageBlankConformationCodeForUnverifiedUser);
+//
+//	}
+//
+//	@Test(priority = 11, description = "To verify Functionality of 'Re-send code' link.", groups = { "Functional" })
+//	public void Login_11_to_Verify_Functionality_Of_Re_send_Code_Link() {
+//		Login login = new Login(driverManager);
+//		login.toVerifySuccessMessageDispalyWhenClickOnLink(authData.unverifiedEmail, authData.password,
+//				authData.incorrectConfirmationCode, authData.successValidationMessage);
+//
+//	}
+
+	@Test(priority = 12, description = "To verify that user is able to Login with valid Email and Password.", groups = {
+			"Functional" })
+	public void Login_12_check_Login_With_Valid_Email_Password() {
+		Login login = new Login(driverManager);
+		SelectOrganization selectOrgs = login.doLogin(authData.email, authData.password);
+		selectOrgs.toVerifyIsSelectOrganizationPageLoaded();
+
+	}
+
+}

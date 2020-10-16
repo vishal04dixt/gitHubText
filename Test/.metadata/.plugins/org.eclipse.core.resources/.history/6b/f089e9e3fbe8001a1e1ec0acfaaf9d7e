@@ -1,0 +1,442 @@
+package pages.actions.usermanagement;
+
+import org.testng.Assert;
+
+import pages.PageBase;
+import pages.pageobjects.usermanagement.LoginPageUI;
+import pages.pageobjects.usermanagement.SelectOrganizationUI;
+import utils.readers.Config;
+import utils.webDrivers.DriverManager;
+
+public class Login extends PageBase {
+
+	static final String RED_BRICK_LOGIN_PAGE_URL = Config.getLoginPageURL();
+
+	public Login(DriverManager driverManager) {
+		super(driverManager);
+		LoginPageUI.initElements(driverManager);
+		browserActions.load(RED_BRICK_LOGIN_PAGE_URL);
+	}
+
+	/**
+	 * This method checks login page loaded
+	 */
+	public void loadRedBrickLoginPageUrl() {
+		browserActions.load(RED_BRICK_LOGIN_PAGE_URL);
+		browserActions.waitForPageLoadCompletes(smallestPageTimeout);
+
+	}
+
+	private boolean isLoginPageLoaded() {
+		boolean result = false;
+		if (browserActions.getPageURL().contains(RED_BRICK_LOGIN_PAGE_URL)) {
+			logManager.logInformation("Login page is loaded", true,true);
+			result = true;
+		}
+		return result;
+	}
+
+	/**
+	 * This method asserts if login page is loaded. If login page is not loaded then
+	 * assertion will be failed.
+	 */
+	public void verifyLoginPageLoaded() {
+		Assert.assertTrue(isLoginPageLoaded(), "Login page is not loaded.");
+	}
+
+	/**
+	 * This method checks if all the elements on the login page are loaded
+	 */
+	public void verifyLoginPageLoadedWithAllElements() {
+
+		boolean result = false;
+		logManager.logInformation("Checking all elements loaded", true,true);
+
+		browserActions.waitForElementVisible(LoginPageUI.emailText, mediumPageTimeout);
+		if (browserActions.isElementDisplayed(LoginPageUI.emailText)
+				&& browserActions.isElementDisplayed(LoginPageUI.pageLogo)
+				&& browserActions.isElementDisplayed(LoginPageUI.passwordText)
+				&& browserActions.isElementDisplayed(LoginPageUI.signinButton)
+				&& browserActions.isElementDisplayed(LoginPageUI.forgotPasswordLink)) {
+
+			result = true;
+
+		}
+
+		if (!result) {
+		logManager.logInformation("All elements on the Login page are not loaded.", true,true);
+		}
+		
+
+		Assert.assertTrue(result, "Some or all of the login page elements are not showing on the page.");
+	}
+
+	private void setEmail(String email) {
+		browserActions.addDataInTheTextField(LoginPageUI.emailText, email);
+	}
+
+	private void setPassword(String password) {
+		browserActions.addDataInTheTextField(LoginPageUI.passwordText, password);
+	}
+
+	private void setConfirmationCode(String confirmationCode) {
+		browserActions.addDataInTheTextField(LoginPageUI.confirmationCodeTextField, confirmationCode);
+	}
+
+	private void clickSigninButton() {
+		logManager.logInformation("Clicking on SignIn button", true,true);
+		browserActions.clickButton(LoginPageUI.signinButton);
+		browserActions.waitForSeconds(smallestPageTimeout);
+	}
+
+	/**
+	 * This method is used to follow login steps of adding credentials and clicking
+	 * on the sign in button. Apart from these, it won't do any other checks or
+	 * validations.
+	 * 
+	 * @param email
+	 * @param password
+	 */
+	public void doLoginSteps(String email, String password) {
+
+		if (!browserActions.isElementDisplayed(LoginPageUI.emailText)) {
+			Assert.fail("Email field is not showing");
+		}
+		setEmail(email);
+		setPassword(password);
+		clickSigninButton();
+	}
+
+	/**
+	 * This method logs in the RedBrick login with provided email and password. On
+	 * successful login it will return Organization page object else it will fail
+	 * the assertion
+	 * 
+	 * @param email    email used to login
+	 * @param password password used to login
+	 * @return Organization page object
+	 */
+	public SelectOrganization doLogin(String email, String password) {
+
+		logManager.logInformation("Login with email: " + email +  "password :" + password, true,true);
+
+		doLoginSteps(email, password);
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		browserActions.waitForSeconds(smallestPageTimeout);
+		browserActions.waitForElementVisible(SelectOrganizationUI.pageLogo, smallPageTimeout);
+		browserActions.waitForPageLoadCompletes(smallPageTimeout);
+		if (browserActions.getPageURL().contains("orgselect")) {
+			logManager.logInformation("Login successful.", true,true);
+			Assert.assertTrue(true, "Login successful.");
+		} else {
+			Assert.fail("Failed to login.");
+			logManager.logError("Failed to login.");
+		}
+		return selectOrgs;
+
+	}
+
+	public void refresh() {
+		browserActions.refreshPage();
+	}
+
+	/**
+	 * This method checks if page is showing error message when user tries to log-in
+	 * with invalid user credentials.
+	 * 
+	 * @return true if error message is showing else returns false
+	 */
+	private boolean isErrorMessageShowingForInvalidUser(String errorMessageWhenTextfieldInvalid) {
+		boolean result = false;
+		String errorMessageInvalidUser = browserActions.getTextWithinElement(LoginPageUI.invalidErrorTextMessage);
+		if (errorMessageWhenTextfieldInvalid.trim().equalsIgnoreCase(errorMessageInvalidUser.trim())) {
+			result = true;
+			logManager.logInformation("Error Message Showing For Invalid User", true,true);
+		}
+		return result;
+
+	}
+
+	/**
+	 * This method checks if error message is showing on the page for invalid
+	 * credentials. This method internally uses the method:
+	 * isErrorMessageShowingForInvalidUser
+	 */
+
+	public void toVerifyErrorMessageShowingForInvalidUser(String errorMessageWhenTextfieldInvalid) {
+		Assert.assertTrue(isErrorMessageShowingForInvalidUser(errorMessageWhenTextfieldInvalid),
+				"Error message is not showing for invalid user");
+	}
+
+	/**
+	 * This method checks if page is showing error message when user tries to log-in
+	 * with invalid password .
+	 * 
+	 * @return true if error message is showing else returns false
+	 */
+	private boolean isErrorMessageShowingForInvalidPassword(String errorMessageWhenPasswordTextfieldInvalid) {
+		boolean result = false;
+		String errorMessageInvalidPassword = browserActions.getTextWithinElement(LoginPageUI.invalidErrorTextMessage);
+		if (errorMessageWhenPasswordTextfieldInvalid.trim().equalsIgnoreCase(errorMessageInvalidPassword.trim())) {
+			result = true;
+			logManager.logInformation("Error Message Showing For Invalid password", true,true);
+
+		}
+		return result;
+
+	}
+
+	/**
+	 * This method checks if error message is showing on the page for invalid
+	 * password. This method internally uses the method:
+	 * isErrorMessageShowingForInvalidPassword
+	 */
+	public void toVerifyErrorMessageShowingForInvalidPassword(String errorMessageWhenPasswordTextfieldInvalid) {
+		Assert.assertTrue(isErrorMessageShowingForInvalidPassword(errorMessageWhenPasswordTextfieldInvalid),
+				"Error message is not showing for invalid password");
+	}
+
+	/**
+	 * This method checks if page is showing error message when user tries to log-in
+	 * with blank email .
+	 * 
+	 * @return true if error message is showing else returns false
+	 */
+	private boolean isErrorMessageShowingForBlankEmail(String errorMessageWhenEmailTextfieldBlank) {
+		boolean result = false;
+		String errorMessageBlankEmailTextField = browserActions
+				.getTextWithinElement(LoginPageUI.invalidErrorTextMessage);
+		if (errorMessageWhenEmailTextfieldBlank.trim().equalsIgnoreCase(errorMessageBlankEmailTextField.trim())) {
+			result = true;
+			logManager.logInformation("Error Message Showing For blank email field", true,true);
+		}
+		return result;
+
+	}
+
+	/**
+	 * This method checks if error message is showing on the page for blank email.
+	 * This method internally uses the method: isErrorMessageShowingForBlankEmail
+	 */
+	public void toVerifyErrorMessageShowingForBlankEmailTextField(String errorMessageWhenEmailTextfieldBlank) {
+		Assert.assertTrue(isErrorMessageShowingForBlankEmail(errorMessageWhenEmailTextfieldBlank),
+				"Error message is not showing for invalid password");
+	}
+
+	/**
+	 * This method checks if page is showing error message when user tries to log-in
+	 * with blank password .
+	 * 
+	 * @return true if error message is showing else returns false
+	 */
+	private boolean isErrorMessageShowingForBlankPassword(String errorMessageWhenPasswordTextfieldBlank) {
+		boolean result = false;
+		String errorMessageBlankPasswordTextField = browserActions
+				.getTextWithinElement(LoginPageUI.invalidErrorTextMessage);
+		if (errorMessageWhenPasswordTextfieldBlank.trim().equalsIgnoreCase(errorMessageBlankPasswordTextField.trim())) {
+			result = true;
+			logManager.logInformation("Error message display when password textfield blank", true,true);
+		}
+		return result;
+
+	}
+
+	/**
+	 * This method checks if error message is showing on the page for blank
+	 * password. This method internally uses the method:
+	 * isErrorMessageShowingForBlankPassword
+	 */
+	public void toVerifyErrorMessageShowingForBlankPasswordTextField(String errorMessageWhenPasswordTextfieldBlank) {
+		Assert.assertTrue(isErrorMessageShowingForBlankPassword(errorMessageWhenPasswordTextfieldBlank),
+				"Error message is not showing for invalid password");
+	}
+
+	/**
+	 * This method click 'Sign Up' Link and redirect Sign Up page.
+	 * 
+	 * @return
+	 */
+	private void clickForgotPasswordLink() {
+		browserActions.clickOnLink(LoginPageUI.forgotPasswordLink);
+		browserActions.waitForPageLoadCompletes(smallestPageTimeout);
+	}
+
+	/**
+	 * This method loads Sign Up page by clicking on the 'Forgot Password' Link on the Login
+	 * Page
+	 * 
+	 * @return ResetPassword page object
+	 */
+	public ResetPassword loadResetPasswordPage() {
+		clickForgotPasswordLink();
+
+		return new ResetPassword(driverManager);
+	}
+
+	/**
+	 * This method click 'SignUp Link and redirect Reset Password page.
+	 * 
+	 * @return
+	 */
+	private void clickSignUpLink() {
+		browserActions.clickOnLink(LoginPageUI.signUpLink);
+		browserActions.waitForPageLoadCompletes(smallestPageTimeout);
+	}
+
+	/**
+	 * This method loads ResetPassword page by clicking on the Forgot Password link
+	 * on the Login Page
+	 * 
+	 * @return ResetPassword page object
+	 */
+	public SignUp loadSignUpPage() {
+		clickSignUpLink();
+
+		return new SignUp(driverManager);
+	}
+
+	/**
+	 * This method get placeholder from email text field on the Login Page
+	 * 
+	 */
+
+	public boolean getPlaceholderEmailTextField(String emailPlaceholderName) {
+
+		boolean result = false;
+		String emailPlaceholder = browserActions.getPlaceholderFromTextField(LoginPageUI.emailText);
+		if (emailPlaceholder.equalsIgnoreCase(emailPlaceholderName)) {
+			result = true;
+
+		}
+		return result;
+	}
+
+	/**
+	 * This method get placeholder from password text field on the Login Page
+	 * 
+	 */
+
+	public boolean getPlaceholderPasswordTextField(String passwordPlaceholderName) {
+
+		boolean result = false;
+		String passwordPlaceholder = browserActions.getPlaceholderFromTextField(LoginPageUI.passwordText);
+		if (passwordPlaceholder.equalsIgnoreCase(passwordPlaceholderName)) {
+			result = true;
+
+		}
+		return result;
+	}
+
+	/**
+	 * This method verify placeholder showing on the Login Page
+	 * 
+	 */
+	public void toVerifyPlaceholderShowing(String emailPlaceholderName, String passwordPlaceholderName) {
+
+		boolean isPlaceholderShowing = false;
+
+		if (getPlaceholderEmailTextField(emailPlaceholderName)
+				&& getPlaceholderPasswordTextField(passwordPlaceholderName)) {
+			isPlaceholderShowing = true;
+		}
+
+		Assert.assertTrue(isPlaceholderShowing, "Place Holder is not showing");
+	}
+
+	public void toVerifyConfirmationCodeFieldDispaly(String unverifiedEmail, String password) {
+
+		boolean result = false;
+
+		doLoginSteps(unverifiedEmail, password);
+		browserActions.scrollToLoadElementVisible(LoginPageUI.confirmationCodeTextField);
+
+		if (browserActions.isElementDisplayed(LoginPageUI.confirmationCodeTextField)) {
+			result = true;
+		}
+
+		Assert.assertTrue(result, "confirmation code is not field display");
+	}
+
+	public void toVerifyValidationMessageDispalyWhenEnterInvalidCode(String unverifiedEmail, String password,
+			String confirmationCode, String validationMessageConfirmationCode) {
+
+		boolean result = false;
+		try {
+			browserActions.getDefaultDriverTimeout();
+			doLoginSteps(unverifiedEmail, password);
+			browserActions.scrollToLoadElementVisible(LoginPageUI.confirmationCodeTextField);
+
+			setConfirmationCode(confirmationCode);
+			clickSigninButton();
+			browserActions.waitForElementVisible(LoginPageUI.invalidErrorTextMessage, smallPageTimeout);
+			String validationMessage = browserActions.getTextWithinElement(LoginPageUI.invalidErrorTextMessage);
+
+			if (validationMessage.trim().equals(validationMessageConfirmationCode.trim())) {
+				result = true;
+				logManager.logInformation("Validation message display for invalid confirmation code", true,true);
+
+			}
+		} catch (Exception e) {
+			
+			logManager.logError("Exception while getting Error message :" +e.getMessage());
+		}
+		
+		Assert.assertTrue(result, "Validation Message not dispaly for incorrect user");
+	}
+	
+	public void toVerifyValidationMessageDispalyWhenConfirmaionCodeBlank(String unverifiedEmail, String password,
+			String confirmationCode, String validationMessageConfirmationCode) {
+
+		boolean result = false;
+		try {
+			browserActions.getDefaultDriverTimeout();
+			doLoginSteps(unverifiedEmail, password);
+			browserActions.scrollToLoadElementVisible(LoginPageUI.confirmationCodeTextField);
+
+			setConfirmationCode(confirmationCode);
+			clickSigninButton();
+			browserActions.wait();
+			String validationMessage = browserActions.getTextWithinElement(LoginPageUI.invalidErrorTextMessage);
+
+			if (validationMessage.trim().equalsIgnoreCase(validationMessageConfirmationCode.trim())) {
+				result = true;
+				logManager.logInformation("Validation message display for blank confirmation code", true,true);
+			}
+		}catch (Exception e) {
+			logManager.logError("Exception while getting Error message :" +e.getMessage());
+		}
+		
+		Assert.assertTrue(result, "Validation Message not dispaly for incorrect user");
+
+	}
+
+	private void clickOnResendCodeLink() {
+		browserActions.clickOnLink(LoginPageUI.resendCodeLink);
+	}
+
+	public void toVerifySuccessMessageDispalyWhenClickOnLink(String unverifiedEmail, String password,
+			String confirmationCode, String successValidationMessage) {
+
+		boolean result = false;
+		try {
+			browserActions.getDefaultDriverTimeout();
+			doLoginSteps(unverifiedEmail, password);
+			clickOnResendCodeLink();
+			browserActions.scrollToLoadElementVisible(LoginPageUI.confirmationCodeTextField);
+			String validationMessage = browserActions.getTextWithinElement(LoginPageUI.resendCodeSuccessTextMessage);
+
+			if (validationMessage.trim().equalsIgnoreCase(successValidationMessage.trim())) {
+				result = true;
+				
+				logManager.logInformation("Success validation message display", true,true);
+				
+			}
+		}catch (Exception e) {
+			logManager.logException(e, true,true);
+		}
+		
+		Assert.assertTrue(result, "Validation Message not dispaly for Resend code link");
+		
+	}
+
+}

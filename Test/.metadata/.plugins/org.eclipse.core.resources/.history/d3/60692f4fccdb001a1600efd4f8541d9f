@@ -1,0 +1,271 @@
+package testdata;
+
+import utils.RandomDataGenerator;
+
+public class AuthTestData {
+
+	/**
+	 * Email will be used as a Email while logging in the system with user needing
+	 * RedBrickAI Login.
+	 */
+	public String email = "redbrickmail01@yopmail.com";
+
+	/**
+	 * Password will be used as a Password while logging in the system with user
+	 * needing RedBrickAI Login.
+	 */
+	public String password = "Testuser@123";
+
+	/**
+	 * Invalid Email will be used as a Email.
+	 */
+	public String invalid_email = "admintestgmail.com";
+
+	/**
+	 * Invalid Email will be used as a Email.
+	 */
+	public String invalid_password = "Testuser@12";
+
+	/**
+	 * 'attribute' use to get text of validation message when any of the required.
+	 * field kept blank
+	 */
+	public String attribute = "validationMessage";
+
+	/**
+	 * validation message display when any of the required field kept blank.
+	 */
+	public String requiredTextFieldErrorMessage = "Please fill out this field.";
+
+	/**
+	 * validation message display when Email field invalid.
+	 */
+	public String invalidUsernameErrorTextMessage = "User does not exist! Please create an account by going to the 'Sign-up' page.";
+
+	/**
+	 * validation message display when Password field invalid.
+	 */
+	public String invalidPasswordErrorTextMessage = "Incorrect password! Please re-enter.";
+
+	/**
+	 * validation message display when any of the required field kept blank.
+	 */
+	public String requiredBlankTextFieldErrorMessage = "Error in signing in! Please try again.";
+
+	/**
+	 * email placeholder display when when user on login page.
+	 */
+	public String placeholderEmailTextField = "Email*";
+
+	/**
+	 * password placeholder display when when user on login page.
+	 */
+	public String placeholderPasswordTextField = "Password*";
+
+	// All below fields are dummy data which will be used while signup
+	public final String firstname = "John";
+	public final String lastname = "Mark";
+	public final String newEmailAddress = RandomDataGenerator.getRandomEmailAddress(4);
+	public final String confirmPassword = "Testuser@123";
+	public final String incorrectConfirmPassword = "Testser@123";
+
+	/**
+	 * validation message display when firstName required field kept blank.
+	 */
+	public String firstNameValidationMessage = "First Name is required!";
+
+	/**
+	 * validation message display when lastName required field kept blank.
+	 */
+	public String lastNameValidationMessage = "Last Name is required!";
+
+	/**
+	 * validation message display when password and confirm password not same.
+	 */
+	public String confirmPasswordValidationMessage = "Password does not match confirm password entry!";
+
+	/**
+	 * validation message display when firstName required field kept blank.
+	 */
+	public String resetPasswordConfirmPasswordValidationMessage = "The new password and confirmation do not match!";
+
+	/**
+	 * invalid passwords for sign .up page
+	 */
+	public String[] invalidPasswords = { "testuser@123", "Test@12", "Testuser123", "Testuser@","TESTUSER@123" };
+
+	/**
+	 * validation message display when password required field kept blank.
+	 */
+	public String[] passwordValidationMessages = { "Password is too short. Must be at least 8 characters.",
+			"Password must contain at least 1 uppercase character.",
+			"Password must contain at least 1 lowercase character.", "Password must contain at least 1 number.","Password must contain at least 1 special character ^$*.[]{}()?!@#%&/><:;|_~`" };
+
+	/**
+	 * * validation message display when user enter already exists Email.
+	 */
+	public String validationMessageForAlreadyExistsEmail = "An account with the given email already exists.";
+
+	/**
+	 * validation message display when user enter invalid email.
+	 */
+	public String validationMessageForInvalidEmail = "Username should be an email.";
+
+	/**
+	 * first name placeholder display when when user on sign up page.
+	 */
+	public String placeholderFirstNameTextField = "First Name*";
+
+	/**
+	 * last name placeholder display when when user on sign up page.
+	 */
+	public String placeholderLastNameTextField = "Last Name*";
+
+	/**
+	 * Confirm password placeholder display when when user on sign up page.
+	 */
+	public String placeholderConfirmPasswordTextField = "Confirm Password*";
+
+	/**
+	 * Confirmation Code placeholder display when when user on Reset Password page.
+	 */
+	public String placeholderConfirmationCodeTextField = "Confirmation Code*";
+
+	/**
+	 * New Password placeholder display when when user on Reset Password page.
+	 */
+	public String placeholderNewPasswordTextField = "New Password*";
+
+	/**
+	 * validation message display when user enter password incorrect format.
+	 */
+	public String[] invalidPasswordValidationMessages = { "Password must contain at least 1 uppercase character.",
+			"Password is too short. Must be at least 8 characters.", "Password must contain at least 1 number.",
+			"Password must contain at least 1 special character ^$*.[]{}()?!@#%&/><:;|_~`","Password must contain at least 1 lowercase character." };
+
+	/**
+	 * validation messages display when user click on password fields.
+	 */
+	public String[] invalidPasswordRequirementPopUpMessages = { "8 characters", "1 uppercase letter", " 1 lowercase letter",
+			"1 special character", "1 number" };
+
+	/**
+	 * validation messages display when user enter incorrect confirmation code.
+	 */
+	public String validationMessageIncorrectConformationCode = "Invalid verification code provided, please try again.";
+
+	/**
+	 * validation messages display when user enter blank confirmation code for
+	 * unverified user.
+	 */
+	public String validationMessageBlankConformationCodeForUnverifiedUser = "Confirmation code cannot be empty";
+	/**
+	 * user enter incorrect confirmation code.
+	 */
+	public String incorrectConfirmationCode = "328324";
+
+	/**
+	 * unverifiedEmail will be used as a Email while logging in the system with user
+	 * needing RedBrickAI Login.
+	 */
+
+	public String unverifiedEmail = "redbrickmail@yopmail.com";
+
+	/**
+	 * success message display when user click 'ResendCode' Link.
+	 */
+
+	public String successValidationMessage = "Code re-sent to " + unverifiedEmail;
+
+	/**
+	 * validation messages display when user enters an Email which doesn't exist in
+	 * the application.
+	 */
+	public String validationMessageNonExistEmail = "Username/client id combination not found.";
+
+	/**
+	 * validation messages display when user enters an Invalid Email.
+	 */
+	public String validationMessageInvalidEmail = "You have entered an invalid email address!";
+
+	/**
+	 * validation messages display when user enters an blank email.
+	 */
+	public String validationMessageBlankEmail = "Email is required";
+
+	/**
+	 * validation message display when any of the required field kept blank
+	 */
+	public String requiredTextFieldVaidationMessage = "Please fill out this field.";
+
+	/**
+	 * New password use when user reset password.
+	 */
+	public String newPassword = "Adminuser@123";
+
+	/**
+	 * Confirm Reset password use when user reset password.
+	 */
+	public String confirmResetPassword = "Adminuser@123";
+
+	/**
+	 * validation message display when any of the required field kept blank on
+	 * create organization.
+	 */
+	public String requiredBlankTextFieldVaidationMessage = "Please enter the organization name and description!";
+
+	/**
+	 * Organization Description will be used as a organization description while
+	 * creating organization.
+	 */
+	public String organizationDescription = "Test Description";
+
+	/**
+	 * Organization Name will be used as a organization name while creating
+	 * organization.
+	 */
+	public String organizationName = "RedBrick Test";
+
+	/**
+	 * validation message display when user create any more organizations.
+	 */
+	public String requiredVaidationMessage = "You cannot create any more organizations.";
+
+	/**
+	 * validation message display for blank email text field.
+	 */
+	public String validationMessageForBalnkEmailFieldSignUpPage = "Username cannot be empty";
+
+	/**
+	 * validation message display for blank Confirmation code text field.
+	 */
+	public String validationMessageForBalnkConfirmationCodeFieldSignUpPage = "Confirmation code cannot be empty";
+
+	/**
+	 * validation message display when Attempt limit exceeded.
+	 */
+	public String limitExceededMessage = "Exceeded daily email limit for the operation or the account. If a higher limit is required, please configure your user pool to use your own Amazon SES configuration for sending email.";
+
+	/**
+	 * Organization Name placeholder display when user on Create Organization Pop
+	 * Up.
+	 */
+	public String organizationNamePlaceHolder = "Organization Name*";
+
+	/**
+	 * Organization Description placeholder display when user on Create Organization
+	 * Pop Up.
+	 */
+	public String organizationDescriptionPlaceHolder = "Orgnization Description*";
+
+	/**
+	 * confirmation code field pop up display when click on confirmation code field.
+	 */
+	public String confirmationCodeFieldPopUp = "Please check your email (" + email + ") for the confirmation code.";
+	
+	/**
+	 * Logout link after click on account drawer.
+	 */
+	public String logoutLink = "Logout";
+
+}

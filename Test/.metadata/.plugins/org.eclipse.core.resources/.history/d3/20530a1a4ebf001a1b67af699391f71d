@@ -1,0 +1,75 @@
+package utilities;
+
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
+
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import utilities.logger.LogsManager;
+
+public class ResponseParser {
+
+    /**
+     * LogginManager instance which sets logger class as current class i.e. TestBase
+     * class and all logs logged in this class will be saved in the Log4j
+     * execution-log.txt file with this class reference. Log file can be found in
+     * test-output/logs directory in the project root directory.
+     */
+    LogsManager logManager = new LogsManager(this.getClass().getName());
+
+    public String getTokenFromResponse(String response) {
+        String token = "";
+
+        // Get elements with name "cb-app"
+        Elements cbAppElements = Jsoup.parse(response).getElementsByTag("cb-app");
+
+        // Get data of attribute "v-bind" from first "cb-app" element
+        String vbindData = cbAppElements.get(0).attr("v-bind");
+
+        // Convert attribute value to JSON object to parse token value
+        JsonPath jsonObj = JsonPath.from(vbindData);
+
+        // Get token from JSON object
+        token = jsonObj.get("user.token");
+
+        logManager.logInformation("Token is: " + token, true, true);
+
+        return token;
+    }
+
+    public String getCSRFTokenFromResponse(String response) {
+        String csrfToken = "";
+
+        // Get elements with attribute "name" equals to "csrf-token"
+        Elements metaElements = Jsoup.parse(response).getElementsByAttributeValue("name", "csrf-token");
+
+        // Get data of attribute "content" from first "meta" element
+        csrfToken = metaElements.get(0).attr("content");
+
+        logManager.logInformation("csrf token is: " + csrfToken, true, true);
+
+        return csrfToken;
+    }
+
+    // get LaravelSession with attribute "gatekeeper_laravel_session"
+    public String getLaravelSession(Response response) {
+        return getCookie(response, "gatekeeper_laravel_session");
+    }
+
+    public String getCookie(Response response, String cookiename) {
+        if (cookiename != null && !cookiename.isEmpty() && !cookiename.equals("")) {
+            return response.getCookie(cookiename);
+        } else {
+
+            logManager.logInformation("The cookie value is null or value was not found.", true, true);
+            return "";
+        }
+    }
+
+//	public void setBaseUrl(APIRequest request, String url) {
+//		
+//		request.setBaseURI(url);
+//		
+//	}
+
+}

@@ -1,0 +1,854 @@
+package tests.profile;
+
+import static io.restassured.RestAssured.given;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import test.ProfileBase;
+import utilities.Constants.ResponseCode;
+import utilities.logger.LogsManager;
+
+public class ContactInformationAPITest extends ProfileBase {
+
+    static String newEmailId;
+    static String newAddressId;
+    static String newPhoneId;
+    static String newFaxId;
+
+    /**
+     * An instance of Log Manager which will be used to get logger and log details
+     * in the log file. Log file can be found in test-output/logs/test-execution.log
+     */
+    LogsManager logManager = new LogsManager(this.getClass().getName());
+
+    /**
+     * This method adds new email address in the profile page of the application.
+     * Response code returned after successful addition of email address is 201.
+     */
+    @Test(priority = 1, description = "To verify new email address is fetching added on profile page or not.")
+    public void addNewEmailAddress() {
+
+        logManager.logInformation("Checking Add New Email Address.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.newEmailAddressMap);
+        Response response = given().spec(request.build()).post("/email");
+        logManager.logInformation("Request Body for add email address: " + testData.newEmailAddressMap, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+        logManager.logInformation("Response Body after adding email address: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.CREATED_201);
+
+        laravelSession = parser.getLaravelSession(response);
+
+        JsonPath jsonResponse = response.jsonPath();
+        newEmailId = jsonResponse.get("data.id");
+        testData.setNewEmailID(newEmailId);
+
+        // Assertion to check email ID added is received in response
+        String emailIDFromResponse = jsonResponse.get("data.email");
+
+        logManager.logInformation("Email Id received from response is: " + emailIDFromResponse, true, true);
+        Assert.assertTrue(testData.newEmailAddressToAdd.equalsIgnoreCase(emailIDFromResponse));
+        logManager.logInformation("Add new email address completed. New Email ID: " + newEmailId, true, true);
+
+    }
+
+    /**
+     * This method verifies email resent verification on the profile page of the
+     * application. Response code returned after successful addition of email
+     * address is 200.
+     */
+    @Test(priority = 2, description = "To verify email resend verification API .")
+    public void verifyResendEmailVerification() {
+        logManager.logInformation("Checking Email resend verification", true, true);
+
+        addCrudBasePathInRequest(testData.cbProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).post("/email/resend-verification/" + newEmailId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after resend email verification: " + response.getBody().asString(),
+                true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+
+        logManager.logInformation("Email Resend Verification API Completed Successfully.", true, true);
+    }
+
+    /**
+     * This method verifies email resent verification on the profile page of the
+     * application by invalid request method type. Response code returned after
+     * successful addition of email address is 405.
+     */
+    @Test(priority = 3, description = "To verify email resend verification API with Method Not Allowed.")
+    public void verifyResendEmailVerificationWithMethodNotAllowed() {
+        logManager.logInformation("Checking Email resend verification with Method Not Allowed.", true, true);
+
+        addCrudBasePathInRequest(testData.cbProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).put("/email/resend-verification/" + newEmailId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Email Resend Verification with Method Not Allowed Completed Successfully.", true,
+                true);
+    }
+
+    /**
+     * This method gets an email address of the user by the use of Id. Response code
+     * returned after successful execution is 200.
+     */
+    @Test(priority = 4, description = "To verify email address is fetched or not by the use of valid email Id.")
+    public void getEmailAddressById() {
+
+        logManager.logInformation("Fetching Email Address By Email Address Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/email/" + newEmailId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after get email address by id: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+        logManager.logInformation("Get Email Address By Id completed.", true, true);
+
+    }
+
+    /**
+     * This method edits an existing email address in the profile page of the
+     * application. Response code returned after successful updated of email address
+     * is 200.
+     */
+    @Test(priority = 5, description = "To verify existing email address present in the application gets Updated or not.")
+    public void editEmailAddress() {
+
+        logManager.logInformation("Checking Edit Email Address", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editEmailAddressMap);
+        Response response = given().spec(request.build()).put("/email/" + newEmailId);
+        logManager.logInformation("Request Body for edit email address: " + testData.editEmailAddressMap, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after edit email address: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Edit email address completed.", true, true);
+
+    }
+
+    /**
+     * This method deletes an existing email address in the profile page of the
+     * application. Response code returned after successful deletion of email
+     * address is 200.
+     */
+    @Test(priority = 6, description = "To verify existing email address present in the application gets deleted or not.")
+    public void deleteEmailAddress() {
+        logManager.logInformation("Checking Delete Email Address", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editEmailAddressMap);
+        Response response = given().spec(request.build()).delete("/email/" + newEmailId);
+        logManager.logInformation("Request Body for delete email address: " + testData.editEmailAddressMap, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after delete email address: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation(
+                "Delete Email Address completed. Deleted email address not present in Get Profile page response.", true,
+                true);
+
+    }
+
+    /**
+     * This method tries to Add, Edit and Delete the Email Address Data by invalid
+     * request type. Response code returned after successful execution of the method
+     * is 405.
+     */
+    @Test(priority = 7, description = "To verify Add, Edit and Delete operations of Email Address using invalid request type method.")
+    public void emailAddressWithMethodNotAllowed() {
+
+        // methodNotAllowed For Add Email Address
+
+        logManager.logInformation("Checking Add Email Address With Method Not Allowed.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.newEmailAddressMap);
+        Response addResponse = given().spec(request.build()).put("/email");
+        logManager.logInformation("Status Code: " + addResponse.getStatusCode(), true, true);
+        Assert.assertTrue(addResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Add email address With Method Not Allowed is completed.", true, true);
+
+        // methodNotallowed For Edit Email Address
+        logManager.logInformation("Checking Edit Email Address With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editEmailAddressMap);
+        Response editResponse = given().spec(request.build()).post("/email/" + newEmailId);
+        logManager.logInformation("Status Code: " + editResponse.getStatusCode(), true, true);
+        Assert.assertTrue(editResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Edit email address With Method Not Allowed Is Completed.", true, true);
+
+        // methodNotAllowed for Delete Email Address
+        logManager.logInformation("Checking Delete Email Address With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editEmailAddressMap);
+        Response deleteResponse = given().spec(request.build()).post("/email/" + newEmailId);
+        logManager.logInformation("Status Code: " + editResponse.getStatusCode(), true, true);
+        Assert.assertTrue(deleteResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Delete email address With Method Not Allowed Is Completed.", true, true);
+
+    }
+
+    /**
+     * This method adds address in the profile page of the application. Response
+     * code returned after successful addition of mailing address is 201.
+     */
+    @Test(priority = 8, description = "To verify new mailing address is fetching added on profile page or not.")
+    public void addMailingAddress() {
+
+        logManager.logInformation("Checking Add New Mailing Address", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.newAddressMap);
+        Response response = given().spec(request.build()).post("/address");
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.CREATED_201);
+        laravelSession = parser.getLaravelSession(response);
+
+        // Convert response to JSON path object
+        JsonPath jsonResponse = response.jsonPath();
+        newAddressId = jsonResponse.get("data.id");
+        logManager.logInformation("New Address Id: " + newAddressId, true, true);
+        testData.setnewAddressId(newAddressId);
+
+        // Assertion to check mailing address added received in response
+        String mailingAddressFromResponse = jsonResponse.get("data.address_line_1");
+        logManager.logInformation("Mailing Address received from response is:" + mailingAddressFromResponse, true,
+                true);
+        String mailingAddressAdded = (String) testData.newAddressMap.get("address_line_1");
+        Assert.assertTrue(mailingAddressAdded.equalsIgnoreCase(mailingAddressFromResponse));
+        logManager.logInformation("Added mailing address is: " + mailingAddressAdded, true, true);
+
+        logManager.logInformation("Add new Mailing address completed. New Email ID: " + newAddressId + "", true, true);
+
+    }
+
+    /**
+     * This method gets the mailing address of the user by the use of Id. Response
+     * code returned after successfully execution is 200.
+     */
+    @Test(priority = 9, description = "To verify mailing address is fetched or not by the use of valid mailing address Id.")
+    public void getMailingAddressById() {
+
+        logManager.logInformation("Fetching Mailing Address by Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/address/" + newAddressId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after fetching address by id: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Get Address By Valid Mailing Address Id completed.", true, true);
+
+    }
+
+    /**
+     * This method edits an existing address from the profile page of the
+     * application by address id. Response code returned after successfully updated
+     * of email address is 200.
+     */
+    @Test(priority = 10, description = "To verify existing mailing address present in the application gets Updated or not.")
+    public void editMailingAddress() {
+
+        logManager.logInformation("Updating Mailing Address.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editAddressMap);
+        Response response = given().spec(request.build()).put("/address/" + newAddressId);
+        logManager.logInformation("Request Body: " + testData.editAddressMap, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after updated mailing address: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        // Assertion to check Mailing Address updated received from response
+        JsonPath jsonResponse = response.jsonPath();
+        String updatedMailingAddressFromResponse = jsonResponse.get("data.address_line_1");
+        logManager.logInformation(
+                "Updated Mailing Address received from response is: " + updatedMailingAddressFromResponse, true, true);
+        String mailingAddressUpdated = (String) testData.editAddressMap.get("address_line_1");
+        Assert.assertTrue(mailingAddressUpdated.equalsIgnoreCase(updatedMailingAddressFromResponse));
+
+        logManager.logInformation("Updated Mailing Address is: " + mailingAddressUpdated, true, true);
+        logManager.logInformation("Edit Mailing address completed.", true, true);
+
+    }
+
+    /**
+     * This method deletes an existing mailing address from the profile page of the
+     * application by address id. Response code returned after successfully deletion
+     * of email address is 200.
+     */
+    @Test(priority = 11, description = "To verify existing mailing address present in the application gets deleted or not.")
+    public void deleteMailingAddress() {
+
+        logManager.logInformation("Checking Delete mailing Address.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editAddressMap);
+        Response response = given().spec(request.build()).delete("/address/" + newAddressId);
+        logManager.logInformation("Request Body: " + testData.editAddressMap, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after delete mailing address: " + response.body().asString(), true,
+                true);
+        laravelSession = parser.getLaravelSession(response);
+        logManager.logInformation("Delete Mailing Address completed.", true, true);
+
+        request.setBasePath(testData.loadProfileBasePath);
+        Response profileResponse = given().spec(request.build()).get("/cbprofile/");
+        logManager.logInformation("Profile Page response is: " + profileResponse.asString(), true, true);
+        Assert.assertFalse(profileResponse.asString().contains(newAddressId), "Mailing Address record is not deleted.");
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation(
+                "Mailing Address Deleted successfully, deleted mailing address not present in Get Profile page response.",
+                true, true);
+
+    }
+
+    /**
+     * This method tries to get the Mailing Address by providing Invalid Id.
+     * Response code returned after successfully *execution of the method is 404.
+     */
+    @Test(priority = 12, dependsOnMethods = "deleteMailingAddress", description = "To verify mailing address is fetched or not by the use of invalid mailing address Id.")
+    public void getMailingAddressDataByInvalidId() {
+        logManager.logInformation("Checking  Mailing Address By Invalid Mailing Address Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/address/" + newAddressId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation(
+                "Response Body when tried to get the mailing Address by invalid id: " + response.body().asString(),
+                true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.NOT_FOUND_404);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Mailing Address Details completed by invalid mailing address id.", true, true);
+
+    }
+
+    /**
+     * This method tries to Add, Edit and Delete the Mailing Address Data by invalid
+     * request type. Response code returned after successful execution of the method
+     * is 405.
+     */
+    @Test(priority = 13, description = "To verify Add, Edit and Delete operations of Mailing Address using invalid request type method.")
+    public void mailingAddressWithMethodNotAllowed() {
+
+        // methodNotAllowed for Add Mailing Address
+        logManager.logInformation("Checking Add Address With Method Not Allowed.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.newAddressMap);
+        Response addResponse = given().spec(request.build()).put("/address");
+        logManager.logInformation("Status Code: " + addResponse.getStatusCode(), true, true);
+        Assert.assertTrue(addResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+        logManager.logInformation("Add Address With Method Not Allowed is completed.", true, true);
+
+        // methodNotAllowed for Edit Mailing Address
+        logManager.logInformation("Checking Edit Mailing Address With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editAddressMap);
+        Response editResponse = given().spec(request.build()).post("/address/" + newAddressId);
+        logManager.logInformation("Status Code: " + editResponse.getStatusCode(), true, true);
+        Assert.assertTrue(editResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation(
+                "Edit Mailing Address With Method Not Allowed is completed." + addResponse.getStatusCode(), true, true);
+
+        // methodNotAllowed for Delete Mailing Address
+        logManager.logInformation("Checking Delete Mailing Address With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editEmailAddressMap);
+        Response deleteResponse = given().spec(request.build()).post("/address/" + newAddressId);
+        logManager.logInformation("Request Body: " + testData.editAddressMap, true, true);
+        logManager.logInformation("Status Code: " + deleteResponse.getStatusCode(), true, true);
+        Assert.assertTrue(deleteResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Delete Mailing address With Method Not Allowed Is Completed.", true, true);
+
+    }
+
+    /**
+     * This method adds phone Number in the profile page of the application.
+     * Response code returned after successful addition of phone Number is 201.
+     */
+    @Test(priority = 14, description = "To verify new phone number is fetching added on profile page or not.")
+    public void addPhoneNumber() {
+
+        logManager.logInformation("Checking Add phone Number.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.addPhoneNumber);
+        Response response = given().spec(request.build()).post("/phone");
+        logManager.logInformation("Request Body: " + testData.addPhoneNumber, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after add phone number: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.CREATED_201);
+        laravelSession = parser.getLaravelSession(response);
+        JsonPath jsonResponse = response.jsonPath();
+        newPhoneId = jsonResponse.get("data.id");
+        testData.setNewPhoneNumberId(newPhoneId);
+
+        logManager.logInformation("Add new Phone Number completed. New Phone Number ID: " + newPhoneId + "", true,
+                true);
+
+        // Assertion to check phone number added received in response
+        String phoneNumberFromResponse = jsonResponse.get("data.number");
+        logManager.logInformation("Phone number received from response is: " + phoneNumberFromResponse, true, true);
+        String phoneNumberAdded = (String) testData.addPhoneNumber.get("number");
+        logManager.logInformation("Added phone number is: " + phoneNumberAdded, true, true);
+        Assert.assertTrue(phoneNumberFromResponse.equals(phoneNumberAdded), "Phone number is not added correctly");
+
+        logManager.logInformation("Add new Phone Number completed. New Phone Number ID: " + newPhoneId + "", true,
+                true);
+
+    }
+
+    /**
+     * This method gets the phone number of the user by the use of Id. Response code
+     * returned after successful execution is 200.
+     */
+    @Test(priority = 15, description = "To verify phone number is fetched or not by the use of valid phone Id.")
+    public void getPhoneNumberById() {
+
+        logManager.logInformation("Fetching Phone Number By Phone Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/phone/" + newPhoneId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after fetching phone number by id: " + response.body().asString(),
+                true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+        logManager.logInformation("Get Phone Number By Valid Phone Id completed.", true, true);
+
+    }
+
+    /**
+     * This method edits an existing phone number from the profile page of the
+     * application by newPhoneId. Response code returned after successful updated of
+     * phone number is 200.
+     */
+    @Test(priority = 16, description = "To verify existing phone number present in the application gets Updated or not.")
+    public void editPhoneNumber() {
+
+        logManager.logInformation("Checking Edit phone Number.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editPhoneNumber);
+        Response response = given().spec(request.build()).put("/phone/" + newPhoneId);
+        logManager.logInformation("Request Body: " + testData.editPhoneNumber, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after updated phone number: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Edit phone number completed.", true, true);
+
+        JsonPath jsonResponse = response.jsonPath();
+
+        // Assertion to check phone number Updated received in response
+        String phoneNumberFromResponse = jsonResponse.get("data.number");
+        logManager.logInformation("Phone number received from response is: " + phoneNumberFromResponse, true, true);
+        String phoneNumberUpdated = (String) testData.editPhoneNumber.get("number");
+        logManager.logInformation("Phone number received from response is: " + phoneNumberUpdated, true, true);
+        Assert.assertTrue(phoneNumberFromResponse.equals(phoneNumberUpdated), "Phone number is not Updated correctly");
+
+        logManager.logInformation("Edit Phone Number completed. New Phone Number ID: " + newPhoneId + "", true, true);
+
+    }
+
+    /**
+     * This method deletes an existing phone number from the profile page of the
+     * application by newPhoneId. Response code returned after successful deletion
+     * of phone number is 200.
+     */
+
+    @Test(priority = 17, description = "To verify existing phone number present in the application gets deleted or not.")
+    public void deletePhoneNumber() {
+
+        logManager.logInformation("Checking Delete phone Number.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editPhoneNumber);
+        Response response = given().spec(request.build()).delete("/phone/" + newPhoneId);
+        logManager.logInformation("Request Body for delete phone number: " + testData.editPhoneNumber, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after deleting phone number: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+        request.setBasePath(testData.loadProfileBasePath);
+
+        Response profileResponse = given().spec(request.build()).get("/cbprofile/");
+        logManager.logInformation("Profile response is: " + profileResponse.body().asString(), true, true);
+        Assert.assertFalse(profileResponse.asString().contains(newPhoneId), "Phone Number record is not deleted.");
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation(
+                "Delete Phone Number is completed. Deleted phone number is not present in Get Profile page response.",
+                true, true);
+
+    }
+
+    /**
+     * This method tries to get the Phone Number by providing Invalid Id. Response
+     * code returned after successful execution of the method is 404.
+     */
+    @Test(priority = 18, dependsOnMethods = "deletePhoneNumber", description = "To verify phone number is fetched or not by the use of invalid phone Id.")
+    public void getPhoneNumberByInvalidId() {
+
+        logManager.logInformation("Checking Phone Number By Invalid Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+        Response response = given().spec(request.build()).get("/phone/" + newPhoneId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation(
+                "Response Body when tried to get the Phone Number by invalid id : " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.NOT_FOUND_404);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Phone Number Details completed by invalid id.", true, true);
+
+    }
+
+    /**
+     * This method tries to Add, Edit and Delete the Phone Number Data by invalid
+     * request type. Response code returned after successfully *execution of the
+     * method is 405.
+     */
+    @Test(priority = 19, description = "To verify Add, Edit and Delete operations of phone number using invalid request type method.")
+    public void phoneNumberWithMethodNotAllowed() {
+
+        // methodNotAllowed for Add Phone Number
+        logManager.logInformation("Checking Phone Number With Method Not Allowed.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.addPhoneNumber);
+        Response addResponse = given().spec(request.build()).put("/phone");
+        logManager.logInformation(
+                "Request Body for adding phone number with method not allowed: " + testData.addPhoneNumber, true, true);
+        logManager.logInformation("Status Code: " + addResponse.getStatusCode(), true, true);
+        Assert.assertTrue(addResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Add Phone Number With Method Not Allowed is completed.", true, true);
+
+        // methodNotAllowed for Edit Phone Number
+        logManager.logInformation("Checking Edit Phone Number With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editPhoneNumber);
+        Response editResponse = given().spec(request.build()).post("/phone/" + newPhoneId);
+        logManager.logInformation(
+                "Request Body for updating phone number with method not allowed: " + testData.editPhoneNumber, true,
+                true);
+        logManager.logInformation("Status Code: " + editResponse.getStatusCode(), true, true);
+        Assert.assertTrue(editResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Edit Phone Number With Method Not Allowed is completed.", true, true);
+
+        // methodNotAllowed for Delete Phone Number
+
+        logManager.logInformation("Checking Delete Phone Number With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editPhoneNumber);
+        Response deleteResponse = given().spec(request.build()).post("/phone/" + newPhoneId);
+        logManager.logInformation(
+                "Request Body for deleting phone number with method not allowed: " + testData.editPhoneNumber, true,
+                true);
+        logManager.logInformation("Status Code: " + deleteResponse.getStatusCode(), true, true);
+        Assert.assertTrue(deleteResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Delete Phone Number With Method Not Allowed Is Completed.", true, true);
+
+    }
+
+    /**
+     * This method adds new fax number in the profile page of the application by
+     * newFaxId. Response code returned after successfully updated of fax number is
+     * 200.
+     */
+    @Test(priority = 20, description = "To verify new fax number is fetching added on profile page or not.")
+    public void addFaxNumber() {
+
+        logManager.logInformation("Checking Add fax Number.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.addFaxNumber);
+        Response response = given().spec(request.build()).post("/phone");
+        logManager.logInformation("Request Body for add fax number: " + testData.addFaxNumber, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after adding fax number: " + response.body().asString(), true, true);
+        Assert.assertEquals(ResponseCode.CREATED_201, response.getStatusCode());
+        laravelSession = parser.getLaravelSession(response);
+        JsonPath jsonResponse = response.jsonPath();
+
+        newFaxId = jsonResponse.get("data.id");
+        testData.setNewFaxNumberId(newFaxId);
+
+        // Assertion to check fax number added received in response
+        String faxNumberFromResponse = jsonResponse.get("data.number");
+        logManager.logInformation("Fax number received from response is: " + faxNumberFromResponse, true, true);
+        String faxNumberAdded = (String) testData.addFaxNumber.get("number");
+        logManager.logInformation("Added fax number is: " + faxNumberAdded, true, true);
+        Assert.assertTrue(faxNumberAdded.equals(faxNumberFromResponse));
+
+        logManager.logInformation("Add new Fax Number completed. New Fax Number ID: " + newFaxId + "", true, true);
+
+    }
+
+    /**
+     * This method gets fax number of the user by the use of Id. Response code
+     * returned after successful execution is 200.
+     */
+    @Test(priority = 21, description = "To verify fax number is fetched or not by the use of valid Id.")
+    public void getFaxNumberById() {
+
+        logManager.logInformation("Fetching Fax Number By Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+        Response response = given().spec(request.build()).get("/phone/" + newFaxId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after fetching fax number by id: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation("Get Fax Number By Id completed.", true, true);
+    }
+
+    /**
+     * This method edits an existing fax number from the profile page of the
+     * application by newFaxId. Response code returned after successful updated of
+     * fax number is 200.
+     */
+    @Test(priority = 22, description = "To verify existing fax number present in the application gets Updated or not.")
+    public void editFaxNumber() {
+
+        logManager.logInformation("Checking Edit fax Number.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editFaxNumber);
+        Response response = given().spec(request.build()).put("/phone/" + newFaxId);
+        logManager.logInformation("Request Body for edit fax number " + testData.editFaxNumber, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after updated fax number: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+
+        // Assertion to check fax number updated received from response
+        JsonPath jsonResponse = response.jsonPath();
+        String faxNumberFromResponse = jsonResponse.get("data.number");
+        logManager.logInformation("Fax number received from response is: " + faxNumberFromResponse, true, true);
+        String faxNumberUpdated = (String) testData.editFaxNumber.get("number");
+        Assert.assertTrue(faxNumberUpdated.equals(faxNumberFromResponse));
+        logManager.logInformation("Updated fax number is: " + faxNumberUpdated, true, true);
+
+        logManager.logInformation("Edit Fax number completed.", true, true);
+
+    }
+
+    /**
+     * This method deletes an existing fax number from the profile page of the
+     * application by newFaxId. Response code returned after successful deletion of
+     * phone number is 200.
+     */
+    @Test(priority = 23, description = "To verify existing fax number present in the application gets deleted or not.")
+    public void deleteFaxNumber() {
+
+        logManager.logInformation("Checking Delete fax Number.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.editFaxNumber);
+        Response response = given().spec(request.build()).delete("/phone/" + newFaxId);
+        logManager.logInformation("Request Body for delete fax number: " + testData.editPhoneNumber, true, true);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation("Response Body after deleting fax number: " + response.body().asString(), true, true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.OK_200);
+        laravelSession = parser.getLaravelSession(response);
+        request.setBasePath(testData.loadProfileBasePath);
+        Response profileResponse = given().spec(request.build()).get("/cbprofile/");
+        logManager.logInformation("Profile response is: " + profileResponse.body().asString(), true, true);
+        Assert.assertFalse(profileResponse.asString().contains(newFaxId), "Fax record is not deleted.");
+        laravelSession = parser.getLaravelSession(response);
+
+        logManager.logInformation(
+                "Delete Fax number completed. Deleted fax number is not present in Get Profile page response.", true,
+                true);
+
+    }
+
+    /**
+     * This method tries to get the Fax Number by providing Invalid Id. Response
+     * code returned after successful execution of the method is 404.
+     */
+    @Test(priority = 24, dependsOnMethods = "deleteFaxNumber", description = "To verify fax number is fetched or not by the use of invalid fax Id.")
+    public void getFaxNumberByInvalidId() {
+
+        logManager.logInformation("Checking  Fax Number By Invalid Id.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        Response response = given().spec(request.build()).get("/phone/" + newFaxId);
+        logManager.logInformation("Status Code: " + response.getStatusCode(), true, true);
+
+        // Retrieve the body of the Response
+        logManager.logInformation(
+                "Response Body when tried to get the Fax Number by invalid Id: " + response.body().asString(), true,
+                true);
+        Assert.assertTrue(response.getStatusCode() == ResponseCode.NOT_FOUND_404);
+        laravelSession = parser.getLaravelSession(response);
+        logManager.logInformation("Fax Number Details completed by invalid id.", true, true);
+
+    }
+
+    /**
+     * This method tries to Add, Edit and Delete the Fax Number Data by invalid
+     * request type. Response code returned after successfully *execution of the
+     * method is 405.
+     */
+    @Test(priority = 25, description = "To verify Add, Edit and Delete operations of fax number using invalid request type method.")
+    public void faxNumberWithMethodNotAllowed() {
+
+        // methodNotAllowed for Add Fax Number
+        logManager.logInformation("Checking Fax Number With Method Not Allowed.", true, true);
+
+        addCrudBasePathInRequest(testData.editDeleteProfileBasePath);
+        addHeadersInRequest();
+
+        request.setBody(testData.addFaxNumber);
+        Response addResponse = given().spec(request.build()).put("/phone");
+        logManager.logInformation("Request Body for add fax number with method not allowed: " + testData.editFaxNumber,
+                true, true);
+        logManager.logInformation("Status Code: " + addResponse.getStatusCode(), true, true);
+        Assert.assertTrue(addResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+        logManager.logInformation("Add Fax Number With Method Not Allowed is completed.", true, true);
+
+        // methodNotAllowed for Edit Fax Number
+        logManager.logInformation("Checking Edit Fax Number With Method Not Allowed.", true, true);
+        request.setBody(testData.editFaxNumber);
+
+        Response editResponse = given().spec(request.build()).post("/phone/" + newPhoneId);
+        logManager.logInformation("Request Body for edit fax number with method not allowed: " + testData.editFaxNumber,
+                true, true);
+        logManager.logInformation("Status Code: " + editResponse.getStatusCode(), true, true);
+        Assert.assertTrue(editResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Edit Fax Number With Method Not Allowed is completed.", true, true);
+
+        // methodNotAllowed for Delete Fax Number
+        logManager.logInformation("Checking Delete Fax Number With Method Not Allowed.", true, true);
+
+        request.setBody(testData.editFaxNumber);
+        Response deleteResponse = given().spec(request.build()).post("/phone/" + newPhoneId);
+        logManager.logInformation(
+                "Request Body for delete fax number with method not allowed: " + testData.editFaxNumber, true, true);
+        logManager.logInformation("Status Code: " + deleteResponse.getStatusCode(), true, true);
+        Assert.assertTrue(deleteResponse.getStatusCode() == ResponseCode.METHOD_NOT_ALLOWED_405);
+
+        logManager.logInformation("Delete Fax Number With Method Not Allowed Is Completed.", true, true);
+
+    }
+
+}

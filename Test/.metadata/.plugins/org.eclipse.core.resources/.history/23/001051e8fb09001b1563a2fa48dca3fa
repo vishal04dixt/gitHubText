@@ -1,0 +1,12 @@
+
+public class Address {
+	
+	int pincode;
+	String street;
+	public Address(int pincode, String street) {
+		this.pincode = pincode;
+		this.street = street;
+	}
+	
+
+}

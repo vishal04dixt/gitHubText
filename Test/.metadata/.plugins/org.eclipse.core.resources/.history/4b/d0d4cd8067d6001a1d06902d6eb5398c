@@ -1,0 +1,84 @@
+package tests.useraccount;
+
+import org.testng.annotations.Test;
+
+import pages.actions.useraccount.AccountPage;
+import pages.actions.usermanagement.Login;
+import pages.actions.usermanagement.ProjectPage;
+import pages.actions.usermanagement.SelectOrganization;
+import testdata.AuthTestData;
+import testdata.UserAccountTestData;
+import tests.TestBase;
+
+public class AccountPageTest extends TestBase {
+
+	AuthTestData authData = new AuthTestData();
+	UserAccountTestData userAccountTestData = new UserAccountTestData();
+
+	@Test(priority = 1, description = "To verify user redirect to project page after clicking on 'Personal Workspace' Organization.", groups = {
+			"Functional" })
+	public void User_Account_01_to_Verify_User_Reditect_To_Project_Page_After_Clicking_On_Select_Organization() {
+		Login login = new Login(driverManager);
+		login.doLogin(authData.email, authData.password);
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		ProjectPage projectPage = selectOrgs.clickOnOrganizationName();
+		projectPage.toVerifyIsProjectPageLoaded();
+	}
+
+	@Test(priority = 2, description = "To verify 'Organization account tooltip'  pop-up display after clicking on  'Organization account drawer'.", groups = {
+			"Functional" })
+	public void User_Account_02_to_Verify_Organization_Account_Tooltip_Pop_up_Display_After_Clicking_On_Organization_Account_Drawer() {
+
+		ProjectPage projectPage = new ProjectPage(driverManager);
+		projectPage.clickOnAccountDropDown();
+	}
+
+	@Test(priority = 3, description = "To verify user redirect to 'Account Page' after clicking on 'Account Setting' Link.", groups = {
+			"Functional" })
+	public void User_Account_03_to_Verify_User_Redirect_To_Account_Page_After_Clicking_On_Account_Setting_Link() {
+
+		ProjectPage projectPage = new ProjectPage(driverManager);
+		AccountPage accountPage = new AccountPage(driverManager);
+		projectPage.clickAccountSettingsLink(userAccountTestData.accountSettingsLink);
+		accountPage.toVerifyIsAccountPageLoaded();
+	}
+
+	@Test(priority = 4, description = "To verify 'Profile Section' shows all UI elements.", groups = { "Functional" })
+	public void User_Account_04_to_Verify_Profile_Section_Shows_All_UI_Elements() {
+
+		AccountPage accountPage = new AccountPage(driverManager);
+		accountPage.toVerifyProfileSectionLoadedWithAllElements();
+	}
+
+	@Test(priority = 5, description = "To verify user  able to edit profile section with valid credentials", groups = { "Functional" })
+	public void User_Account_05_check_Edit_Profile_with_Valid_credentials() {
+
+		AccountPage accountPage = new AccountPage(driverManager);
+		accountPage.doEditProfile(userAccountTestData.firstName, userAccountTestData.lastName);
+		accountPage.toVerifySuccessMessageShowingForValidUser(userAccountTestData.successMessageEditProfile);
+	}
+	
+	@Test(priority = 6, description = "To verify user redirect to 'Password Section' after clicking on 'Password' Link.", groups = { "Functional" })
+	public void User_Account_06_check_User_Redirect_To_Password_Section_After_Clicking_On_Password_Link() {
+
+		AccountPage accountPage = new AccountPage(driverManager);
+		accountPage.clickAccountSettingsSection("Password");
+		accountPage.toVerifyPasswordSectionLoadedWithAllElements();
+	}
+	
+	@Test(priority = 7, description = "To verify user not able to update password with incorrect Current Password", groups = { "Functional" })
+	public void User_Account_07_to_Verify_User_Not_Able_To_Update_Password_With_Incorrect_Current_Password() {
+
+		AccountPage accountPage = new AccountPage(driverManager);
+		accountPage.toVerifyValidationMessageDisplayForIncorrectCurrentPassword(userAccountTestData.incorrectCurrentPassword, userAccountTestData.newPassword, userAccountTestData.confirmNewPassword, userAccountTestData.incorrectCurrentPasswordErrorTextMessage);
+	
+	}
+	
+//	@Test(priority = 8, description = "To verify user not able to update password when all fields kept blank", groups = { "Functional" })
+//	public void User_Account_08_to_Verify_User_Not_Able_To_Update_Password_When_All_Fields_Kept_Blank_() {
+//
+//		AccountPage accountPage = new AccountPage(driverManager);
+//        accountPage.toVerifySaveChangesButtonDisable("", "", "");	
+//	}
+
+}

@@ -1,0 +1,19 @@
+
+public class Student {
+	int id;
+	String name;
+	int age;
+	Address ad;
+	
+	Student(int i,String n,int a,Address as){
+		
+		this.id = i;
+		this.name = n;
+		this.age = a;
+		
+		this.ad = as;
+	}
+	
+	
+
+}

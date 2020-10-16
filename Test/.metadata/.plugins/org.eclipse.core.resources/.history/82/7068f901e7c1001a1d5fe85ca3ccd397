@@ -1,0 +1,1115 @@
+07-09-2020 18:27:28.947 : INFO  utils.readers.Config -> Common property file loaded successfully. 
+07-09-2020 18:27:29.024 : INFO  utils.ExtentReport -> Extent report directory cleared. 
+07-09-2020 18:27:29.149 : INFO  utils.ScreenshotCapture -> Screenshot Directory is: D:\redbrick\redbrickAI\test-output\screenshots 
+07-09-2020 18:27:34.201 : INFO  utils.webDrivers.DriverManager -> Initialized Driver (977997405) 
+07-09-2020 18:27:36.229 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:27:36.232 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.LoginPageTest Started # # # # # 
+07-09-2020 18:27:36.233 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:27:36.248 : INFO  utils.ExtentReport -> test description is: To verify that 'Red Brick' login page URL gets redirected to the Red Brick Login page 
+07-09-2020 18:27:36.259 : INFO  tests.TestBase -> = = = = = Execution of Method Login_01_check_Red_Brick_LoginURL_Redirects_To__Login_Page Started  = = = = =
+ 
+07-09-2020 18:27:36.290 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:27:39.544 : INFO  actions.usermanagement.Login -> Login page is loaded 
+07-09-2020 18:27:39.557 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_01_check_Red_Brick_LoginURL_Redirects_To__Login_Page 
+07-09-2020 18:27:39.557 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_01_check_Red_Brick_LoginURL_Redirects_To__Login_Page 
+07-09-2020 18:27:40.203 : INFO  tests.TestBase -> = = = = = Execution of Method Login_01_check_Red_Brick_LoginURL_Redirects_To__Login_Page Completed  = = = = =
+
+ 
+07-09-2020 18:27:40.208 : INFO  utils.ExtentReport -> test description is: To verify that 'Red Brick' login page shows all UI elements 
+07-09-2020 18:27:40.209 : INFO  tests.TestBase -> = = = = = Execution of Method Login_02_check_Login_Page_All_Elements_Display Started  = = = = =
+ 
+07-09-2020 18:27:40.217 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:27:40.860 : INFO  actions.usermanagement.Login -> Checking all elements loaded 
+07-09-2020 18:27:40.861 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:27:41.240 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:27:41.316 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //img[@class ='login-card-img']] 
+07-09-2020 18:27:41.391 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Password*']] 
+07-09-2020 18:27:41.473 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:27:41.542 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //a[contains(text(),'Forgot Password?')]] 
+07-09-2020 18:27:41.548 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_02_check_Login_Page_All_Elements_Display 
+07-09-2020 18:27:41.549 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_02_check_Login_Page_All_Elements_Display 
+07-09-2020 18:27:41.657 : INFO  tests.TestBase -> = = = = = Execution of Method Login_02_check_Login_Page_All_Elements_Display Completed  = = = = =
+
+ 
+07-09-2020 18:27:41.659 : INFO  utils.ExtentReport -> test description is: To verify that user is not able to Login with invalid Email and Password. 
+07-09-2020 18:27:41.660 : INFO  tests.TestBase -> = = = = = Execution of Method Login_03_check_Login_With_invalid_credentials Started  = = = = =
+ 
+07-09-2020 18:27:41.662 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:27:42.429 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:27:42.689 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:27:43.152 : INFO  utils.BrowserActions -> Cleared and Added text: admintestgmail.com 
+07-09-2020 18:27:43.349 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:27:43.707 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:27:43.707 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:27:44.251 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:27:49.308 : INFO  actions.usermanagement.Login -> Error Message Showing For Invalid User 
+07-09-2020 18:27:49.843 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:27:49.963 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:27:50.245 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:27:50.853 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:27:51.145 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:27:51.446 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@12 
+07-09-2020 18:27:51.446 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:27:51.824 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:27:56.912 : INFO  actions.usermanagement.Login -> Error Message Showing For Invalid password 
+07-09-2020 18:27:57.412 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:27:57.512 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:27:57.794 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:27:58.201 : INFO  utils.BrowserActions -> Cleared and Added text: admintestgmail.com 
+07-09-2020 18:27:58.610 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:27:58.995 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@12 
+07-09-2020 18:27:58.995 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:27:59.363 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:28:04.407 : INFO  actions.usermanagement.Login -> Error Message Showing For Invalid User 
+07-09-2020 18:28:04.960 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:28:04.964 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_03_check_Login_With_invalid_credentials 
+07-09-2020 18:28:04.964 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_03_check_Login_With_invalid_credentials 
+07-09-2020 18:28:05.131 : INFO  tests.TestBase -> = = = = = Execution of Method Login_03_check_Login_With_invalid_credentials Completed  = = = = =
+
+ 
+07-09-2020 18:28:05.133 : INFO  utils.ExtentReport -> test description is: To verify that user is not able to Login with blank Email and Password. 
+07-09-2020 18:28:05.135 : INFO  tests.TestBase -> = = = = = Execution of Method Login_04_check_Login_With_Blank_credentials Started  = = = = =
+ 
+07-09-2020 18:28:05.146 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:28:05.829 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:28:06.133 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:28:06.300 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:28:06.570 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:28:06.996 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:28:06.996 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:28:07.248 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:28:12.289 : INFO  actions.usermanagement.Login -> Error Message Showing For blank email field 
+07-09-2020 18:28:12.765 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:28:12.900 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:28:13.135 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:28:13.614 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:28:13.813 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:28:13.933 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:28:13.934 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:28:14.090 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:28:19.133 : INFO  actions.usermanagement.Login -> Error message display when password textfield blank 
+07-09-2020 18:28:19.592 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:28:19.687 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:28:19.933 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:28:20.057 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:28:20.260 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:28:20.388 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:28:20.388 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:28:20.735 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:28:25.788 : INFO  actions.usermanagement.Login -> Error Message Showing For blank email field 
+07-09-2020 18:28:26.929 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:28:26.933 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_04_check_Login_With_Blank_credentials 
+07-09-2020 18:28:26.933 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_04_check_Login_With_Blank_credentials 
+07-09-2020 18:28:27.054 : INFO  tests.TestBase -> = = = = = Execution of Method Login_04_check_Login_With_Blank_credentials Completed  = = = = =
+
+ 
+07-09-2020 18:28:27.055 : INFO  utils.ExtentReport -> test description is: To verify that user redirects to 'Reset Password' page after clicking on 'Forgot Password?' link. 
+07-09-2020 18:28:27.056 : INFO  tests.TestBase -> = = = = = Execution of Method Login_05_check_LoginURL_Redirects_To_Reset_Password_Page Started  = = = = =
+ 
+07-09-2020 18:28:27.058 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:28:58.288 : INFO  utils.BrowserActions -> Clicked on the link : Proxy element for: DefaultElementLocator 'By.xpath: //a[contains(text(),'Forgot Password?')]' 
+07-09-2020 18:28:58.336 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:28:58.464 : INFO  actions.usermanagement.ResetPassword -> ResetPassword page is loaded 
+07-09-2020 18:28:58.467 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_05_check_LoginURL_Redirects_To_Reset_Password_Page 
+07-09-2020 18:28:58.467 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_05_check_LoginURL_Redirects_To_Reset_Password_Page 
+07-09-2020 18:28:58.592 : INFO  tests.TestBase -> = = = = = Execution of Method Login_05_check_LoginURL_Redirects_To_Reset_Password_Page Completed  = = = = =
+
+ 
+07-09-2020 18:28:58.594 : INFO  utils.ExtentReport -> test description is: To verify user redirects to 'Sign-up' page after clicking on 'Sign-up' link. 
+07-09-2020 18:28:58.602 : INFO  tests.TestBase -> = = = = = Execution of Method Login_06_check_LoginURL_Redirects_To_Signup_Page Started  = = = = =
+ 
+07-09-2020 18:28:58.609 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:29:30.970 : INFO  utils.BrowserActions -> Clicked on the link : Proxy element for: DefaultElementLocator 'By.xpath: //a[contains(text(),'Sign Up.')]' 
+07-09-2020 18:29:30.996 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:29:31.120 : INFO  actions.usermanagement.SignUp -> SignUp page is loaded 
+07-09-2020 18:29:31.122 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_06_check_LoginURL_Redirects_To_Signup_Page 
+07-09-2020 18:29:31.122 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_06_check_LoginURL_Redirects_To_Signup_Page 
+07-09-2020 18:29:31.222 : INFO  tests.TestBase -> = = = = = Execution of Method Login_06_check_LoginURL_Redirects_To_Signup_Page Completed  = = = = =
+
+ 
+07-09-2020 18:29:31.223 : INFO  utils.ExtentReport -> test description is: To verify 'Email field' and 'Password field' have a valid placeholder. 
+07-09-2020 18:29:31.224 : INFO  tests.TestBase -> = = = = = Execution of Method Login_07_check_Login_Page_Have_Valid_Placeholder Started  = = = = =
+ 
+07-09-2020 18:29:31.226 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:29:34.027 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:29:34.029 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_07_check_Login_Page_Have_Valid_Placeholder 
+07-09-2020 18:29:34.030 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_07_check_Login_Page_Have_Valid_Placeholder 
+07-09-2020 18:29:34.127 : INFO  tests.TestBase -> = = = = = Execution of Method Login_07_check_Login_Page_Have_Valid_Placeholder Completed  = = = = =
+
+ 
+07-09-2020 18:29:34.128 : INFO  utils.ExtentReport -> test description is: To verify 'Confirmation Code' field displays on Login page when user tries to login with unverified user. 
+07-09-2020 18:29:34.129 : INFO  tests.TestBase -> = = = = = Execution of Method Login_08_to_Verif_Confirmation_Code_Field_Displays_On_Login_Page_When_User_Tries_To_Login_With_Unverified_User Started  = = = = =
+ 
+07-09-2020 18:29:34.138 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:29:34.758 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:29:34.988 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:35.512 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail01@yopmail.com 
+07-09-2020 18:29:35.716 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:36.054 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:29:36.054 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:29:36.476 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:29:41.554 : INFO  utils.BrowserActions -> Element scroll for element:  
+07-09-2020 18:29:41.615 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Confirmation Code*']] 
+07-09-2020 18:29:41.622 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_08_to_Verif_Confirmation_Code_Field_Displays_On_Login_Page_When_User_Tries_To_Login_With_Unverified_User 
+07-09-2020 18:29:41.624 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_08_to_Verif_Confirmation_Code_Field_Displays_On_Login_Page_When_User_Tries_To_Login_With_Unverified_User 
+07-09-2020 18:29:41.744 : INFO  tests.TestBase -> = = = = = Execution of Method Login_08_to_Verif_Confirmation_Code_Field_Displays_On_Login_Page_When_User_Tries_To_Login_With_Unverified_User Completed  = = = = =
+
+ 
+07-09-2020 18:29:41.747 : INFO  utils.ExtentReport -> test description is: To verify user not able to login with invalid conformation code 
+07-09-2020 18:29:41.749 : INFO  tests.TestBase -> = = = = = Execution of Method Login_09_to_Verify_User_Not_Able_To_Login_With_Invalid_Confirmation_Code Started  = = = = =
+ 
+07-09-2020 18:29:41.756 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:29:42.526 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:29:43.145 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:44.166 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail01@yopmail.com 
+07-09-2020 18:29:44.972 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:45.475 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:29:45.475 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:29:45.882 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:29:50.950 : INFO  utils.BrowserActions -> Element scroll for element:  
+07-09-2020 18:29:51.204 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:51.563 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:29:51.563 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:29:51.710 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:29:56.751 : INFO  actions.usermanagement.Login -> Validation message display for invalid confirmation code 
+07-09-2020 18:29:56.755 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_09_to_Verify_User_Not_Able_To_Login_With_Invalid_Confirmation_Code 
+07-09-2020 18:29:56.755 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_09_to_Verify_User_Not_Able_To_Login_With_Invalid_Confirmation_Code 
+07-09-2020 18:29:56.869 : INFO  tests.TestBase -> = = = = = Execution of Method Login_09_to_Verify_User_Not_Able_To_Login_With_Invalid_Confirmation_Code Completed  = = = = =
+
+ 
+07-09-2020 18:29:56.874 : INFO  utils.ExtentReport -> test description is: To verify user not able to login with blank conformation code 
+07-09-2020 18:29:56.875 : INFO  tests.TestBase -> = = = = = Execution of Method Login_10_to_Verify_User_Not_Able_To_Login_With_Blank_Confirmation_Code Started  = = = = =
+ 
+07-09-2020 18:29:56.882 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:29:57.591 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:29:57.866 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:58.367 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail01@yopmail.com 
+07-09-2020 18:29:58.559 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:29:58.832 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:29:58.832 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:29:59.197 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:30:04.251 : INFO  utils.BrowserActions -> Element scroll for element:  
+07-09-2020 18:30:04.439 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:30:04.568 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:30:04.568 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:30:04.738 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:30:09.782 : INFO  actions.usermanagement.Login -> Validation message display for blank confirmation code 
+07-09-2020 18:30:09.784 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_10_to_Verify_User_Not_Able_To_Login_With_Blank_Confirmation_Code 
+07-09-2020 18:30:09.788 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_10_to_Verify_User_Not_Able_To_Login_With_Blank_Confirmation_Code 
+07-09-2020 18:30:09.882 : INFO  tests.TestBase -> = = = = = Execution of Method Login_10_to_Verify_User_Not_Able_To_Login_With_Blank_Confirmation_Code Completed  = = = = =
+
+ 
+07-09-2020 18:30:09.883 : INFO  utils.ExtentReport -> test description is: To verify Functionality of 'Re-send code' link. 
+07-09-2020 18:30:09.883 : INFO  tests.TestBase -> = = = = = Execution of Method Login_11_to_Verify_Functionality_Of_Re_send_Code_Link Started  = = = = =
+ 
+07-09-2020 18:30:09.885 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:30:10.701 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:30:11.139 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:30:11.746 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail01@yopmail.com 
+07-09-2020 18:30:11.940 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:30:12.222 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:30:12.222 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:30:13.098 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:30:18.328 : INFO  utils.BrowserActions -> Clicked on the link : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //div[@class='resend-code']//a] 
+07-09-2020 18:30:18.414 : INFO  utils.BrowserActions -> Element scroll for element:  
+07-09-2020 18:30:25.295 : INFO  actions.usermanagement.Login -> Success validation message display 
+07-09-2020 18:30:25.299 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_11_to_Verify_Functionality_Of_Re_send_Code_Link 
+07-09-2020 18:30:25.300 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_11_to_Verify_Functionality_Of_Re_send_Code_Link 
+07-09-2020 18:30:25.401 : INFO  tests.TestBase -> = = = = = Execution of Method Login_11_to_Verify_Functionality_Of_Re_send_Code_Link Completed  = = = = =
+
+ 
+07-09-2020 18:30:25.402 : INFO  utils.ExtentReport -> test description is: To verify that user is able to Login with valid Email and Password. 
+07-09-2020 18:30:25.404 : INFO  tests.TestBase -> = = = = = Execution of Method Login_12_check_Login_With_Valid_Email_Password Started  = = = = =
+ 
+07-09-2020 18:30:25.406 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:30:26.245 : INFO  actions.usermanagement.Login -> Login with email: redbrickmail@yopmail.compassword :Testuser@123 
+07-09-2020 18:30:26.340 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:30:26.604 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:30:27.140 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:30:27.343 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:30:27.728 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:30:27.728 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:30:28.459 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (2c300b56f195ce7a3a0802512ed85c89)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:30:38.466 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:30:38.575 : INFO  actions.usermanagement.Login -> Login successful. 
+07-09-2020 18:30:53.580 : INFO  actions.usermanagement.SelectOrganization -> Select Organization page is loaded 
+07-09-2020 18:30:53.585 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: Login_12_check_Login_With_Valid_Email_Password 
+07-09-2020 18:30:53.586 : INFO  tests.TestBase -> TEST CASE PASSED IS: Login_12_check_Login_With_Valid_Email_Password 
+07-09-2020 18:30:53.761 : INFO  tests.TestBase -> = = = = = Execution of Method Login_12_check_Login_With_Valid_Email_Password Completed  = = = = =
+
+ 
+07-09-2020 18:30:53.762 : INFO  utils.webDrivers.DriverManager -> Closing Driver (977997405) 
+07-09-2020 18:30:54.554 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:30:54.555 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.LoginPageTest Completed # # # # # 
+07-09-2020 18:30:54.555 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:30:58.141 : INFO  utils.webDrivers.DriverManager -> Initialized Driver (2068849105) 
+07-09-2020 18:31:00.174 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:31:00.174 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.SignUpPageTest Started # # # # # 
+07-09-2020 18:31:00.174 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:31:00.175 : INFO  utils.ExtentReport -> test description is: To verify that 'Red Brick' signup page URL gets redirected to the Red Brick SignUp page 
+07-09-2020 18:31:00.176 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_01_check_User_Redirects_To_Signup_Page Started  = = = = =
+ 
+07-09-2020 18:31:00.177 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:31:41.615 : INFO  utils.BrowserActions -> Clicked on the link : Proxy element for: DefaultElementLocator 'By.xpath: //a[contains(text(),'Sign Up.')]' 
+07-09-2020 18:31:41.656 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:31:41.853 : INFO  actions.usermanagement.SignUp -> SignUp page is loaded 
+07-09-2020 18:31:41.856 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_01_check_User_Redirects_To_Signup_Page 
+07-09-2020 18:31:41.856 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_01_check_User_Redirects_To_Signup_Page 
+07-09-2020 18:31:41.973 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_01_check_User_Redirects_To_Signup_Page Completed  = = = = =
+
+ 
+07-09-2020 18:31:41.979 : INFO  utils.ExtentReport -> test description is: To verify that 'Red Brick' sign page shows all UI elements. 
+07-09-2020 18:31:41.980 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_02_check_SignUp_Page_All_Elements_Display Started  = = = = =
+ 
+07-09-2020 18:31:42.065 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //input[contains(@placeholder,'First Name*')]] 
+07-09-2020 18:31:42.157 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //input[contains(@placeholder,'Last Name*')]] 
+07-09-2020 18:31:42.247 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:31:42.332 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //input[@placeholder='Password*']] 
+07-09-2020 18:31:42.413 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //input[@placeholder='Confirm Password*']] 
+07-09-2020 18:31:42.417 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_02_check_SignUp_Page_All_Elements_Display 
+07-09-2020 18:31:42.417 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_02_check_SignUp_Page_All_Elements_Display 
+07-09-2020 18:31:42.517 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_02_check_SignUp_Page_All_Elements_Display Completed  = = = = =
+
+ 
+07-09-2020 18:31:42.518 : INFO  utils.ExtentReport -> test description is: To verify user is not able to Sign up when user enter invalid email address. 
+07-09-2020 18:31:42.520 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_03_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Invalid_Email_Address Started  = = = = =
+ 
+07-09-2020 18:31:42.523 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:31:43.459 : INFO  actions.usermanagement.SignUp -> Do sign up with data 
+07-09-2020 18:31:43.766 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:44.016 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:31:44.243 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:44.451 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:31:44.679 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:45.149 : INFO  utils.BrowserActions -> Cleared and Added text: admintestgmail.com 
+07-09-2020 18:31:45.368 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:45.688 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:31:45.878 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:46.163 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:31:46.392 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:31:51.494 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_03_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Invalid_Email_Address 
+07-09-2020 18:31:51.494 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_03_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Invalid_Email_Address 
+07-09-2020 18:31:51.594 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_03_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Invalid_Email_Address Completed  = = = = =
+
+ 
+07-09-2020 18:31:51.597 : INFO  utils.ExtentReport -> test description is: To verify user is not able to Sign up when user enter already exists email address. 
+07-09-2020 18:31:51.597 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_04_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Already_Exists_Email_Address Started  = = = = =
+ 
+07-09-2020 18:31:51.599 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:31:52.770 : INFO  actions.usermanagement.SignUp -> Do sign up with data 
+07-09-2020 18:31:53.147 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:53.389 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:31:53.615 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:53.834 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:31:54.060 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:54.619 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:31:54.828 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:55.203 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:31:55.461 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:31:56.017 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:31:56.216 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:32:01.303 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_04_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Already_Exists_Email_Address 
+07-09-2020 18:32:01.304 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_04_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Already_Exists_Email_Address 
+07-09-2020 18:32:01.401 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_04_to_Verify_User_Is_Not_Able_To_Sign_Up_When_User_Enter_Already_Exists_Email_Address Completed  = = = = =
+
+ 
+07-09-2020 18:32:01.402 : INFO  utils.ExtentReport -> test description is: To verify 'First Name', 'Last Name' 'Email field' 'Password field' and 'Confirm Password' have a valid placeholder. 
+07-09-2020 18:32:01.403 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_05_check_SignUp_Page_Have_Valid_Placeholder Started  = = = = =
+ 
+07-09-2020 18:32:01.534 : INFO  actions.usermanagement.SignUp -> Placeholder is showing all fields 
+07-09-2020 18:32:01.536 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_05_check_SignUp_Page_Have_Valid_Placeholder 
+07-09-2020 18:32:01.536 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_05_check_SignUp_Page_Have_Valid_Placeholder 
+07-09-2020 18:32:01.607 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_05_check_SignUp_Page_Have_Valid_Placeholder Completed  = = = = =
+
+ 
+07-09-2020 18:32:01.619 : INFO  utils.ExtentReport -> test description is: To verify user not able to sign up when enterd password is in incorrect format 
+07-09-2020 18:32:01.619 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_06_to_Verify_User_Not_Able_To_Sign_Up_When_Enterd_Password_Is_In_Incorrect_Format Started  = = = = =
+ 
+07-09-2020 18:32:01.621 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:32:04.272 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:32:04.685 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:04.953 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:32:05.191 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:05.437 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:32:05.696 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:06.335 : INFO  utils.BrowserActions -> Cleared and Added text: ispo@yopmail.com 
+07-09-2020 18:32:06.548 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:06.870 : INFO  utils.BrowserActions -> Cleared and Added text: testuser@123 
+07-09-2020 18:32:07.057 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:07.338 : INFO  utils.BrowserActions -> Cleared and Added text: testuser@123 
+07-09-2020 18:32:07.483 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:32:13.341 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:32:13.632 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:13.839 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:32:14.043 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:14.239 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:32:14.448 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:15.182 : INFO  utils.BrowserActions -> Cleared and Added text: ispo@yopmail.com 
+07-09-2020 18:32:15.409 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:15.643 : INFO  utils.BrowserActions -> Cleared and Added text: Test@12 
+07-09-2020 18:32:15.855 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:16.136 : INFO  utils.BrowserActions -> Cleared and Added text: Test@12 
+07-09-2020 18:32:16.249 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:32:21.977 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:32:22.262 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:22.472 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:32:22.751 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:22.961 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:32:23.224 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:23.823 : INFO  utils.BrowserActions -> Cleared and Added text: ispo@yopmail.com 
+07-09-2020 18:32:24.135 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:24.528 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser123 
+07-09-2020 18:32:24.715 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:25.015 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser123 
+07-09-2020 18:32:25.193 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:32:31.058 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:32:31.791 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:32.142 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:32:32.411 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:32.684 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:32:32.997 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:33.577 : INFO  utils.BrowserActions -> Cleared and Added text: ispo@yopmail.com 
+07-09-2020 18:32:33.830 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:34.083 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser 
+07-09-2020 18:32:34.343 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:34.679 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser 
+07-09-2020 18:32:34.920 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:32:40.011 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_06_to_Verify_User_Not_Able_To_Sign_Up_When_Enterd_Password_Is_In_Incorrect_Format 
+07-09-2020 18:32:40.011 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_06_to_Verify_User_Not_Able_To_Sign_Up_When_Enterd_Password_Is_In_Incorrect_Format 
+07-09-2020 18:32:40.114 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_06_to_Verify_User_Not_Able_To_Sign_Up_When_Enterd_Password_Is_In_Incorrect_Format Completed  = = = = =
+
+ 
+07-09-2020 18:32:40.114 : INFO  utils.ExtentReport -> test description is: To verify validation message is displayed when Password and Confirm password both are not same. 
+07-09-2020 18:32:40.115 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_07_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same Started  = = = = =
+ 
+07-09-2020 18:32:40.118 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:32:41.097 : INFO  actions.usermanagement.SignUp -> Do sign up with data 
+07-09-2020 18:32:41.463 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:41.729 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:32:41.958 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:42.232 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:32:42.549 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:43.769 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:32:44.125 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:44.502 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:32:44.712 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:45.027 : INFO  utils.BrowserActions -> Cleared and Added text: Testser@123 
+07-09-2020 18:32:45.153 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:32:50.236 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_07_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same 
+07-09-2020 18:32:50.237 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_07_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same 
+07-09-2020 18:32:50.332 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_07_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same Completed  = = = = =
+
+ 
+07-09-2020 18:32:50.334 : INFO  utils.ExtentReport -> test description is: To verify that  validation  password pop up contains password  validation requirements. 
+07-09-2020 18:32:50.334 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_08_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements Started  = = = = =
+ 
+07-09-2020 18:32:50.336 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:32:51.400 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:51.532 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:32:51.696 : INFO  utils.BrowserActions -> Move to element successfully 
+07-09-2020 18:32:51.836 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_08_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements 
+07-09-2020 18:32:51.836 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_08_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements 
+07-09-2020 18:32:51.911 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_08_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements Completed  = = = = =
+
+ 
+07-09-2020 18:32:51.913 : INFO  utils.ExtentReport -> test description is: To verify user is not able to sign up when email field is kept blank. 
+07-09-2020 18:32:51.913 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_09_to_Verify_User_Is_Not_Able_To_Sign_Up_When_Email_Field_Is_Kept_Blank Started  = = = = =
+ 
+07-09-2020 18:32:51.915 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:32:52.878 : INFO  actions.usermanagement.SignUp -> Do sign up with data 
+07-09-2020 18:32:53.222 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:53.570 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:32:54.056 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:54.570 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:32:54.878 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:55.033 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:32:55.421 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:56.235 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:32:56.516 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:32:56.839 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:32:57.089 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:02.165 : INFO  actions.usermanagement.SignUp -> Validation message dispaly for blank email field 
+07-09-2020 18:33:02.168 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_09_to_Verify_User_Is_Not_Able_To_Sign_Up_When_Email_Field_Is_Kept_Blank 
+07-09-2020 18:33:02.168 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_09_to_Verify_User_Is_Not_Able_To_Sign_Up_When_Email_Field_Is_Kept_Blank 
+07-09-2020 18:33:02.272 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_09_to_Verify_User_Is_Not_Able_To_Sign_Up_When_Email_Field_Is_Kept_Blank Completed  = = = = =
+
+ 
+07-09-2020 18:33:02.274 : INFO  utils.ExtentReport -> test description is: To verify user is able to Sign up when all the fields (First Name, Last Name, Email, Password and Confirm Password) are provided with valid data.  
+07-09-2020 18:33:02.276 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data Started  = = = = =
+ 
+07-09-2020 18:33:02.288 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:33:03.131 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:33:03.491 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:03.645 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:03.905 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:04.138 : INFO  utils.BrowserActions -> Cleared and Added text: John 
+07-09-2020 18:33:04.354 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:04.488 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:04.754 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:05.070 : INFO  utils.BrowserActions -> Cleared and Added text: Mark 
+07-09-2020 18:33:05.414 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:05.520 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:05.839 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:06.403 : INFO  utils.BrowserActions -> Cleared and Added text: ispo@yopmail.com 
+07-09-2020 18:33:06.687 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:06.826 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:07.189 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:07.573 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:33:07.885 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:08.032 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:08.325 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:08.827 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:33:09.022 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //div[contains(text(),'Sign up')]] 
+07-09-2020 18:33:39.057 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data 
+07-09-2020 18:33:39.058 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data 
+07-09-2020 18:33:39.166 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_10_to_Verify_User_Is_Able_To_Sign_Up_When_All_The_Fields_Are_Provided_With_Valid_Data Completed  = = = = =
+
+ 
+07-09-2020 18:33:39.180 : INFO  utils.ExtentReport -> test description is: To verify that the all UI element display on 'Confirmation Section'. 
+07-09-2020 18:33:39.181 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section Started  = = = = =
+ 
+07-09-2020 18:33:39.269 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //input[@placeholder='Confirmation Code*']] 
+07-09-2020 18:33:39.368 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //button[@class='MuiButtonBase51112 MuiButton5186 button-root button-navy MuiButton5188 MuiButton5191']] 
+07-09-2020 18:33:39.376 : INFO  actions.usermanagement.SignUp -> Confirmation Code section  loaded 
+07-09-2020 18:33:39.378 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section 
+07-09-2020 18:33:39.379 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section 
+07-09-2020 18:33:39.465 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_11_to_Verify_That_The_All_UI_Element_Display_On_Confirmation_Section Completed  = = = = =
+
+ 
+07-09-2020 18:33:39.466 : INFO  utils.ExtentReport -> test description is: To verify user not able to sign up with invalid conformation code 
+07-09-2020 18:33:39.467 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code Started  = = = = =
+ 
+07-09-2020 18:33:39.695 : INFO  utils.BrowserActions -> Added text: 3 
+07-09-2020 18:33:39.764 : INFO  utils.BrowserActions -> Added text: 2 
+07-09-2020 18:33:39.817 : INFO  utils.BrowserActions -> Added text: 8 
+07-09-2020 18:33:39.867 : INFO  utils.BrowserActions -> Added text: 3 
+07-09-2020 18:33:39.921 : INFO  utils.BrowserActions -> Added text: 2 
+07-09-2020 18:33:39.967 : INFO  utils.BrowserActions -> Added text: 4 
+07-09-2020 18:33:40.117 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //button[@class='MuiButtonBase51112 MuiButton5186 button-root button-navy MuiButton5188 MuiButton5191']] 
+07-09-2020 18:33:45.243 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code 
+07-09-2020 18:33:45.244 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code 
+07-09-2020 18:33:45.307 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_12_to_Verify_User_Not_Able_To_Sign_Up_Invalid_Confirmation_Code Completed  = = = = =
+
+ 
+07-09-2020 18:33:45.308 : INFO  utils.ExtentReport -> test description is: To verify user not able to sign up with blank conformation code 
+07-09-2020 18:33:45.309 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_13_to_Verify_User_Not_Able_To_Sign_Up_With_Blank_Confirmation_Code Started  = = = = =
+ 
+07-09-2020 18:33:45.502 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:33:45.637 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:33:45.771 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (c2cdd49ad8ac7abc2fce0b0b965128ba)] -> xpath: //button[@class='MuiButtonBase51112 MuiButton5186 button-root button-navy MuiButton5188 MuiButton5191']] 
+07-09-2020 18:33:50.851 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SignUp_13_to_Verify_User_Not_Able_To_Sign_Up_With_Blank_Confirmation_Code 
+07-09-2020 18:33:50.851 : INFO  tests.TestBase -> TEST CASE PASSED IS: SignUp_13_to_Verify_User_Not_Able_To_Sign_Up_With_Blank_Confirmation_Code 
+07-09-2020 18:33:50.956 : INFO  tests.TestBase -> = = = = = Execution of Method SignUp_13_to_Verify_User_Not_Able_To_Sign_Up_With_Blank_Confirmation_Code Completed  = = = = =
+
+ 
+07-09-2020 18:33:50.959 : INFO  utils.webDrivers.DriverManager -> Closing Driver (2068849105) 
+07-09-2020 18:33:51.743 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:33:51.743 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.SignUpPageTest Completed # # # # # 
+07-09-2020 18:33:51.743 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:33:55.228 : INFO  utils.webDrivers.DriverManager -> Initialized Driver (834871206) 
+07-09-2020 18:33:57.247 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:33:57.247 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.ResetPasswordTest Started # # # # # 
+07-09-2020 18:33:57.247 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:33:57.248 : INFO  utils.ExtentReport -> test description is: To verify user redirects to 'Reset Password' page after clicking on 'Forgot Password?' link. 
+07-09-2020 18:33:57.249 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link Started  = = = = =
+ 
+07-09-2020 18:33:57.251 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:34:34.413 : INFO  utils.BrowserActions -> Clicked on the link : Proxy element for: DefaultElementLocator 'By.xpath: //a[contains(text(),'Forgot Password?')]' 
+07-09-2020 18:34:34.437 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:34:34.533 : INFO  actions.usermanagement.ResetPassword -> ResetPassword page is loaded 
+07-09-2020 18:34:34.535 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link 
+07-09-2020 18:34:34.535 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link 
+07-09-2020 18:34:34.626 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link Completed  = = = = =
+
+ 
+07-09-2020 18:34:34.627 : INFO  utils.ExtentReport -> test description is: To verify that 'Red Brick' 'Reset Password' page shows all UI elements 
+07-09-2020 18:34:34.627 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_02_check_Reset_Password_All_Elements_Display Started  = = = = =
+ 
+07-09-2020 18:34:34.629 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:34:35.281 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:34:35.382 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:34:35.388 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_02_check_Reset_Password_All_Elements_Display 
+07-09-2020 18:34:35.389 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_02_check_Reset_Password_All_Elements_Display 
+07-09-2020 18:34:35.501 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_02_check_Reset_Password_All_Elements_Display Completed  = = = = =
+
+ 
+07-09-2020 18:34:35.508 : INFO  utils.ExtentReport -> test description is: To verify that user is not able to Reset Password with invalid Email 
+07-09-2020 18:34:35.509 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_03_check_Reset_Password_With_invalid_credentials Started  = = = = =
+ 
+07-09-2020 18:34:35.511 : INFO  actions.usermanagement.ResetPassword -> Reset Password With : gszh@yopmail.com 
+07-09-2020 18:34:35.785 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:34:36.362 : INFO  utils.BrowserActions -> Cleared and Added text: gszh@yopmail.com 
+07-09-2020 18:34:36.670 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:34:36.733 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:34:40.847 : INFO  actions.usermanagement.ResetPassword -> Validation message is display for email field 
+07-09-2020 18:34:41.486 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:34:41.486 : INFO  actions.usermanagement.ResetPassword -> Reset Password With : admintestgmail.com 
+07-09-2020 18:34:41.820 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:34:42.450 : INFO  utils.BrowserActions -> Cleared and Added text: admintestgmail.com 
+07-09-2020 18:34:42.729 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:34:42.802 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:34:42.966 : INFO  actions.usermanagement.ResetPassword -> Validation message is display for email field 
+07-09-2020 18:34:43.514 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:34:43.515 : INFO  actions.usermanagement.ResetPassword -> Reset Password With :  
+07-09-2020 18:34:44.167 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:34:44.382 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:34:44.616 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:34:44.661 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:34:44.801 : INFO  actions.usermanagement.ResetPassword -> Validation message is display for email field 
+07-09-2020 18:34:45.262 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:34:45.264 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_03_check_Reset_Password_With_invalid_credentials 
+07-09-2020 18:34:45.264 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_03_check_Reset_Password_With_invalid_credentials 
+07-09-2020 18:34:45.331 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_03_check_Reset_Password_With_invalid_credentials Completed  = = = = =
+
+ 
+07-09-2020 18:34:45.332 : INFO  utils.ExtentReport -> test description is: To verify Reset Password functionality when user enters valid Email in Email Text field. 
+07-09-2020 18:34:45.332 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email Started  = = = = =
+ 
+07-09-2020 18:34:45.335 : INFO  actions.usermanagement.ResetPassword -> Reset Password With : redbrickmail@yopmail.com 
+07-09-2020 18:34:45.512 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:34:45.825 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:34:46.237 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:34:46.300 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:35:46.401 : ERROR utils.BrowserActions -> Exception while Waiting for element to be visible: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@placeholder='Confirmation Code*']' (tried for 30 second(s) with 500 milliseconds interval) 
+07-09-2020 18:35:46.403 : INFO  utils.BrowserActions -> Exception while Waiting for element to be visible: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@placeholder='Confirmation Code*']' (tried for 30 second(s) with 500 milliseconds interval) 
+07-09-2020 18:35:49.461 : ERROR utils.BrowserActions -> Element is not displayed.no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Confirmation Code*']"}
+  (Session info: chrome=83.0.4103.116)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'VISHAL', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_241'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.116, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\HP-PC\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 1a8fafbdd85fca6f8bd1cbdec320e52f
+*** Element info: {Using=xpath, value=//input[@placeholder='Confirmation Code*']} 
+07-09-2020 18:35:49.462 : INFO  utils.BrowserActions -> Element is not displayed.no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Confirmation Code*']"}
+  (Session info: chrome=83.0.4103.116)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'VISHAL', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_241'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.116, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\HP-PC\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 1a8fafbdd85fca6f8bd1cbdec320e52f
+*** Element info: {Using=xpath, value=//input[@placeholder='Confirmation Code*']} 
+07-09-2020 18:35:50.021 : ERROR tests.TestBase -> TEST CASE FAILED IS: ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email 
+07-09-2020 18:35:50.021 : INFO  tests.TestBase -> TEST CASE FAILED IS: ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email 
+07-09-2020 18:35:50.021 : ERROR tests.TestBase -> TEST CASE FAILED REASON: java.lang.AssertionError: Confirmation section not is loaded did not expect to find [true] but found [false] 
+07-09-2020 18:35:50.022 : INFO  tests.TestBase -> TEST CASE FAILED REASON: java.lang.AssertionError: Confirmation section not is loaded did not expect to find [true] but found [false] 
+07-09-2020 18:35:50.119 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email Completed  = = = = =
+
+ 
+07-09-2020 18:35:50.122 : INFO  utils.ExtentReport -> test description is: To verify 'Confirmation field', 'New Password field' and 'Confirm Password Field'have a valid placeholder. 
+07-09-2020 18:35:50.123 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder Started  = = = = =
+ 
+07-09-2020 18:36:20.167 : ERROR utils.BrowserActions -> Exception whille getting placeholder: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Confirmation Code*']"}
+  (Session info: chrome=83.0.4103.116)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'VISHAL', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_241'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.116, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\HP-PC\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 1a8fafbdd85fca6f8bd1cbdec320e52f
+*** Element info: {Using=xpath, value=//input[@placeholder='Confirmation Code*']} 
+07-09-2020 18:36:20.169 : INFO  utils.BrowserActions -> Exception whille getting placeholder: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Confirmation Code*']"}
+  (Session info: chrome=83.0.4103.116)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'VISHAL', ip: '192.168.56.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_241'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 83.0.4103.116, chrome: {chromedriverVersion: 83.0.4103.39 (ccbf011cb2d2b..., userDataDir: C:\Users\HP-PC\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:51672}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 1a8fafbdd85fca6f8bd1cbdec320e52f
+*** Element info: {Using=xpath, value=//input[@placeholder='Confirmation Code*']} 
+07-09-2020 18:36:20.578 : ERROR tests.TestBase -> TEST CASE FAILED IS: ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder 
+07-09-2020 18:36:20.578 : INFO  tests.TestBase -> TEST CASE FAILED IS: ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder 
+07-09-2020 18:36:20.578 : ERROR tests.TestBase -> TEST CASE FAILED REASON: java.lang.AssertionError: Place Holder is not showing did not expect to find [true] but found [false] 
+07-09-2020 18:36:20.578 : INFO  tests.TestBase -> TEST CASE FAILED REASON: java.lang.AssertionError: Place Holder is not showing did not expect to find [true] but found [false] 
+07-09-2020 18:36:20.645 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder Completed  = = = = =
+
+ 
+07-09-2020 18:36:20.646 : INFO  utils.ExtentReport -> test description is: To verify application displays validation message when all fields present on Confirmation Section are kept blank. 
+07-09-2020 18:36:20.646 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank Started  = = = = =
+ 
+07-09-2020 18:36:20.855 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:25.912 : INFO  actions.usermanagement.ResetPassword -> Validation message is  showing for confirmation code field 
+07-09-2020 18:36:26.118 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:26.349 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:26.510 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:26.611 : INFO  actions.usermanagement.ResetPassword -> Validation message is  showing for new password field 
+07-09-2020 18:36:26.831 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:27.430 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:36:27.529 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:32.637 : INFO  actions.usermanagement.ResetPassword -> Validation message is  showing for confirm password field 
+07-09-2020 18:36:32.640 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank 
+07-09-2020 18:36:32.641 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank 
+07-09-2020 18:36:32.733 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank Completed  = = = = =
+
+ 
+07-09-2020 18:36:32.735 : INFO  utils.ExtentReport -> test description is: To verify that  confirmation code field pop up contains validation message. 
+07-09-2020 18:36:32.735 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message Started  = = = = =
+ 
+07-09-2020 18:36:32.984 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:33.104 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:36:33.243 : INFO  utils.BrowserActions -> Move to element successfully 
+07-09-2020 18:36:33.285 : INFO  actions.usermanagement.ResetPassword -> Information message is showing after click on confirmation code text field 
+07-09-2020 18:36:33.289 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message 
+07-09-2020 18:36:33.290 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message 
+07-09-2020 18:36:33.394 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message Completed  = = = = =
+
+ 
+07-09-2020 18:36:33.395 : INFO  utils.ExtentReport -> test description is: To verify application displays validation message when user enters invalid code. 
+07-09-2020 18:36:33.396 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code Started  = = = = =
+ 
+07-09-2020 18:36:33.547 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:33.852 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:34.168 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:34.452 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:36:34.620 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:35.056 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:36:35.275 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:35.799 : INFO  actions.usermanagement.ResetPassword -> Valiidation message display for invalid confirmation code 
+07-09-2020 18:36:35.800 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code 
+07-09-2020 18:36:35.801 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code 
+07-09-2020 18:36:35.872 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code Completed  = = = = =
+
+ 
+07-09-2020 18:36:35.875 : INFO  utils.ExtentReport -> test description is: To verify validation message is displayed when Password and Confirm password both are not same. 
+07-09-2020 18:36:35.876 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same Started  = = = = =
+ 
+07-09-2020 18:36:36.053 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:36.228 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:36.379 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:36.650 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:36:36.788 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:37.052 : INFO  utils.BrowserActions -> Cleared and Added text: Testser@123 
+07-09-2020 18:36:37.195 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:37.222 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:36:37.338 : INFO  actions.usermanagement.ResetPassword -> Both new password and confirm password are same 
+07-09-2020 18:36:37.340 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same 
+07-09-2020 18:36:37.341 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same 
+07-09-2020 18:36:37.470 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same Completed  = = = = =
+
+ 
+07-09-2020 18:36:37.471 : INFO  utils.ExtentReport -> test description is: To verify that  validation  password pop up contains password  validation requirements  
+07-09-2020 18:36:37.472 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements Started  = = = = =
+ 
+07-09-2020 18:36:37.650 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:37.800 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:36:37.949 : INFO  utils.BrowserActions -> Move to element successfully 
+07-09-2020 18:36:38.122 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements 
+07-09-2020 18:36:38.125 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements 
+07-09-2020 18:36:38.185 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements Completed  = = = = =
+
+ 
+07-09-2020 18:36:38.186 : INFO  utils.ExtentReport -> test description is: To verify user not able to reset password when enterd password is in incorrect format 
+07-09-2020 18:36:38.187 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format Started  = = = = =
+ 
+07-09-2020 18:36:38.345 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:38.535 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:38.682 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:38.972 : INFO  utils.BrowserActions -> Cleared and Added text: testuser@123 
+07-09-2020 18:36:39.191 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:39.500 : INFO  utils.BrowserActions -> Cleared and Added text: testuser@123 
+07-09-2020 18:36:39.639 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:40.155 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:40.785 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:41.090 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:41.470 : INFO  utils.BrowserActions -> Cleared and Added text: Test@12 
+07-09-2020 18:36:41.649 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:42.046 : INFO  utils.BrowserActions -> Cleared and Added text: Test@12 
+07-09-2020 18:36:42.166 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:42.266 : INFO  actions.usermanagement.ResetPassword -> Password is too short. Must be atleast 8 characters. is  showing on the page. 
+07-09-2020 18:36:47.559 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:47.773 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:47.991 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:48.255 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser123 
+07-09-2020 18:36:48.419 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:48.720 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser123 
+07-09-2020 18:36:48.873 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:48.989 : INFO  actions.usermanagement.ResetPassword -> Password is too short. Must be atleast 8 characters. is  showing on the page. 
+07-09-2020 18:36:54.260 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:54.497 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:36:54.704 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:55.006 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser 
+07-09-2020 18:36:55.169 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:36:55.374 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser 
+07-09-2020 18:36:55.455 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (1a8fafbdd85fca6f8bd1cbdec320e52f)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:36:55.677 : INFO  actions.usermanagement.ResetPassword -> Password must contain atleast one number. is  showing on the page. 
+07-09-2020 18:37:00.717 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format 
+07-09-2020 18:37:00.717 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format 
+07-09-2020 18:37:00.844 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format Completed  = = = = =
+
+ 
+07-09-2020 18:37:00.845 : INFO  utils.webDrivers.DriverManager -> Closing Driver (834871206) 
+07-09-2020 18:37:01.788 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:37:01.788 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.ResetPasswordTest Completed # # # # # 
+07-09-2020 18:37:01.788 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:37:05.550 : INFO  utils.webDrivers.DriverManager -> Initialized Driver (1671880701) 
+07-09-2020 18:37:07.571 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:37:07.571 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.SelectOrganizationTest Started # # # # # 
+07-09-2020 18:37:07.571 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:37:07.572 : INFO  utils.ExtentReport -> test description is: To verify user redirects to 'Organization Select' page when user logins with correct Email and Password. 
+07-09-2020 18:37:07.572 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_01_to_Verify_User_Redirects_To_Organization_Select_Page_When_User_Logins_With_Correct_Email_And_Password Started  = = = = =
+ 
+07-09-2020 18:37:07.574 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:37:16.760 : INFO  actions.usermanagement.Login -> Login with email: redbrickmail@yopmail.compassword :Testuser@123 
+07-09-2020 18:37:16.913 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:37:17.334 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:37:18.018 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:37:18.284 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:37:18.615 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser@123 
+07-09-2020 18:37:18.615 : INFO  actions.usermanagement.Login -> Clicking on SignIn button 
+07-09-2020 18:37:19.500 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //span/div[contains(text(),'Sign in')]] 
+07-09-2020 18:37:29.502 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:37:32.532 : INFO  actions.usermanagement.Login -> Login successful. 
+07-09-2020 18:37:47.537 : INFO  actions.usermanagement.SelectOrganization -> Select Organization page is loaded 
+07-09-2020 18:37:47.539 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_01_to_Verify_User_Redirects_To_Organization_Select_Page_When_User_Logins_With_Correct_Email_And_Password 
+07-09-2020 18:37:47.539 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_01_to_Verify_User_Redirects_To_Organization_Select_Page_When_User_Logins_With_Correct_Email_And_Password 
+07-09-2020 18:37:47.610 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_01_to_Verify_User_Redirects_To_Organization_Select_Page_When_User_Logins_With_Correct_Email_And_Password Completed  = = = = =
+
+ 
+07-09-2020 18:37:47.617 : INFO  utils.ExtentReport -> test description is: To verify 'Organization Select' page shows all UI elements. 
+07-09-2020 18:37:47.618 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_03_to_Verify_Organization_SelecT_Page_Shows_All_UI_Elements Started  = = = = =
+ 
+07-09-2020 18:37:47.620 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:37:47.825 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //img[@class ='login-card-img']] 
+07-09-2020 18:37:47.909 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Logout')]] 
+07-09-2020 18:37:48.004 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create organization')]] 
+07-09-2020 18:37:48.186 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='organization-card']] 
+07-09-2020 18:37:48.283 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='login-card-desc']] 
+07-09-2020 18:37:48.288 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_03_to_Verify_Organization_SelecT_Page_Shows_All_UI_Elements 
+07-09-2020 18:37:48.288 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_03_to_Verify_Organization_SelecT_Page_Shows_All_UI_Elements 
+07-09-2020 18:37:48.358 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_03_to_Verify_Organization_SelecT_Page_Shows_All_UI_Elements Completed  = = = = =
+
+ 
+07-09-2020 18:37:48.359 : INFO  utils.ExtentReport -> test description is: To verify created default organization shows all UI elements. 
+07-09-2020 18:37:48.360 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_03_to_Verify_Created_Default_Organization_Shows_All_UI_Elements Started  = = = = =
+ 
+07-09-2020 18:37:48.365 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:37:48.516 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='organization-avatar']] 
+07-09-2020 18:37:48.606 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='org-person']] 
+07-09-2020 18:37:48.771 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='org-select-permission']] 
+07-09-2020 18:37:48.836 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='organization-card']] 
+07-09-2020 18:37:48.887 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='login-card-desc']] 
+07-09-2020 18:37:48.892 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_03_to_Verify_Created_Default_Organization_Shows_All_UI_Elements 
+07-09-2020 18:37:48.892 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_03_to_Verify_Created_Default_Organization_Shows_All_UI_Elements 
+07-09-2020 18:37:48.957 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_03_to_Verify_Created_Default_Organization_Shows_All_UI_Elements Completed  = = = = =
+
+ 
+07-09-2020 18:37:48.958 : INFO  utils.ExtentReport -> test description is: To verify 'Create Organization' pop up opens after clicking on 'Create Organization' button. 
+07-09-2020 18:37:48.958 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_04_to_Verify_Create_Organization_Pop_Up_Opens_After_Clicking_On_Create_Organization_Button Started  = = = = =
+ 
+07-09-2020 18:37:48.959 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:37:49.230 : INFO  utils.BrowserActions -> Clicked on the link : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create organization')]] 
+07-09-2020 18:37:54.234 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_04_to_Verify_Create_Organization_Pop_Up_Opens_After_Clicking_On_Create_Organization_Button 
+07-09-2020 18:37:54.235 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_04_to_Verify_Create_Organization_Pop_Up_Opens_After_Clicking_On_Create_Organization_Button 
+07-09-2020 18:37:54.299 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_04_to_Verify_Create_Organization_Pop_Up_Opens_After_Clicking_On_Create_Organization_Button Completed  = = = = =
+
+ 
+07-09-2020 18:37:54.301 : INFO  utils.ExtentReport -> test description is: To verify 'Create Organization' pop up shows all UI elements. 
+07-09-2020 18:37:54.301 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_05_to_Verify_Create_Organization_Pop_Up_Shows_All_UI_Elements Started  = = = = =
+ 
+07-09-2020 18:37:54.375 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create Organization')]] 
+07-09-2020 18:37:54.449 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='create-dataset-desc']] 
+07-09-2020 18:37:54.525 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[contains(@placeholder,'Organization Name*')]] 
+07-09-2020 18:37:54.589 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[contains(@placeholder,'Orgnization Description*')]] 
+07-09-2020 18:37:54.656 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create Orgnization')]] 
+07-09-2020 18:37:54.660 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_05_to_Verify_Create_Organization_Pop_Up_Shows_All_UI_Elements 
+07-09-2020 18:37:54.660 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_05_to_Verify_Create_Organization_Pop_Up_Shows_All_UI_Elements 
+07-09-2020 18:37:54.723 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_05_to_Verify_Create_Organization_Pop_Up_Shows_All_UI_Elements Completed  = = = = =
+
+ 
+07-09-2020 18:37:54.724 : INFO  utils.ExtentReport -> test description is: To verify 'Create Organization' pop up have valid placeholder 
+07-09-2020 18:37:54.725 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_06_to_Verify_Create_Organization_Pop_Up_Have_Valid_Placeholder Started  = = = = =
+ 
+07-09-2020 18:37:54.790 : INFO  actions.usermanagement.SelectOrganization -> Placeholders are showing for all fields 
+07-09-2020 18:37:54.791 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_06_to_Verify_Create_Organization_Pop_Up_Have_Valid_Placeholder 
+07-09-2020 18:37:54.792 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_06_to_Verify_Create_Organization_Pop_Up_Have_Valid_Placeholder 
+07-09-2020 18:37:54.861 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_06_to_Verify_Create_Organization_Pop_Up_Have_Valid_Placeholder Completed  = = = = =
+
+ 
+07-09-2020 18:37:54.862 : INFO  utils.ExtentReport -> test description is: To verify user is not able to create organization when both 'Organization Name' and 'Organization Description' fields are kept blank. 
+07-09-2020 18:37:54.865 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_07_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Both_Fields_Are_Kept_Blank Started  = = = = =
+ 
+07-09-2020 18:37:54.919 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[contains(@placeholder,'Organization Name*')]] 
+07-09-2020 18:37:55.160 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:37:55.321 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:37:55.556 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:37:55.704 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:37:55.704 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:37:55.939 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create Orgnization')]] 
+07-09-2020 18:38:01.027 : INFO  actions.usermanagement.SelectOrganization -> Validation message is showing 
+07-09-2020 18:38:01.029 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_07_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Both_Fields_Are_Kept_Blank 
+07-09-2020 18:38:01.029 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_07_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Both_Fields_Are_Kept_Blank 
+07-09-2020 18:38:01.096 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_07_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Both_Fields_Are_Kept_Blank Completed  = = = = =
+
+ 
+07-09-2020 18:38:01.096 : INFO  utils.ExtentReport -> test description is: To verify user is not able to create organization when 'Organization Name' field is kept blank. 
+07-09-2020 18:38:01.097 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_08_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Name_Field_Is_Kept_Blank Started  = = = = =
+ 
+07-09-2020 18:38:01.173 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[contains(@placeholder,'Organization Name*')]] 
+07-09-2020 18:38:01.376 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:38:01.524 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:38:01.738 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:38:02.222 : INFO  utils.BrowserActions -> Cleared and Added text: Test Description 
+07-09-2020 18:38:02.222 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:02.598 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create Orgnization')]] 
+07-09-2020 18:38:07.727 : INFO  actions.usermanagement.SelectOrganization -> Validation message is showing 
+07-09-2020 18:38:07.731 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_08_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Name_Field_Is_Kept_Blank 
+07-09-2020 18:38:07.731 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_08_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Name_Field_Is_Kept_Blank 
+07-09-2020 18:38:07.793 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_08_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Name_Field_Is_Kept_Blank Completed  = = = = =
+
+ 
+07-09-2020 18:38:07.794 : INFO  utils.ExtentReport -> test description is: To verify user is not able to create organization when 'Organization Description' field is kept blank. 
+07-09-2020 18:38:07.794 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_09_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Description_Field_Is_Kept_Blank Started  = = = = =
+ 
+07-09-2020 18:38:07.876 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[contains(@placeholder,'Organization Name*')]] 
+07-09-2020 18:38:08.208 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:38:08.608 : INFO  utils.BrowserActions -> Cleared and Added text: RedBrick Test 
+07-09-2020 18:38:08.857 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:38:09.006 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:38:09.006 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:09.245 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create Orgnization')]] 
+07-09-2020 18:38:14.348 : INFO  actions.usermanagement.SelectOrganization -> Validation message is showing 
+07-09-2020 18:38:14.514 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class = 'dialog-header']/div[@class='d-h-right']//button] 
+07-09-2020 18:38:14.515 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:14.657 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_09_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Description_Field_Is_Kept_Blank 
+07-09-2020 18:38:14.658 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_09_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Description_Field_Is_Kept_Blank 
+07-09-2020 18:38:14.747 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_09_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Description_Field_Is_Kept_Blank Completed  = = = = =
+
+ 
+07-09-2020 18:38:14.748 : INFO  utils.ExtentReport -> test description is: To verify user not able to  create more then one organizations. 
+07-09-2020 18:38:14.748 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_10_to_Verify_User_Not_Able_To_Create_More_Then_One_Organizations Started  = = = = =
+ 
+07-09-2020 18:38:14.749 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:15.042 : INFO  utils.BrowserActions -> Clicked on the link : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create organization')]] 
+07-09-2020 18:38:20.118 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //input[contains(@placeholder,'Organization Name*')]] 
+07-09-2020 18:38:20.365 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:38:20.780 : INFO  utils.BrowserActions -> Cleared and Added text: RedBrick Test 
+07-09-2020 18:38:20.998 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:38:21.420 : INFO  utils.BrowserActions -> Cleared and Added text: Test Description 
+07-09-2020 18:38:21.420 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:21.662 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[contains(text(),'Create Orgnization')]] 
+07-09-2020 18:38:26.725 : INFO  actions.usermanagement.SelectOrganization -> Validation message is showing 
+07-09-2020 18:38:26.892 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class = 'dialog-header']/div[@class='d-h-right']//button] 
+07-09-2020 18:38:26.892 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:26.987 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_10_to_Verify_User_Not_Able_To_Create_More_Then_One_Organizations 
+07-09-2020 18:38:26.987 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_10_to_Verify_User_Not_Able_To_Create_More_Then_One_Organizations 
+07-09-2020 18:38:27.088 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_10_to_Verify_User_Not_Able_To_Create_More_Then_One_Organizations Completed  = = = = =
+
+ 
+07-09-2020 18:38:27.093 : INFO  utils.ExtentReport -> test description is: To verify user reditect to project page after clicking on Select Organization. 
+07-09-2020 18:38:27.093 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_11_to_Verify_User_Reditect_To_Project_Page_After_Clicking_On_Select_Organization Started  = = = = =
+ 
+07-09-2020 18:38:27.095 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:38:27.431 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (446e60f658036f46bf16f1d1e9b3098e)] -> xpath: //div[@class='organization-card']] 
+07-09-2020 18:38:57.477 : INFO  actions.usermanagement.ProjectPage -> User is redirect to project page 
+07-09-2020 18:38:57.479 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: SelectOrganization_11_to_Verify_User_Reditect_To_Project_Page_After_Clicking_On_Select_Organization 
+07-09-2020 18:38:57.479 : INFO  tests.TestBase -> TEST CASE PASSED IS: SelectOrganization_11_to_Verify_User_Reditect_To_Project_Page_After_Clicking_On_Select_Organization 
+07-09-2020 18:38:57.542 : INFO  tests.TestBase -> = = = = = Execution of Method SelectOrganization_11_to_Verify_User_Reditect_To_Project_Page_After_Clicking_On_Select_Organization Completed  = = = = =
+
+ 
+07-09-2020 18:38:57.542 : INFO  utils.webDrivers.DriverManager -> Closing Driver (1671880701) 
+07-09-2020 18:38:58.300 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:38:58.300 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.SelectOrganizationTest Completed # # # # # 
+07-09-2020 18:38:58.300 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:48:54.423 : INFO  utils.readers.Config -> Common property file loaded successfully. 
+07-09-2020 18:48:54.492 : INFO  utils.ExtentReport -> Extent report directory cleared. 
+07-09-2020 18:48:54.614 : INFO  utils.ScreenshotCapture -> Screenshot Directory is: D:\redbrick\redbrickAI\test-output\screenshots 
+07-09-2020 18:48:59.509 : INFO  utils.webDrivers.DriverManager -> Initialized Driver (1364127192) 
+07-09-2020 18:49:01.535 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:49:01.538 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.ResetPasswordTest Started # # # # # 
+07-09-2020 18:49:01.538 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:49:01.548 : INFO  utils.ExtentReport -> test description is: To verify user redirects to 'Reset Password' page after clicking on 'Forgot Password?' link. 
+07-09-2020 18:49:01.555 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link Started  = = = = =
+ 
+07-09-2020 18:49:01.586 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:49:41.275 : INFO  utils.BrowserActions -> Clicked on the link : Proxy element for: DefaultElementLocator 'By.xpath: //a[contains(text(),'Forgot Password?')]' 
+07-09-2020 18:49:41.316 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:49:41.523 : INFO  actions.usermanagement.ResetPassword -> ResetPassword page is loaded 
+07-09-2020 18:49:41.536 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link 
+07-09-2020 18:49:41.537 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link 
+07-09-2020 18:49:42.545 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_01_to_Verify_User_Redirects_To_Reset_Password_Page_After_Clicking_On_Forgot_Password_Link Completed  = = = = =
+
+ 
+07-09-2020 18:49:42.551 : INFO  utils.ExtentReport -> test description is: To verify that 'Red Brick' 'Reset Password' page shows all UI elements 
+07-09-2020 18:49:42.553 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_02_check_Reset_Password_All_Elements_Display Started  = = = = =
+ 
+07-09-2020 18:49:42.570 : INFO  utils.BrowserActions -> Loading URL 
+07-09-2020 18:49:43.851 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //input[@placeholder='Email*']] 
+07-09-2020 18:49:43.951 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:49:43.961 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_02_check_Reset_Password_All_Elements_Display 
+07-09-2020 18:49:43.962 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_02_check_Reset_Password_All_Elements_Display 
+07-09-2020 18:49:44.118 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_02_check_Reset_Password_All_Elements_Display Completed  = = = = =
+
+ 
+07-09-2020 18:49:44.119 : INFO  utils.ExtentReport -> test description is: To verify that user is not able to Reset Password with invalid Email 
+07-09-2020 18:49:44.119 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_03_check_Reset_Password_With_invalid_credentials Started  = = = = =
+ 
+07-09-2020 18:49:44.121 : INFO  actions.usermanagement.ResetPassword -> Reset Password With : xtpz@yopmail.com 
+07-09-2020 18:49:44.322 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:49:44.718 : INFO  utils.BrowserActions -> Cleared and Added text: xtpz@yopmail.com 
+07-09-2020 18:49:45.150 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:49:45.238 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:49:46.181 : INFO  actions.usermanagement.ResetPassword -> Validation message is display for email field 
+07-09-2020 18:49:46.728 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:49:46.729 : INFO  actions.usermanagement.ResetPassword -> Reset Password With : admintestgmail.com 
+07-09-2020 18:49:46.971 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:49:47.443 : INFO  utils.BrowserActions -> Cleared and Added text: admintestgmail.com 
+07-09-2020 18:49:47.651 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:49:47.685 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:49:47.805 : INFO  actions.usermanagement.ResetPassword -> Validation message is display for email field 
+07-09-2020 18:49:48.333 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:49:48.334 : INFO  actions.usermanagement.ResetPassword -> Reset Password With :  
+07-09-2020 18:49:48.577 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:49:48.700 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:49:48.869 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:49:48.903 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:49:49.041 : INFO  actions.usermanagement.ResetPassword -> Validation message is display for email field 
+07-09-2020 18:49:49.588 : INFO  utils.BrowserActions -> Page refresh successfully 
+07-09-2020 18:49:49.590 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_03_check_Reset_Password_With_invalid_credentials 
+07-09-2020 18:49:49.591 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_03_check_Reset_Password_With_invalid_credentials 
+07-09-2020 18:49:49.687 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_03_check_Reset_Password_With_invalid_credentials Completed  = = = = =
+
+ 
+07-09-2020 18:49:49.688 : INFO  utils.ExtentReport -> test description is: To verify Reset Password functionality when user enters valid Email in Email Text field. 
+07-09-2020 18:49:49.689 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email Started  = = = = =
+ 
+07-09-2020 18:49:49.690 : INFO  actions.usermanagement.ResetPassword -> Reset Password With : redbrickmail@yopmail.com 
+07-09-2020 18:49:49.921 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:49:50.703 : INFO  utils.BrowserActions -> Cleared and Added text: redbrickmail@yopmail.com 
+07-09-2020 18:49:51.115 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //button[@type='submit']] 
+07-09-2020 18:49:51.197 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:49:52.689 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //input[@placeholder='Confirmation Code*']] 
+07-09-2020 18:49:52.770 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //input[@placeholder='New Password*']] 
+07-09-2020 18:49:52.867 : INFO  utils.BrowserActions -> Element is showing on the page : [[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //input[@placeholder='Confirm Password*']] 
+07-09-2020 18:49:52.870 : INFO  actions.usermanagement.ResetPassword -> Confirmation section is loaded 
+07-09-2020 18:49:52.872 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email 
+07-09-2020 18:49:52.873 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email 
+07-09-2020 18:49:52.967 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_04_to_Verify_Reset_Password_Functionality_When_User_Enters_Valid_Email Completed  = = = = =
+
+ 
+07-09-2020 18:49:52.969 : INFO  utils.ExtentReport -> test description is: To verify 'Confirmation field', 'New Password field' and 'Confirm Password Field'have a valid placeholder. 
+07-09-2020 18:49:52.970 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder Started  = = = = =
+ 
+07-09-2020 18:49:53.071 : INFO  actions.usermanagement.ResetPassword -> Placeholder is showing for all fields 
+07-09-2020 18:49:53.074 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder 
+07-09-2020 18:49:53.074 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder 
+07-09-2020 18:49:53.216 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_05_to_Verify_Confirmation_Section_Have_Valid_PlaceHolder Completed  = = = = =
+
+ 
+07-09-2020 18:49:53.217 : INFO  utils.ExtentReport -> test description is: To verify application displays validation message when all fields present on Confirmation Section are kept blank. 
+07-09-2020 18:49:53.218 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank Started  = = = = =
+ 
+07-09-2020 18:49:53.399 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:49:58.489 : INFO  actions.usermanagement.ResetPassword -> Validation message is  showing for confirmation code field 
+07-09-2020 18:49:58.624 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:49:58.827 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:49:58.935 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:49:59.009 : INFO  actions.usermanagement.ResetPassword -> Validation message is  showing for new password field 
+07-09-2020 18:49:59.238 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:49:59.618 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:49:59.707 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:04.771 : INFO  actions.usermanagement.ResetPassword -> Validation message is  showing for confirm password field 
+07-09-2020 18:50:04.773 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank 
+07-09-2020 18:50:04.774 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank 
+07-09-2020 18:50:04.852 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_07_to_Verify_Application_Displays_Validation_Message_When_All_Fields_Present_On_Confirmation_Section_Are_Kept_Blank Completed  = = = = =
+
+ 
+07-09-2020 18:50:04.853 : INFO  utils.ExtentReport -> test description is: To verify that  confirmation code field pop up contains validation message. 
+07-09-2020 18:50:04.854 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message Started  = = = = =
+ 
+07-09-2020 18:50:05.036 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:05.155 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:50:05.300 : INFO  utils.BrowserActions -> Move to element successfully 
+07-09-2020 18:50:05.330 : INFO  actions.usermanagement.ResetPassword -> Information message is showing after click on confirmation code text field 
+07-09-2020 18:50:05.336 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message 
+07-09-2020 18:50:05.337 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message 
+07-09-2020 18:50:05.436 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_06_to_Verify_That_Confirmation_Code_Field_Pop_Up_Contains_Validation_Message Completed  = = = = =
+
+ 
+07-09-2020 18:50:05.438 : INFO  utils.ExtentReport -> test description is: To verify application displays validation message when user enters invalid code. 
+07-09-2020 18:50:05.439 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code Started  = = = = =
+ 
+07-09-2020 18:50:05.614 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:05.804 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:50:06.045 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:06.456 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:50:06.688 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:07.038 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:50:07.191 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:07.727 : INFO  actions.usermanagement.ResetPassword -> Valiidation message display for invalid confirmation code 
+07-09-2020 18:50:07.731 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code 
+07-09-2020 18:50:07.732 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code 
+07-09-2020 18:50:07.803 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_08_to_Verify_Application_Displays_Validation_Message_When_User_Enters_Invalid_Code Completed  = = = = =
+
+ 
+07-09-2020 18:50:07.804 : INFO  utils.ExtentReport -> test description is: To verify validation message is displayed when Password and Confirm password both are not same. 
+07-09-2020 18:50:07.805 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same Started  = = = = =
+ 
+07-09-2020 18:50:07.971 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:08.144 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:50:08.302 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:08.561 : INFO  utils.BrowserActions -> Cleared and Added text: Adminuser@123 
+07-09-2020 18:50:08.737 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:08.973 : INFO  utils.BrowserActions -> Cleared and Added text: Testser@123 
+07-09-2020 18:50:09.076 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:09.103 : INFO  utils.BrowserActions -> Waiting for element to be visible 
+07-09-2020 18:50:09.220 : INFO  actions.usermanagement.ResetPassword -> Both new password and confirm password are same 
+07-09-2020 18:50:09.223 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same 
+07-09-2020 18:50:09.224 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same 
+07-09-2020 18:50:09.309 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_09_to_Verify_Validation_Message_Is_Displayed_When_Password_And_Confirm_password_Both_Are_Not_Same Completed  = = = = =
+
+ 
+07-09-2020 18:50:09.311 : INFO  utils.ExtentReport -> test description is: To verify that  validation  password pop up contains password  validation requirements  
+07-09-2020 18:50:09.312 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements Started  = = = = =
+ 
+07-09-2020 18:50:09.541 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:09.661 : INFO  utils.BrowserActions -> Cleared and Added text:  
+07-09-2020 18:50:09.803 : INFO  utils.BrowserActions -> Move to element successfully 
+07-09-2020 18:50:09.913 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements 
+07-09-2020 18:50:09.917 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements 
+07-09-2020 18:50:10.009 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_10_to_Verify_That_Validation_Password_Pop_Up_Contains_Password_Validation_Requirements Completed  = = = = =
+
+ 
+07-09-2020 18:50:10.010 : INFO  utils.ExtentReport -> test description is: To verify user not able to reset password when enterd password is in incorrect format 
+07-09-2020 18:50:10.011 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format Started  = = = = =
+ 
+07-09-2020 18:50:10.206 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:10.394 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:50:10.540 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:10.913 : INFO  utils.BrowserActions -> Cleared and Added text: testuser@123 
+07-09-2020 18:50:11.204 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:11.503 : INFO  utils.BrowserActions -> Cleared and Added text: testuser@123 
+07-09-2020 18:50:11.624 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:12.160 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:12.510 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:50:12.857 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:13.565 : INFO  utils.BrowserActions -> Cleared and Added text: Test@12 
+07-09-2020 18:50:13.720 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:13.903 : INFO  utils.BrowserActions -> Cleared and Added text: Test@12 
+07-09-2020 18:50:13.992 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:14.090 : INFO  actions.usermanagement.ResetPassword -> Password is too short. Must be atleast 8 characters. is  showing on the page. 
+07-09-2020 18:50:19.298 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:19.482 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:50:19.640 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:19.860 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser123 
+07-09-2020 18:50:20.048 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:20.274 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser123 
+07-09-2020 18:50:20.362 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:20.434 : INFO  actions.usermanagement.ResetPassword -> Password is too short. Must be atleast 8 characters. is  showing on the page. 
+07-09-2020 18:50:25.775 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:25.980 : INFO  utils.BrowserActions -> Cleared and Added text: 328324 
+07-09-2020 18:50:26.198 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:26.396 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser 
+07-09-2020 18:50:26.694 : INFO  utils.BrowserActions -> Text field cleared  
+07-09-2020 18:50:26.945 : INFO  utils.BrowserActions -> Cleared and Added text: Testuser 
+07-09-2020 18:50:27.074 : INFO  utils.BrowserActions -> Clicked on the button[[ChromeDriver: chrome on WINDOWS (bb9d94ee5bd08ea6e673547c35014b56)] -> xpath: //span[@class='MuiButton5169']//div[contains(text(),'Confirm')]] 
+07-09-2020 18:50:27.170 : INFO  actions.usermanagement.ResetPassword -> Password must contain atleast one number. is  showing on the page. 
+07-09-2020 18:50:32.227 : INFO  tests.TestBase -> Success: TEST CASE PASSED IS: ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format 
+07-09-2020 18:50:32.228 : INFO  tests.TestBase -> TEST CASE PASSED IS: ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format 
+07-09-2020 18:50:32.309 : INFO  tests.TestBase -> = = = = = Execution of Method ResetPassword_11_to_Verify_User_Not_Able_To_Reset_Password_When_Enterd_Password_Is_In_Incorrect_Format Completed  = = = = =
+
+ 
+07-09-2020 18:50:32.310 : INFO  utils.webDrivers.DriverManager -> Closing Driver (1364127192) 
+07-09-2020 18:50:33.013 : INFO  tests.TestBase -> **************************************************************************************** 
+07-09-2020 18:50:33.014 : INFO  tests.TestBase -> # # # # # Execution of Class tests.usermanagement.ResetPasswordTest Completed # # # # # 
+07-09-2020 18:50:33.014 : INFO  tests.TestBase -> **************************************************************************************** 

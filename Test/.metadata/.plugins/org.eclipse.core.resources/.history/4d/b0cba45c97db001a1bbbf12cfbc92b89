@@ -1,0 +1,99 @@
+package tests.usermanagement;
+
+import org.testng.annotations.Test;
+
+import pages.actions.usermanagement.Login;
+import pages.actions.usermanagement.ProjectPage;
+import pages.actions.usermanagement.SelectOrganization;
+import testdata.AuthTestData;
+import tests.TestBase;
+
+public class SelectOrganizationTest extends TestBase {
+	AuthTestData authData = new AuthTestData();
+
+	@Test(priority = 1, description = "To verify user redirects to 'Organization Select' page when user logins with correct Email and Password.", groups = {"Functional"})
+	public void SelectOrganization_01_to_Verify_User_Redirects_To_Organization_Select_Page_When_User_Logins_With_Correct_Email_And_Password() {
+		Login login = new Login(driverManager);
+		SelectOrganization selectOrgs = login.doLogin(authData.email, authData.password);
+		selectOrgs.toVerifyIsSelectOrganizationPageLoaded();
+
+	}
+
+	@Test(priority = 2, description = "To verify 'Organization Select' page shows all UI elements.",groups = {"Functional"})
+	public void SelectOrganization_03_to_Verify_Organization_SelecT_Page_Shows_All_UI_Elements() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.toVerifySelectOrganizationPageLoadedWithAllElements();
+
+	}
+
+	@Test(priority = 3, description = "To verify created default organization shows all UI elements.",groups = {"Functional"})
+	public void SelectOrganization_03_to_Verify_Created_Default_Organization_Shows_All_UI_Elements() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.toVerifyIsOrganizationLoadedWithAllElements();
+	}
+
+	@Test(priority = 4, description = "To verify 'Create Organization' pop up opens after clicking on 'Create Organization' button.",groups = {"Functional"})
+	public void SelectOrganization_04_to_Verify_Create_Organization_Pop_Up_Opens_After_Clicking_On_Create_Organization_Button() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.clickOnCreateOrganizationLink();
+	}
+
+	@Test(priority = 5, description = "To verify 'Create Organization' pop up shows all UI elements.",groups = {"Functional"})
+	public void SelectOrganization_05_to_Verify_Create_Organization_Pop_Up_Shows_All_UI_Elements() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.toVerifyIsCreateOrganizationPopUpDispalyAllElement();
+	}
+
+	@Test(priority = 6, description = "To verify 'Create Organization' pop up have valid placeholder",groups = {"UI"})
+	public void SelectOrganization_06_to_Verify_Create_Organization_Pop_Up_Have_Valid_Placeholder() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.toVerifyPlaceholderShowingOnCreateOrganization(authData.organizationNamePlaceHolder,authData.organizationDescriptionPlaceHolder);
+	} 
+	
+	@Test(priority = 7, description = "To verify user is not able to create organization when both 'Organization Name' and 'Organization Description' fields are kept blank.",groups = {"Functional"})
+	public void SelectOrganization_07_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Both_Fields_Are_Kept_Blank() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.doCreateOrganizationSteps("", "");
+		selectOrgs.toVerifyValidationMessageDisplay(authData.requiredBlankTextFieldVaidationMessage);
+	}
+
+	@Test(priority = 8, description = "To verify user is not able to create organization when 'Organization Name' field is kept blank.",groups = {"Functional"})
+	public void SelectOrganization_08_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Name_Field_Is_Kept_Blank() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.doCreateOrganizationSteps("", authData.organizationDescription);
+		selectOrgs.toVerifyValidationMessageDisplay(authData.requiredBlankTextFieldVaidationMessage);
+	}
+
+	@Test(priority = 9, description = "To verify user is not able to create organization when 'Organization Description' field is kept blank.",groups = {"Functional"})
+	public void SelectOrganization_09_to_Verify_User_Is_Not_Able_To_Create_Organization_When_Organization_Description_Field_Is_Kept_Blank() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.doCreateOrganizationSteps(authData.organizationName, "");
+		selectOrgs.toVerifyValidationMessageDisplay(authData.requiredBlankTextFieldVaidationMessage);
+		selectOrgs.clickCloseCreateOrganizationPopUpButton();
+
+	}
+
+	@Test(priority = 10, description = "To verify user not able to  create more then one organizations.",groups = {"Functional"})
+	public void SelectOrganization_10_to_Verify_User__Able_To_Create_More_Then_One_Organizations() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		selectOrgs.clickOnCreateOrganizationLink();
+		selectOrgs.doCreateOrganizationSteps(authData.organizationName, authData.organizationDescription);
+		selectOrgs.toVerifyValidationMessageDisplay(authData.requiredVaidationMessage);
+		selectOrgs.clickCloseCreateOrganizationPopUpButton();
+	}
+	
+	@Test(priority = 11, description = "To verify user reditect to project page after clicking on Select Organization.",groups = {"Functional"})
+	public void SelectOrganization_11_to_Verify_User_Reditect_To_Project_Page_After_Clicking_On_Select_Organization() {
+		SelectOrganization selectOrgs = new SelectOrganization(driverManager);
+		ProjectPage projectPage = selectOrgs.clickOnOrganizationName();
+		projectPage.toVerifyIsProjectPageLoaded();
+	}
+	
+	@Test(priority = 12, description = "To verify user reditect to login page after clicking on logout link.",groups = {"Functional"})
+	public void SelectOrganization_12_to_Verify_User_Reditect_To_Login_Page_After_Clicking_On_Logout_Link() {
+		ProjectPage projectPage = new ProjectPage(driverManager);
+		projectPage.clickOnAccountDropDown();
+		projectPage.clickLogOutLink(authData.logoutLink);
+	}
+
+}

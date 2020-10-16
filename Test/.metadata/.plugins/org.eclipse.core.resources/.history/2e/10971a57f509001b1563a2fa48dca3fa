@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class CubeTest {
+	
+	public static int  cube(int x) {
+		int z = x*x*x;
+		return z;
+		
+	}
+	
+	public static void main(String[]args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter your cube number :");
+		
+		int number = sc.nextInt();
+		
+		int result = cube(number);
+		System.out.println(result);
+		
+		NewFile file = new NewFile();
+	}
+
+}

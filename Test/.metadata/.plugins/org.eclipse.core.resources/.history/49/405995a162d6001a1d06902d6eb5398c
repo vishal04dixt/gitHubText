@@ -1,0 +1,371 @@
+package utils;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import utils.logger.LogsManager;
+import utils.readers.Config;
+import utils.webDrivers.DriverManager;
+
+public class BrowserActions {
+
+	private LogsManager logManager;
+	private DriverManager driverManager;
+
+	public BrowserActions(DriverManager driverManager) {
+		this.driverManager = driverManager;
+		logManager = new LogsManager(BrowserActions.class.getName());
+	}
+
+	// Text Field Related Methods
+
+	public void addDataInTheTextField(WebElement element, String textData) {
+
+		clearTextField(element);
+
+		try {
+			element.sendKeys(Keys.CONTROL + "a");
+			element.sendKeys(Keys.DELETE);
+			element.sendKeys(textData);
+			logManager.logInformation("Cleared and Added text: " + textData, false,false);
+
+		} catch (Exception e) {
+
+			logManager.logException(e, true,true);
+
+			Assert.fail("Unable to add data in the text field: " + element + " " + e.getMessage());
+		}
+	}
+
+	public void clearTextField(WebElement element) {
+		try {
+			element.sendKeys(Keys.CONTROL + "a");
+			element.sendKeys(Keys.DELETE);
+			element.clear();
+			logManager.logInformation("Text field cleared ", false,false);
+
+		} catch (Exception e) {
+			logManager.logInformation("Exception while clearing text element", true,true);
+			Assert.fail("Unable to clear the text field: " + element + " " + e.getMessage());
+		}
+	}
+	
+
+		public void addDataInTheWithOutClearTextField(WebElement element, String textData) {
+			try {
+				element.sendKeys(textData);
+				logManager.logInformation("Added text: " + textData, false,false);
+
+			} catch (Exception e) {
+
+				logManager.logException(e, true,true);
+
+				Assert.fail("Unable to add data in the text field: " + element + " " + e.getMessage());
+			}
+		}
+
+	public String getAttributeOfWebElement(WebElement element) {
+		try {
+			return element.getAttribute("validationMessage");
+
+		} catch (Exception e) {
+			logManager.logException(e, true,true);
+			return "";
+		}
+	}
+
+	public String getTextWithinElement(WebElement element) {
+		try {
+			return element.getText();
+
+		} catch (Exception e) {
+			logManager.logError("Exception whille getting text: " + e);
+		}
+		return "";
+	}
+
+	public boolean isTextFieldEmpty(WebElement element) {
+
+		String textFieldValue = element.getAttribute("value");
+		boolean result = false;
+
+		if (textFieldValue.isEmpty()) {
+			result = true;
+		}
+
+		return result;
+	}
+
+	public String getPlaceholderFromTextField(WebElement element) {
+		try {
+			return element.getAttribute("placeholder");
+
+		} catch (Exception e) {
+
+			logManager.logError("Exception whille getting placeholder: " + e.getMessage());
+		}
+		return "";
+	}
+
+	// Button Related Methods
+
+	public void clickButton(WebElement element) {
+		String buttonName = element.toString();
+
+		try {
+			element.click();
+			logManager.logInformation("Clicked on the button" + buttonName, true,true);
+
+		} catch (Exception e) {
+
+			logManager.logError("Exception while clicking on button: " + e.getMessage());
+		}
+	}
+
+	public void clickButtonUsingJavaScript(WebElement element) {
+		try {
+			((JavascriptExecutor) driverManager.getDriver()).executeScript("arguments[0].click();", element);
+			logManager.logInformation("Clicked on the button" + element.toString(), true,true);
+		} catch (Exception e) {
+			logManager.logError("Exception while clicking on button: " + e.getMessage());
+		}
+
+	}
+
+	// Hyperlink Related Methods
+
+	public void clickOnLink(WebElement element) {
+		try {
+			element.click();
+			logManager.logInformation("Clicked on the link : " + element.toString(), true,true);
+
+		} catch (Exception e) {
+			logManager.logError("Exeption while Clicked on the link" + e.getMessage());
+		}
+	}
+
+	public boolean isElementDisplayed(WebElement element) {
+
+		setDefaultDriverTimeout(3);
+
+		boolean result = false;
+
+		try {
+			if (element.isDisplayed()) {
+				result = true;
+				logManager.logInformation("Element is showing on the page : " + element.toString(), true,true);
+			}
+
+		} catch (Exception e) {
+			logManager.logError("Element is not displayed." + e.getMessage());
+
+		}
+		setDefaultDriverTimeout();
+
+		return result;
+	}
+
+	// Wait Related Methods
+
+	public boolean waitForElementVisible(WebElement element, int timeoutInSeconds) {
+		boolean result = false;
+		logManager.logInformation("Waiting for element to be visible", true,true);
+		try {
+			WebDriverWait wait = driverManager.getWebDriverWait(timeoutInSeconds);
+			wait.until(ExpectedConditions.visibilityOf(element));
+			setDefaultDriverTimeout();
+
+			result = element.isDisplayed();
+
+		} catch (Exception e) {
+			logManager.logError("Exception while Waiting for element to be visible: " + e.getMessage());
+		}
+
+		return result;
+	}
+
+	public void waitForElementInvisible(WebElement element, int timeoutInSeconds) {
+
+		setDefaultDriverTimeout(1);
+
+		boolean isElementShowing = isElementDisplayed(element);
+
+		if (isElementShowing) {
+
+			logManager.logInformation("Element is showing and waiting till it gets disappear", true,true);
+
+			// WebDriverWait and Expected Conditions don't work here. It waits for the full
+			// time though element is not showing on the page.
+			// driverManager getWebDriverWait (timeoutInSeconds) until(Expected
+			// Conditions invisibilityOf (element) )
+
+			int count = 1;
+			while (isElementShowing && count < (timeoutInSeconds * 4)) {
+				try {
+					Thread.sleep(250);
+					isElementShowing = isElementDisplayed(element);
+					count++;
+				} catch (Exception e) {
+					isElementShowing = false;
+					break;
+				}
+			}
+
+			if (isElementShowing) {
+				logManager.logWarning("Element {} didn't disappear within timeout {} seconds", true,true);
+
+				// Try one more time to get element disappear
+				waitForElementInvisible(element, timeoutInSeconds);
+			}
+
+		} else {
+			logManager.logError("Element is not showing on the page.");
+
+		}
+
+		setDefaultDriverTimeout();
+	}
+
+	public void waitForPageLoadCompletes(int timeoutInSeconds) {
+
+		try {
+
+			driverManager.getWebDriverWait(timeoutInSeconds).until(
+					dvr -> ((JavascriptExecutor) dvr).executeScript("return document.readyState").equals("complete"));
+
+			driverManager.getWebDriverWait(timeoutInSeconds).until(dvr -> ((JavascriptExecutor) dvr).executeScript(
+					"return if(typeof(window.jQuery) != \"undefined\") {window.jQuery.active == 0} else {document.readyState == \"complete\"}"));
+
+		} catch (Exception e) {
+			setDefaultDriverTimeout();
+		}
+
+	}
+
+	public void waitForSeconds(int seconds) {
+		try {
+			Thread.sleep(seconds * 1000L);
+
+		} catch (Exception e) {
+
+			logManager.logError("Exception while waiting for seconds" + seconds);
+			logManager.logException(e, true,true);
+		}
+	}
+
+	public void scrollToLoadElementVisible(WebElement element) {
+		try {
+			((JavascriptExecutor) driverManager.getDriver()).executeScript("arguments[0].scrollIntoView();", element);
+			logManager.logInformation("Element scroll for element: " + element.getText(), true,true);
+
+		} catch (Exception e) {
+			logManager.logError("Exception while scrolling for element");
+		}
+	}
+
+	public String getErrorMessageShowingForField(WebElement element) {
+		try {
+			return element.getAttribute("validationMessage");
+
+		} catch (Exception e) {
+			logManager.logError("Exception while getting error text of element: " + e.getMessage());
+
+			return "";
+		}
+	}
+
+	// Page Related Methods
+
+	public void load(String url) {
+
+		logManager.logInformation("Loading URL", true,true);
+
+		try {
+			driverManager.getDriver().get(url);
+			waitForPageLoadCompletes(Config.getSmallPageTimeoutSeconds());
+
+		} catch (Exception e) {
+			logManager.logError("faild to loading URL");
+		}
+	}
+
+	public String getPageURL() {
+		return driverManager.getDriver().getCurrentUrl();
+	}
+
+	public String getPageTitle() {
+		return driverManager.getDriver().getTitle();
+	}
+
+	public void refreshPage() {
+		try {
+			driverManager.getDriver().navigate().refresh();
+			logManager.logInformation("Page refresh successfully", true,true);
+
+		} catch (Exception e) {
+			logManager.logException(e, true,true);
+		}
+	}
+
+	public void goToBackPage() {
+		try {
+			driverManager.getDriver().navigate().back();
+			logManager.logInformation("Loading back page", true,true);
+
+		} catch (Exception e) {
+
+			logManager.logError("Exception while loading back page." + e.getMessage());
+		}
+	}
+
+	public void setDefaultDriverTimeout(int seconds) {
+		driverManager.getDriver().manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+	}
+
+	public void getDefaultDriverTimeout() {
+		driverManager.getPageLoadTimeoutSeconds();
+	}
+
+	public void setDefaultDriverTimeout() {
+		driverManager.getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	public void moveToElement(WebElement element) {
+		try {
+
+			driverManager.getActions().moveToElement(element).perform();
+			logManager.logInformation("Move to element successfully", true,true);
+
+		} catch (Exception e) {
+			logManager.logException(e, true,true);
+			
+		}
+
+	}
+	
+	public boolean isElementDisabled(WebElement element) {
+		boolean result = false;
+
+		try {
+			String classes = element.getAttribute("class");
+			boolean isDisabled = classes.contains("button-disabled");
+			if (isDisabled) {
+				result = true;
+				logManager.logInformation("Element is enable on the page : " + element.toString(), true,true);
+			}
+
+		} catch (Exception e) {
+			logManager.logError("Element is not displayed." + e.getMessage());
+
+		}
+		return result;
+		
+	}
+
+}

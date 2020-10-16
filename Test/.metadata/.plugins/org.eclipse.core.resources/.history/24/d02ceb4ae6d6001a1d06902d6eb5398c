@@ -1,0 +1,165 @@
+package pages.actions.useraccount;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import pages.PageBase;
+import pages.pageobjects.useraccount.AccountPageUI;
+import utils.webDrivers.DriverManager;
+
+public class AccountPage extends PageBase {
+
+	public AccountPage(DriverManager driverManager) {
+		super(driverManager);
+		AccountPageUI.initElements(driverManager);
+	}
+
+	private boolean isAccountPageLoaded() {
+		boolean result = false;
+		if (browserActions.getPageURL().contains("account")) {
+			logManager.logInformation("Account page is loaded", false, false);
+			result = true;
+
+		}
+		return result;
+	}
+
+	public void toVerifyIsAccountPageLoaded() {
+		Assert.assertTrue(isAccountPageLoaded(), "Account page is not loaded");
+	}
+
+	private boolean isProfileSectionLoadedWithAllElements() {
+
+		boolean result = false;
+		logManager.logInformation("Waiting for page loading", true, true);
+		browserActions.waitForElementVisible(AccountPageUI.firstNameTextField, mediumPageTimeout);
+		if (browserActions.isElementDisplayed(AccountPageUI.profileHeader)
+				&& browserActions.isElementDisplayed(AccountPageUI.profileDescription)
+				&& browserActions.isElementDisplayed(AccountPageUI.firstNameTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.lastNameTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.saveChangeButton)) {
+			logManager.logInformation("Profile section is loaded", true, true);
+			result = true;
+		}
+
+		return result;
+	}
+
+	public void toVerifyProfileSectionLoadedWithAllElements() {
+		Assert.assertTrue(isProfileSectionLoadedWithAllElements(), "Profile section is not loaded");
+	}
+
+	public void clickAccountSettingsSection(String section) {
+
+		List<WebElement> sectionsName = AccountPageUI.accountSettingsSections;
+
+		for (WebElement sectionName : sectionsName) {
+			if (sectionName.getText().equalsIgnoreCase(section)) {
+				sectionName.click();
+			}
+		}
+
+	}
+
+	private void setFirstName(String firstName) {
+		browserActions.addDataInTheTextField(AccountPageUI.firstNameTextField, firstName);
+	}
+
+	private void setLastName(String lastName) {
+		browserActions.addDataInTheTextField(AccountPageUI.lastNameTextField, lastName);
+	}
+
+	public void clickSaveChangesButton() {
+		browserActions.waitForElementVisible(AccountPageUI.saveChangeButton, smallPageTimeout);
+		browserActions.clickButton(AccountPageUI.saveChangeButton);
+		browserActions.waitForPageLoadCompletes(smallPageTimeout);
+	}
+
+	public void doEditProfile(String firstName, String lastName) {
+		setFirstName(firstName);
+		setLastName(lastName);
+		clickSaveChangesButton();
+	}
+
+	private boolean isSuccessMessageShowingForValidUser(String successMessage) {
+		boolean result = false;
+		browserActions.waitForElementVisible(AccountPageUI.successMessage, smallestPageTimeout);
+		String successMessagevalidUser = browserActions.getTextWithinElement(AccountPageUI.successMessage);
+		if (successMessage.trim().equalsIgnoreCase(successMessagevalidUser.trim())) {
+			result = true;
+			logManager.logInformation("Success Message Showing For Invalid User", true, true);
+		}
+		return result;
+
+	}
+
+	/**
+	 * This method checks if success message is showing on the page for valid
+	 * credentials.
+	 */
+
+	public void toVerifySuccessMessageShowingForValidUser(String successMessage) {
+		Assert.assertTrue(isSuccessMessageShowingForValidUser(successMessage),
+				"Success message is not showing for valid user");
+	}
+
+	private boolean isPasswordSectionLoadedWithAllElements() {
+
+		boolean result = false;
+		logManager.logInformation("Waiting for page loading", true, true);
+		browserActions.waitForElementVisible(AccountPageUI.currentPasswordTextField, mediumPageTimeout);
+		if (browserActions.isElementDisplayed(AccountPageUI.currentPasswordTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.newPasswordTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.confirmNewPasswordTextField)
+				&& browserActions.isElementDisplayed(AccountPageUI.saveChangeButton)) {
+			logManager.logInformation("Password section is loaded", true, true);
+			result = true;
+		}
+
+		return result;
+	}
+
+	public void toVerifyPasswordSectionLoadedWithAllElements() {
+		Assert.assertTrue(isPasswordSectionLoadedWithAllElements(), "Password section is not loaded");
+	}
+
+	private void setCurrentPassword(String currentPassword) {
+		browserActions.addDataInTheTextField(AccountPageUI.currentPasswordTextField, currentPassword);
+	}
+
+	private void setNewPassword(String newPassword) {
+		browserActions.addDataInTheTextField(AccountPageUI.newPasswordTextField, newPassword);
+	}
+
+	private void setNewConfirmPassword(String newConfirmPassword) {
+		browserActions.addDataInTheTextField(AccountPageUI.confirmNewPasswordTextField, newConfirmPassword);
+	}
+
+	private boolean isValidationMessageDisplayForIncorrectCurrentPassword(String currentPassword, String newPassword,
+			String newConfirmPassword, String incorrectCurrentPasswordErrorTextMessage) {
+
+		boolean result = false;
+		setCurrentPassword(currentPassword);
+		setNewPassword(newPassword);
+		setNewConfirmPassword(newConfirmPassword);
+		clickSaveChangesButton();
+		if (incorrectCurrentPasswordErrorTextMessage.trim()
+				.equals(browserActions.getTextWithinElement(AccountPageUI.invalidErrorTextMessage))) {
+			result = true;
+			logManager.logInformation("Validation message is display", false, false);
+		}
+		return result;
+
+	}
+
+	public void toVerifyValidationMessageDisplayForIncorrectCurrentPassword(String currentPassword, String newPassword,
+			String newConfirmPassword, String incorrectCurrentPasswordErrorTextMessage) {
+		Assert.assertTrue(isValidationMessageDisplayForIncorrectCurrentPassword(currentPassword, newPassword,
+				newConfirmPassword, incorrectCurrentPasswordErrorTextMessage), "Validation message is not display");
+	}
+	
+	
+
+}
